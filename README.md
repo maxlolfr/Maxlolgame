@@ -2,7 +2,7 @@
 
 Site vitrine des jeux de maxlolfr : **La Dernière Torche**, **Gravity Turn**, **Infinite Dungeon**.
 
-Site en ligne : https://maxlolfr.github.io/Maxlolgame/
+Site en ligne : https://maxlolgames.com
 
 - `index.html` : tout le site (CSS et JS inclus).
 - `assets/` : images, polices (licence OFL) et musiques.
