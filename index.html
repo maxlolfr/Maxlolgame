@@ -24,6 +24,8 @@
 <meta name="twitter:image" content="https://maxlolgames.com/assets/og.jpg">
 <link rel="canonical" href="https://maxlolgames.com/">
 <link rel="alternate" hreflang="fr" href="https://maxlolgames.com/">
+<link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/">
 <link rel="icon" href="assets/gt-icon.webp">
 <link rel="apple-touch-icon" href="assets/gt-icon.webp">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://maxlolgames.com/#studio", "name": "Maxlol Game", "url": "https://maxlolgames.com/", "logo": "https://maxlolgames.com/assets/gt-icon.webp", "sameAs": ["https://maxlolfr.itch.io", "https://github.com/maxlolfr"]}, {"@type": "WebSite", "@id": "https://maxlolgames.com/#site", "url": "https://maxlolgames.com/", "name": "Maxlol Game", "inLanguage": "fr", "publisher": {"@id": "https://maxlolgames.com/#studio"}}, {"@type": "VideoGame", "name": "La Dernière Torche", "description": "Jeu d'ambiance sur mobile : la lumière de ta torche faiblit, 20 boss à affronter.", "url": "https://maxlolgames.com/#la-derniere-torche", "genre": ["Aventure", "Boss"], "inLanguage": "fr", "image": "https://maxlolgames.com/assets/t-cover.webp", "gamePlatform": ["iOS", "Android", "Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}}, {"@type": "VideoGame", "name": "Gravity Turn", "description": "Puzzle mobile : pose les pièces, le plateau tourne, les cascades s'enchaînent.", "url": "https://maxlolgames.com/#gravity-turn", "genre": ["Puzzle"], "inLanguage": "fr", "image": "https://maxlolgames.com/assets/gt-icon.webp", "gamePlatform": ["iOS", "Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}}, {"@type": "VideoGame", "name": "Infinite Dungeon", "description": "Roguelite fantasy à auto-combat : 100 étages, 10 boss, équipes de 3 héros.", "url": "https://maxlolgames.com/#infinite-dungeon", "genre": ["Roguelite", "RPG"], "inLanguage": "fr", "image": "https://maxlolgames.com/assets/id-icon.webp", "gamePlatform": ["Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}}]}</script>
@@ -65,9 +67,12 @@ p{margin:0}
 .nav{margin-left:auto;display:flex;gap:4px;align-items:center}
 .nav a{text-decoration:none;font-weight:800;font-size:.95rem;padding:8px 12px;border-radius:999px;color:var(--brume)}
 .nav a:hover{color:var(--lavande);background:rgba(255,255,255,.06)}
+.nav .lang{font-size:.82rem;border:1.5px solid rgba(185,174,221,.45);padding:6px 10px}
 .nav .itch{color:#2A1300;background:var(--bonbon)}
 .nav .itch:hover{background:#FFC56E;color:#2A1300}
 @media (max-width:600px){.nav .opt{display:none}}
+.brand{white-space:nowrap}
+@media (max-width:430px){.brand{font-size:1.02rem;gap:7px}.nav{gap:2px}.nav a{padding:8px 9px}}
 .snd{position:relative;display:grid;place-items:center;width:42px;height:42px;margin-left:4px;border:0;border-radius:999px;cursor:pointer;
   background:rgba(255,255,255,.08);color:var(--lavande);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.16)}
 .snd:hover{background:rgba(255,255,255,.14)}
@@ -425,9 +430,10 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
       Maxlol Game
     </a>
     <nav class="nav" aria-label="Menu">
-      <a href="#jeux">Jeux</a>
+      <a class="opt" href="#jeux">Jeux</a>
       <a class="opt" href="#la-derniere-torche">Nouveau</a>
       <a class="opt" href="#apropos">À propos</a>
+      <a class="lang" href="en/" hreflang="en" lang="en" aria-label="View the site in English">EN</a>
       <a class="itch" data-link="itch" href="#suivre">itch.io</a>
       <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Activer la musique">
         <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
