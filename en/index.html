@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maxlol Game – Indie games: La Dernière Torche, Gravity Turn, Infinite Dungeon</title>
-<meta name="description" content="Maxlol Game, an indie game studio: La Dernière Torche ("The Last Torch", a dungeon crawler about a fading torch), Gravity Turn (rotating block puzzle) and Infinite Dungeon (roguelite). Play on mobile, in your browser and on itch.io.">
+<meta name="description" content="Maxlol Game, an indie game studio: La Dernière Torche (&quot;The Last Torch&quot;, a dungeon crawler about a fading torch), Gravity Turn (rotating block puzzle) and Infinite Dungeon (roguelite). Play on mobile, in your browser and on itch.io.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="maxlolfr">
 <meta name="theme-color" content="#1A1238">
@@ -25,8 +25,8 @@
 <link rel="canonical" href="https://maxlolgames.com/en/">
 <link rel="alternate" hreflang="fr" href="https://maxlolgames.com/">
 <link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/">
-<link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/">
-<link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/">
+<link rel="alternate" hreflang="es" href="https://maxlolgames.com/es/">
+<link rel="alternate" hreflang="pt-BR" href="https://maxlolgames.com/pt/">
 <link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/">
 <link rel="icon" href="../assets/gt-icon.webp">
 <link rel="apple-touch-icon" href="../assets/gt-icon.webp">
@@ -69,7 +69,13 @@ p{margin:0}
 .nav{margin-left:auto;display:flex;gap:4px;align-items:center}
 .nav a{text-decoration:none;font-weight:800;font-size:.95rem;padding:8px 12px;border-radius:999px;color:var(--brume)}
 .nav a:hover{color:var(--lavande);background:rgba(255,255,255,.06)}
-.nav .lang{font-size:.82rem;border:1.5px solid rgba(185,174,221,.45);padding:6px 10px}
+.langmenu{position:relative}
+.langmenu summary{list-style:none;cursor:pointer;font-weight:800;font-size:.82rem;border:1.5px solid rgba(185,174,221,.45);padding:7px 11px;border-radius:999px;color:var(--brume)}
+.langmenu summary::-webkit-details-marker{display:none}
+.langmenu[open] summary{color:var(--lavande);background:rgba(255,255,255,.08)}
+.langmenu .lm{position:absolute;right:0;top:calc(100% + 8px);background:var(--prune);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:6px;display:grid;min-width:150px;z-index:60;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.langmenu .lm a{padding:11px 14px;border-radius:12px;color:var(--lavande)}
+.langmenu .lm a[aria-current]{background:rgba(255,181,71,.16);color:var(--bonbon)}
 .nav .itch{color:#2A1300;background:var(--bonbon)}
 .nav .itch:hover{background:#FFC56E;color:#2A1300}
 @media (max-width:600px){.nav .opt{display:none}}
@@ -435,7 +441,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
       <a class="opt" href="#jeux">Games</a>
       <a class="opt" href="#la-derniere-torche">New</a>
       <a class="opt" href="#apropos">About</a>
-      <a class="lang" href="../" hreflang="fr" lang="fr" aria-label="Voir le site en français">FR</a>
+<details class="langmenu"><summary aria-label="Language / Langue / Idioma">EN</summary><div class="lm"><a href="../" hreflang="fr" lang="fr">Français</a><a href="../en/" hreflang="en" lang="en" aria-current="true">English</a><a href="../es/" hreflang="es" lang="es">Español</a><a href="../pt/" hreflang="pt-BR" lang="pt-BR">Português</a></div></details>
       <a class="itch" data-link="itch" href="#suivre">itch.io</a>
       <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Turn music on">
         <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
@@ -1101,6 +1107,7 @@ document.querySelectorAll(".strip button").forEach(b => b.addEventListener("clic
   if (dlg.showModal) dlg.showModal();
 }));
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+document.addEventListener("click", e => { const d = document.querySelector(".langmenu"); if (d && d.open && !d.contains(e.target)) d.open = false; });
 </script>
 </body>
 </html>

@@ -2,8 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://maxlolgames.com/</loc><lastmod>2026-11-16</lastmod><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/"/></url>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://maxlolgames.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://maxlolgames.com/pt/"/>
+  </url>
   <url><loc>https://maxlolgames.com/en/</loc><lastmod>2026-11-16</lastmod><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/"/></url>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://maxlolgames.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://maxlolgames.com/pt/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/es/</loc><lastmod>2026-11-16</lastmod><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://maxlolgames.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://maxlolgames.com/pt/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/pt/</loc><lastmod>2026-11-16</lastmod><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://maxlolgames.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://maxlolgames.com/pt/"/>
+  </url>
 </urlset>
