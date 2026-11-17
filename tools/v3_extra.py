@@ -79,6 +79,8 @@ def apply_sec(s):
     csp='<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src %s; style-src \'self\' \'unsafe-inline\'; img-src \'self\' data: blob:; font-src \'self\'; media-src \'self\' blob:; connect-src %s; object-src \'none\'; base-uri \'self\'; form-action \'none\'">\n<meta name="referrer" content="strict-origin-when-cross-origin">\n'%(scr,con)
     s=re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>\n?<meta name="referrer"[^>]*>\n?','',s)
     s=re.sub(r'<script defer src="https://static\.cloudflareinsights\.com[^<]*</script>\n?','',s)
+    s=re.sub(r'<link rel="manifest"[^>]*>\n?|<link rel="apple-touch-icon"[^>]*>\n?','',s)
+    csp+='<link rel="manifest" href="/manifest.webmanifest">\n<link rel="apple-touch-icon" href="/assets/icon-180.png">\n'
     s=s.replace('<meta charset="utf-8">\n','<meta charset="utf-8">\n'+csp,1)
     if tok: s=s.replace('</head>','<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "'+tok+'"}\'></script>\n</head>',1)
     return s

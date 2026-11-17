@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maxlol Game – Jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon</title>
 <meta name="description" content="Maxlol Game, estúdio de jogos indie: La Dernière Torche (&quot;A Última Tocha&quot;, um dungeon crawler sobre uma tocha que se apaga), Gravity Turn (quebra-cabeça de blocos que giram) e Infinite Dungeon (roguelite). Jogue no celular, no navegador e no itch.io.">
@@ -39,7 +41,6 @@
 <link rel="preload" href="../assets/fonts/lilita-one.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="../assets/fonts/nunito.woff" as="font" type="font/woff" crossorigin>
 <link rel="icon" href="../assets/gt-icon.webp">
-<link rel="apple-touch-icon" href="../assets/gt-icon.webp">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://maxlolgames.com/#studio", "name": "Maxlol Game", "url": "https://maxlolgames.com/", "logo": "https://maxlolgames.com/assets/gt-icon.webp", "sameAs": ["https://maxlolfr.itch.io", "https://github.com/maxlolfr"]}, {"@type": "WebSite", "@id": "https://maxlolgames.com/pt/#site", "url": "https://maxlolgames.com/pt/", "name": "Maxlol Game", "inLanguage": "pt-BR", "publisher": {"@id": "https://maxlolgames.com/#studio"}}, {"@type": "VideoGame", "name": "La Dernière Torche", "description": "Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.", "url": "https://maxlolgames.com/pt/#la-derniere-torche", "genre": ["Aventure", "Boss"], "inLanguage": "pt-BR", "image": "https://maxlolgames.com/assets/t-cover.webp", "gamePlatform": ["iOS", "Android", "Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}, "alternateName": "A Última Tocha"}, {"@type": "VideoGame", "name": "Gravity Turn", "description": "Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.", "url": "https://maxlolgames.com/pt/#gravity-turn", "genre": ["Puzzle"], "inLanguage": "pt-BR", "image": "https://maxlolgames.com/assets/gt-icon.webp", "gamePlatform": ["iOS", "Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}}, {"@type": "VideoGame", "name": "Infinite Dungeon", "description": "Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis.", "url": "https://maxlolgames.com/pt/#infinite-dungeon", "genre": ["Roguelite", "RPG"], "inLanguage": "pt-BR", "image": "https://maxlolgames.com/assets/id-icon.webp", "gamePlatform": ["Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}}]}</script>
 <style>
 @font-face{font-family:"Lilita One";src:url(../assets/fonts/lilita-one.woff) format("woff");font-display:swap}
@@ -1113,6 +1114,17 @@ document.querySelectorAll(".tile:not(.space)").forEach(t => {
   }), { threshold: [0, .35, .6] }).observe(document.getElementById("gravity-turn"));
   // couper quand l'onglet est caché
   document.addEventListener("visibilitychange", () => { if (!ac || !on) return; document.hidden ? ac.suspend() : ac.resume(); });
+  // musique active par défaut : démarre au premier toucher (obligatoire sur iPhone), sauf si le visiteur l'a coupée
+  let off = false; try { off = localStorage.getItem("mg.music") === "0"; } catch(e){}
+  if (!off){
+    const go = e => {
+      if (btn.contains(e.target)) { cleanup(); return; }
+      cleanup(); if (!on) set(true);
+    };
+    const evs = ["pointerup","touchend","click","keydown"];
+    function cleanup(){ evs.forEach(n => document.removeEventListener(n, go, true)); }
+    evs.forEach(n => document.addEventListener(n, go, true));
+  }
   // petite bulle d'invitation après l'intro (une seule fois)
   let asked = false; try { asked = localStorage.getItem("mg.music") !== null; } catch(e){}
   if (!asked) setTimeout(() => { if (!on){ tip.classList.add("show"); setTimeout(() => tip.classList.remove("show"), 4500); } }, 5200);

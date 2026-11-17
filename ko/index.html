@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maxlol Game – 인디 게임: La Dernière Torche, Gravity Turn, Infinite Dungeon</title>
 <meta name="description" content="Maxlol Game은 인디 게임 스튜디오입니다. La Dernière Torche(&quot;마지막 횃불&quot;, 횃불이 꺼져 가는 턴제 던전 게임), Gravity Turn(회전하는 블록 퍼즐), Infinite Dungeon(로그라이트). 모바일, 브라우저, itch.io에서 즐기세요.">
@@ -39,7 +41,6 @@
 <link rel="preload" href="../assets/fonts/lilita-one.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="../assets/fonts/nunito.woff" as="font" type="font/woff" crossorigin>
 <link rel="icon" href="../assets/gt-icon.webp">
-<link rel="apple-touch-icon" href="../assets/gt-icon.webp">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://maxlolgames.com/#studio", "name": "Maxlol Game", "url": "https://maxlolgames.com/", "logo": "https://maxlolgames.com/assets/gt-icon.webp", "sameAs": ["https://maxlolfr.itch.io", "https://github.com/maxlolfr"]}, {"@type": "WebSite", "@id": "https://maxlolgames.com/ko/#site", "url": "https://maxlolgames.com/ko/", "name": "Maxlol Game", "inLanguage": "ko", "publisher": {"@id": "https://maxlolgames.com/#studio"}}, {"@type": "VideoGame", "name": "La Dernière Torche", "description": "모바일 턴제 던전: 방마다 횃불이 약해지고, 20명의 보스가 기다린다.", "url": "https://maxlolgames.com/ko/#la-derniere-torche", "genre": ["Aventure", "Boss"], "inLanguage": "ko", "image": "https://maxlolgames.com/assets/t-cover.webp", "gamePlatform": ["iOS", "Android", "Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}, "alternateName": "마지막 횃불"}, {"@type": "VideoGame", "name": "Gravity Turn", "description": "모바일 퍼즐: 블록을 놓으면 판이 돌고 연쇄가 이어진다.", "url": "https://maxlolgames.com/ko/#gravity-turn", "genre": ["Puzzle"], "inLanguage": "ko", "image": "https://maxlolgames.com/assets/gt-icon.webp", "gamePlatform": ["iOS", "Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}}, {"@type": "VideoGame", "name": "Infinite Dungeon", "description": "자동 전투 판타지 로그라이트: 100개 층, 보스 10명, 영웅 3명 팀.", "url": "https://maxlolgames.com/ko/#infinite-dungeon", "genre": ["Roguelite", "RPG"], "inLanguage": "ko", "image": "https://maxlolgames.com/assets/id-icon.webp", "gamePlatform": ["Web"], "applicationCategory": "Game", "author": {"@id": "https://maxlolgames.com/#studio"}, "publisher": {"@id": "https://maxlolgames.com/#studio"}}]}</script>
 <style>
 @font-face{font-family:"Lilita One";src:url(../assets/fonts/lilita-one.woff) format("woff");font-display:swap}
@@ -1113,6 +1114,17 @@ document.querySelectorAll(".tile:not(.space)").forEach(t => {
   }), { threshold: [0, .35, .6] }).observe(document.getElementById("gravity-turn"));
   // couper quand l'onglet est caché
   document.addEventListener("visibilitychange", () => { if (!ac || !on) return; document.hidden ? ac.suspend() : ac.resume(); });
+  // musique active par défaut : démarre au premier toucher (obligatoire sur iPhone), sauf si le visiteur l'a coupée
+  let off = false; try { off = localStorage.getItem("mg.music") === "0"; } catch(e){}
+  if (!off){
+    const go = e => {
+      if (btn.contains(e.target)) { cleanup(); return; }
+      cleanup(); if (!on) set(true);
+    };
+    const evs = ["pointerup","touchend","click","keydown"];
+    function cleanup(){ evs.forEach(n => document.removeEventListener(n, go, true)); }
+    evs.forEach(n => document.addEventListener(n, go, true));
+  }
   // petite bulle d'invitation après l'intro (une seule fois)
   let asked = false; try { asked = localStorage.getItem("mg.music") !== null; } catch(e){}
   if (!asked) setTimeout(() => { if (!on){ tip.classList.add("show"); setTimeout(() => tip.classList.remove("show"), 4500); } }, 5200);
