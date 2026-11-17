@@ -5,17 +5,22 @@ exec(src[src.index('R=['):src.index('# fix placeholder')])
 R=[r for r in R if r[0]!="Des jeux faits main, pensés d'abord pour le téléphone.</p>"]
 exec(open('/home/claude/i18n_es_pt.py').read().replace('print(len(ES),len(PT))',''))
 exec(open('/home/claude/i18n_th_zh.py').read())
+exec(open('/home/claude/i18n_ja_ko_ru_id.py').read())
 EN=[b.replace('("The Last Torch", a','(&quot;The Last Torch&quot;, a').replace('"The Last Torch"','&quot;The Last Torch&quot;') for a,b in R]
 FRK=[a for a,b in R]
 assert len(EN)==len(ES)==len(PT)==len(FRK)
 ROOT='/home/claude/maxlolgame/'
-LANGS=[('fr','',  'fr','Français','FR'),('en','en/','en','English','EN'),('es','es/','es','Español','ES'),('pt','pt/','pt-BR','Português','PT'),('th','th/','th','ไทย','TH'),('zh','zh/','zh-Hans','中文','中文')]
-TR={'en':EN,'es':ES,'pt':PT,'th':TH,'zh':ZH}
+LANGS=[('fr','',  'fr','Français','FR'),('en','en/','en','English','EN'),('es','es/','es','Español','ES'),('pt','pt/','pt-BR','Português','PT'),('th','th/','th','ไทย','TH'),('zh','zh/','zh-Hans','中文','中文'),('ja','ja/','ja','日本語','日本語'),('ko','ko/','ko','한국어','한국어'),('ru','ru/','ru','Русский','RU'),('id','id/','id','Bahasa Indonesia','ID')]
+TR={'en':EN,'es':ES,'pt':PT,'th':TH,'zh':ZH,'ja':JA,'ko':KO,'ru':RU,'id':ID}
 LD_DESC={
  'en':["Turn-based dungeon crawler for mobile: your torch fades with every room, 20 bosses to beat.","Mobile puzzle: place the blocks, the board rotates, cascades chain.","Auto-battle fantasy roguelite: 100 floors, 10 bosses, teams of 3 heroes."],
  'es':["Mazmorras por turnos para móvil: tu antorcha se apaga en cada sala, 20 jefes por vencer.","Puzle móvil: coloca los bloques, el tablero gira y las cascadas se encadenan.","Roguelite de fantasía con combate automático: 100 pisos, 10 jefes, equipos de 3 héroes."],
  'th':["ดันเจี้ยนแบบผลัดตาบนมือถือ: คบเพลิงอ่อนแรงลงทุกห้อง มีบอส 20 ตัวให้โค่น","เกมปริศนามือถือ: วางบล็อก กระดานหมุน แล้วคอมโบก็ต่อเนื่อง","โรกูไลต์แฟนตาซีต่อสู้อัตโนมัติ: 100 ชั้น บอส 10 ตัว ทีมฮีโร่ 3 คน"],
  'zh':["手机回合制地牢：火炬每进一个房间就变弱，等你击败 20 个首领。","手机益智：放置方块，棋盘旋转，连锁不断。","自动战斗的奇幻 Roguelite：100 层、10 个首领、三人英雄小队。"],
+ 'ja':["スマホ向けのターン制ダンジョン：松明は部屋ごとに弱まり、20体のボスが待ち受ける。","スマホ向けパズル：ブロックを置くと盤面が回転し、連鎖が続く。","自動戦闘のファンタジー・ローグライト：100階層、10体のボス、3人編成。"],
+ 'ko':["모바일 턴제 던전: 방마다 횃불이 약해지고, 20명의 보스가 기다린다.","모바일 퍼즐: 블록을 놓으면 판이 돌고 연쇄가 이어진다.","자동 전투 판타지 로그라이트: 100개 층, 보스 10명, 영웅 3명 팀."],
+ 'ru':["Пошаговое подземелье для телефона: факел слабеет в каждой комнате, впереди 20 боссов.","Мобильная головоломка: ставьте блоки, поле вращается, каскады идут цепочкой.","Фэнтезийный рогалик с автобоем: 100 этажей, 10 боссов, команды из 3 героев."],
+ 'id':["Dungeon bergiliran untuk ponsel: obormu melemah di setiap ruangan, 20 bos menanti.","Teka-teki ponsel: letakkan blok, papan berputar, kaskade berantai.","Roguelite fantasi dengan pertarungan otomatis: 100 lantai, 10 bos, tim 3 pahlawan."],
  'pt':["Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.","Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.","Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis."]}
 fr=open(ROOT+'index.html').read()
 
@@ -64,7 +69,7 @@ def finish(s,cur):
             n['inLanguage']=hl; n['url']='https://maxlolgames.com/'+path+'#'+n['url'].split('#')[1]
             if cur!='fr': n['description']=LD_DESC[cur][k]
             k+=1
-            if n['name']=='La Dernière Torche' and cur!='fr': n['alternateName']={'en':'The Last Torch','es':'La Última Antorcha','pt':'A Última Tocha','th':'คบเพลิงสุดท้าย','zh':'最后的火炬'}[cur]
+            if n['name']=='La Dernière Torche' and cur!='fr': n['alternateName']={'en':'The Last Torch','es':'La Última Antorcha','pt':'A Última Tocha','th':'คบเพลิงสุดท้าย','zh':'最后的火炬','ja':'最後の松明','ko':'마지막 횃불','ru':'Последний факел','id':'Obor Terakhir'}[cur]
     return s[:m.start(1)]+json.dumps(ld,ensure_ascii=False)+s[m.end(1):]
 fr_out=finish(fr,'fr'); open(ROOT+'index.html','w').write(fr_out)
 import os
@@ -74,9 +79,9 @@ for cur,path,hl,_,_ in LANGS[1:]:
         if v=='@@': continue
         if k not in s: print(cur,'MISSING',k[:60]); continue
         s=s.replace(k,v)
-    s=s.replace('Maxlol Game, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon',{'en':'Maxlol Game, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon','es':'Maxlol Game, estudio de juegos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','pt':'Maxlol Game, estúdio de jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','th':'Maxlol Game สตูดิโอเกมอินดี้: La Dernière Torche, Gravity Turn, Infinite Dungeon','zh':'Maxlol Game 独立游戏工作室：La Dernière Torche、Gravity Turn、Infinite Dungeon'}[cur])
-    s=s.replace('content="Maxlol Game – jeux vidéo indépendants"','content="Maxlol Game – '+{'en':'indie games','es':'juegos indie','pt':'jogos indie','th':'เกมอินดี้','zh':'独立游戏'}[cur]+'"')
-    s=s.replace('content="fr_FR"','content="'+{'en':'en_US','es':'es_ES','pt':'pt_BR','th':'th_TH','zh':'zh_CN'}[cur]+'"')
+    s=s.replace('Maxlol Game, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon',{'en':'Maxlol Game, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon','es':'Maxlol Game, estudio de juegos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','pt':'Maxlol Game, estúdio de jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','th':'Maxlol Game สตูดิโอเกมอินดี้: La Dernière Torche, Gravity Turn, Infinite Dungeon','zh':'Maxlol Game 独立游戏工作室：La Dernière Torche、Gravity Turn、Infinite Dungeon','ja':'Maxlol Game、インディーゲームスタジオ：La Dernière Torche、Gravity Turn、Infinite Dungeon','ko':'Maxlol Game, 인디 게임 스튜디오: La Dernière Torche, Gravity Turn, Infinite Dungeon','ru':'Maxlol Game — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon','id':'Maxlol Game, studio game indie: La Dernière Torche, Gravity Turn, Infinite Dungeon'}[cur])
+    s=s.replace('content="Maxlol Game – jeux vidéo indépendants"','content="Maxlol Game – '+{'en':'indie games','es':'juegos indie','pt':'jogos indie','th':'เกมอินดี้','zh':'独立游戏','ja':'インディーゲーム','ko':'인디 게임','ru':'инди-игры','id':'game indie'}[cur]+'"')
+    s=s.replace('content="fr_FR"','content="'+{'en':'en_US','es':'es_ES','pt':'pt_BR','th':'th_TH','zh':'zh_CN','ja':'ja_JP','ko':'ko_KR','ru':'ru_RU','id':'id_ID'}[cur]+'"')
     s=re.sub(r'(["\'`(])assets/',r'\1../assets/',s)
     s=re.sub(r'<html lang="fr">','<html lang="%s">'%hl,s)
     s=finish(s,cur)
