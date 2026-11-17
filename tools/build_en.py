@@ -4,9 +4,9 @@ s=open(SRC).read()
 R=[
 # head
 ('<html lang="fr">','<html lang="en">'),
-('<title>Maxlol Game – La Dernière Torche, Gravity Turn, Infinite Dungeon</title>','<title>Maxlol Game – Indie games: La Dernière Torche, Gravity Turn, Infinite Dungeon</title>'),
-("Maxlol Game, studio de jeux vidéo indépendant : La Dernière Torche (jeu d'ambiance et de boss), Gravity Turn (puzzle) et Infinite Dungeon (roguelite). À jouer sur mobile, dans le navigateur et sur itch.io.","Maxlol Game, an indie game studio: La Dernière Torche (\"The Last Torch\", a dungeon crawler about a fading torch), Gravity Turn (rotating block puzzle) and Infinite Dungeon (roguelite). Play on mobile, in your browser and on itch.io."),
-('content="Maxlol Game – jeux vidéo indépendants"','content="Maxlol Game – indie games"'),
+('<title>Maxlol Games – Jeux indépendants : La Dernière Torche, Gravity Turn, Infinite Dungeon</title>','<title>Maxlol Games – Indie games: La Dernière Torche, Gravity Turn, Infinite Dungeon</title>'),
+("Maxlol Games, studio indépendant de jeux mobiles : La Dernière Torche (donjon au tour par tour, 20 boss), Gravity Turn (puzzle de blocs qui tournent) et Infinite Dungeon (roguelite). À jouer dans le navigateur et sur itch.io.","Maxlol Games, an indie game studio: La Dernière Torche (\"The Last Torch\", a dungeon crawler about a fading torch), Gravity Turn (rotating block puzzle) and Infinite Dungeon (roguelite). Play on mobile, in your browser and on itch.io."),
+('content="Maxlol Games – jeux vidéo indépendants"','content="Maxlol Games – indie games"'),
 ('content="fr_FR"','content="en_US"'),
 ("La Dernière Torche, Gravity Turn, Infinite Dungeon : des jeux faits main, pensés d'abord pour le téléphone.","La Dernière Torche, Gravity Turn, Infinite Dungeon: handmade games, designed for the phone first."),
 ("Des jeux faits main, pensés d'abord pour le téléphone.</p>","Handmade games, designed for the phone first."),  # placeholder; fixed below
@@ -16,7 +16,7 @@ R=[
 ('<link rel="alternate" hreflang="fr" href="https://maxlolgames.com/">','<link rel="alternate" hreflang="fr" href="https://maxlolgames.com/">\n<link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/">\n<link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/">'),
 # intro / nav
 ('maxlolfr présente','maxlolfr presents'),('Touche pour passer','Tap to skip'),
-('aria-label="Maxlol Game, retour en haut"','aria-label="Maxlol Game, back to top"'),
+('aria-label="Maxlol Games, retour en haut"','aria-label="Maxlol Games, back to top"'),
 ('aria-label="Menu"','aria-label="Menu"'),
 ('<a class="opt" href="#jeux">Jeux</a>','<a class="opt" href="#jeux">Games</a>'),
 ('>Nouveau</a>','>New</a>'),('>À propos</a>','>About</a>'),
@@ -104,7 +104,7 @@ R=[
 ("Icône de Gravity Turn","Gravity Turn icon"),("Icône d'Infinite Dungeon","Infinite Dungeon icon"),
 # about
 ('<h2 id="ap-t">Qui fait ces jeux ?</h2>','<h2 id="ap-t">Who makes these games?</h2>'),
-("Maxlol Game, c'est le studio d'une seule personne : maxlolfr. Je conçois, je code et j'équilibre chaque jeu moi-même, avec l'aide de l'IA pour les images et les sons.","Maxlol Game is a one-person studio: maxlolfr. I design, code and balance every game myself, with AI help for images and sounds."),
+("Maxlol Games, c'est le studio d'une seule personne : maxlolfr. Je conçois, je code et j'équilibre chaque jeu moi-même, avec l'aide de l'IA pour les images et les sons.","Maxlol Games is a one-person studio: maxlolfr. I design, code and balance every game myself, with AI help for images and sounds."),
 ("Chaque jeu est d'abord pensé pour une main sur un iPhone, puis adapté à l'ordinateur. Les nouvelles versions sortent ici et sur itch.io dès qu'elles sont jouables.","Every game is designed first for one hand on an iPhone, then adapted to computers. New versions come out here and on itch.io as soon as they are playable."),
 ('<h2>Suivre mes jeux</h2>','<h2>Follow my games</h2>'),
 ('Télécharger et suivre les sorties','Download and follow new releases'),('Le code et les versions de test','Code and test builds'),
@@ -124,7 +124,7 @@ for a,b in R:
     if a not in s: print("MISSING:",a[:70]); continue
     s=s.replace(a,b)
 # h1
-s=s.replace('Maxlol Game, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon','Maxlol Game, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon')
+s=s.replace('Maxlol Games, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon','Maxlol Games, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon')
 s=s.replace('<h1 id="titre" class="sr">','<h1 id="titre" class="sr">')
 # og:description FR remains in head? replace explicit
 s=s.replace('content="Handmade games','content="Handmade games')

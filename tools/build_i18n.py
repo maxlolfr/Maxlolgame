@@ -82,8 +82,8 @@ for cur,path,hl,_,_ in LANGS[1:]:
         if v=='@@': continue
         if k not in s: print(cur,'MISSING',k[:60]); continue
         s=s.replace(k,v)
-    s=s.replace('Maxlol Game, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon',{'en':'Maxlol Game, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon','es':'Maxlol Game, estudio de juegos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','pt':'Maxlol Game, estúdio de jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','th':'Maxlol Game สตูดิโอเกมอินดี้: La Dernière Torche, Gravity Turn, Infinite Dungeon','zh':'Maxlol Game 独立游戏工作室：La Dernière Torche、Gravity Turn、Infinite Dungeon','ja':'Maxlol Game、インディーゲームスタジオ：La Dernière Torche、Gravity Turn、Infinite Dungeon','ko':'Maxlol Game, 인디 게임 스튜디오: La Dernière Torche, Gravity Turn, Infinite Dungeon','ru':'Maxlol Game — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon','id':'Maxlol Game, studio game indie: La Dernière Torche, Gravity Turn, Infinite Dungeon'}[cur])
-    s=s.replace('content="Maxlol Game – jeux vidéo indépendants"','content="Maxlol Game – '+{'en':'indie games','es':'juegos indie','pt':'jogos indie','th':'เกมอินดี้','zh':'独立游戏','ja':'インディーゲーム','ko':'인디 게임','ru':'инди-игры','id':'game indie'}[cur]+'"')
+    s=s.replace('Maxlol Games, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon',{'en':'Maxlol Games, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon','es':'Maxlol Games, estudio de juegos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','pt':'Maxlol Games, estúdio de jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','th':'Maxlol Games สตูดิโอเกมอินดี้: La Dernière Torche, Gravity Turn, Infinite Dungeon','zh':'Maxlol Games 独立游戏工作室：La Dernière Torche、Gravity Turn、Infinite Dungeon','ja':'Maxlol Games、インディーゲームスタジオ：La Dernière Torche、Gravity Turn、Infinite Dungeon','ko':'Maxlol Games, 인디 게임 스튜디오: La Dernière Torche, Gravity Turn, Infinite Dungeon','ru':'Maxlol Games — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon','id':'Maxlol Games, studio game indie: La Dernière Torche, Gravity Turn, Infinite Dungeon'}[cur])
+    s=s.replace('content="Maxlol Games – jeux vidéo indépendants"','content="Maxlol Games – '+{'en':'indie games','es':'juegos indie','pt':'jogos indie','th':'เกมอินดี้','zh':'独立游戏','ja':'インディーゲーム','ko':'인디 게임','ru':'инди-игры','id':'game indie'}[cur]+'"')
     s=s.replace('content="fr_FR"','content="'+{'en':'en_US','es':'es_ES','pt':'pt_BR','th':'th_TH','zh':'zh_CN','ja':'ja_JP','ko':'ko_KR','ru':'ru_RU','id':'id_ID'}[cur]+'"')
     s=re.sub(r'(["\'`(])assets/',r'\1../assets/',s)
     s=re.sub(r'<html lang="fr">','<html lang="%s">'%hl,s)
@@ -91,8 +91,9 @@ for cur,path,hl,_,_ in LANGS[1:]:
     os.makedirs(ROOT+path,exist_ok=True); open(ROOT+path+'index.html','w').write(s)
 sm=['<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
 for _,path,hl,_,_ in LANGS:
-    sm.append(f'  <url><loc>https://maxlolgames.com/{path}</loc><lastmod>2026-11-16</lastmod><priority>{"1.0" if not path else "0.9"}</priority>')
+    sm.append(f'  <url><loc>https://maxlolgames.com/{path}</loc><lastmod>{__import__("datetime").date.today().isoformat()}</lastmod><priority>{"1.0" if not path else "0.9"}</priority>')
     for _,p2,h2,_,_ in LANGS: sm.append(f'    <xhtml:link rel="alternate" hreflang="{h2}" href="https://maxlolgames.com/{p2}"/>')
     sm.append('  </url>')
+sm.append(f'  <url><loc>https://maxlolgames.com/press/</loc><lastmod>{__import__("datetime").date.today().isoformat()}</lastmod><priority>0.5</priority></url>')
 sm.append('</urlset>\n'); open(ROOT+'sitemap.xml','w').write('\n'.join(sm))
 print('built')

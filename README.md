@@ -1,4 +1,4 @@
-# Maxlol Game
+# Maxlol Games
 
 Site vitrine des jeux de maxlolfr : **La Dernière Torche**, **Gravity Turn**, **Infinite Dungeon**.
 
