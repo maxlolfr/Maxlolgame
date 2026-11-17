@@ -22,6 +22,7 @@ LD_DESC={
  'ru':["Пошаговое подземелье для телефона: факел слабеет в каждой комнате, впереди 20 боссов.","Мобильная головоломка: ставьте блоки, поле вращается, каскады идут цепочкой.","Фэнтезийный рогалик с автобоем: 100 этажей, 10 боссов, команды из 3 героев."],
  'id':["Dungeon bergiliran untuk ponsel: obormu melemah di setiap ruangan, 20 bos menanti.","Teka-teki ponsel: letakkan blok, papan berputar, kaskade berantai.","Roguelite fantasi dengan pertarungan otomatis: 100 lantai, 10 bos, tim 3 pahlawan."],
  'pt':["Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.","Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.","Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis."]}
+exec(open('/home/claude/v3_extra.py').read())
 fr=open(ROOT+'index.html').read()
 
 CSS='''.langmenu{position:relative}
@@ -65,12 +66,14 @@ def finish(s,cur):
     m=re.search(r'<script type="application/ld\+json">(.*?)</script>',s,re.S); ld=json.loads(m.group(1)); k=0
     for n in ld['@graph']:
         if n['@type']=='WebSite': n['@id']=url+'#site'; n['url']=url; n['inLanguage']=hl
-        if n['@type']=='VideoGame':
+        if n['@type']=='VideoGame' and not n.get('@extra'):
             n['inLanguage']=hl; n['url']='https://maxlolgames.com/'+path+'#'+n['url'].split('#')[1]
             if cur!='fr': n['description']=LD_DESC[cur][k]
             k+=1
             if n['name']=='La Dernière Torche' and cur!='fr': n['alternateName']={'en':'The Last Torch','es':'La Última Antorcha','pt':'A Última Tocha','th':'คบเพลิงสุดท้าย','zh':'最后的火炬','ja':'最後の松明','ko':'마지막 횃불','ru':'Последний факел','id':'Obor Terakhir'}[cur]
-    return s[:m.start(1)]+json.dumps(ld,ensure_ascii=False)+s[m.end(1):]
+    s=s[:m.start(1)]+json.dumps(ld,ensure_ascii=False)+s[m.end(1):]
+    s=apply_games(s,cur,cur); s=apply_press(s,cur,cur); s=apply_sec(s)
+    return s
 fr_out=finish(fr,'fr'); open(ROOT+'index.html','w').write(fr_out)
 import os
 for cur,path,hl,_,_ in LANGS[1:]:

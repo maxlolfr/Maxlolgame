@@ -116,7 +116,7 @@ R=[
 # JS
 ('textContent = "Bientôt"','textContent = "Soon"'),('"Gratuit"','"Free"'),
 ('"Couper la musique"','"Turn music off"'),('"Activer la musique"','"Turn music on"'),
-('price: "6,99 €"','price: "€6.99"'),
+('price: "7,99 €"','price: "€7.99"'),
 ]
 # fix placeholder
 R=[r for r in R if r[0]!="Des jeux faits main, pensés d'abord pour le téléphone.</p>"]

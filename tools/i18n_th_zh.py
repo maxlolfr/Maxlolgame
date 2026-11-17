@@ -79,7 +79,7 @@ TH=[
 'แตะ 🔊 เพื่อเปิดเพลง',
 'aria-label="รูปภาพขยาย"','<button>ปิด</button>',
 'textContent = "เร็ว ๆ นี้"','"ฟรี"','"ปิดเพลง"','"เปิดเพลง"',
-'price: "€6.99"',
+'price: "€7.99"',
 ]
 ZH=[
 '<html lang="zh-Hans">',
@@ -162,6 +162,6 @@ ZH=[
 '点按 🔊 开启音乐',
 'aria-label="放大的图片"','<button>关闭</button>',
 'textContent = "即将推出"','"免费"','"关闭音乐"','"开启音乐"',
-'price: "€6.99"',
+'price: "€7.99"',
 ]
 assert len(TH)==130 and len(ZH)==130,(len(TH),len(ZH))

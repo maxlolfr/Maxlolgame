@@ -80,7 +80,7 @@ ES=[
 'Toca 🔊 para la música',
 'aria-label="Imagen ampliada"','<button>Cerrar</button>',
 'textContent = "Pronto"','"Gratis"','"Silenciar la música"','"Activar la música"',
-'price: "6,99 €"',
+'price: "7,99 €"',
 ]
 PT=[
 '<html lang="pt-BR">',
@@ -163,6 +163,6 @@ PT=[
 'Toque em 🔊 para a música',
 'aria-label="Imagem ampliada"','<button>Fechar</button>',
 'textContent = "Em breve"','"Grátis"','"Desativar a música"','"Ativar a música"',
-'price: "€ 6,99"',
+'price: "€ 7,99"',
 ]
 print(len(ES),len(PT))

@@ -79,7 +79,7 @@ JA=[
 '🔊をタップで音楽',
 'aria-label="拡大画像"','<button>閉じる</button>',
 'textContent = "近日公開"','"無料"','"音楽をオフにする"','"音楽をオンにする"',
-'price: "€6.99"',
+'price: "€7.99"',
 ]
 KO=[
 '<html lang="ko">',
@@ -162,7 +162,7 @@ KO=[
 '🔊를 탭하면 음악',
 'aria-label="확대된 이미지"','<button>닫기</button>',
 'textContent = "곧 공개"','"무료"','"음악 끄기"','"음악 켜기"',
-'price: "€6.99"',
+'price: "€7.99"',
 ]
 RU=[
 '<html lang="ru">',
@@ -245,7 +245,7 @@ RU=[
 'Нажмите 🔊 — музыка',
 'aria-label="Увеличенное изображение"','<button>Закрыть</button>',
 'textContent = "Скоро"','"Бесплатно"','"Выключить музыку"','"Включить музыку"',
-'price: "6,99 €"',
+'price: "7,99 €"',
 ]
 ID=[
 '<html lang="id">',
@@ -328,6 +328,6 @@ ID=[
 'Ketuk 🔊 untuk musik',
 'aria-label="Gambar diperbesar"','<button>Tutup</button>',
 'textContent = "Segera"','"Gratis"','"Matikan musik"','"Nyalakan musik"',
-'price: "€6,99"',
+'price: "€7,99"',
 ]
 assert all(len(x)==130 for x in (JA,KO,RU,ID)),[len(x) for x in (JA,KO,RU,ID)]

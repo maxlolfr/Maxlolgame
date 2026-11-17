@@ -1,0 +1,17 @@
+{
+  "slug": "nom-du-jeu",
+  "name": "Nom du jeu",
+  "accent": "#3DD6C6",
+  "accent_ink": "#06201D",
+  "price": "7,99 €",
+  "itch": "https://maxlolfr.itch.io/nom-du-jeu",
+  "play": "https://lien-pour-jouer-dans-le-navigateur",
+  "version": "1.0",
+  "cover": "assets/nom-du-jeu-cover.webp",
+  "images": ["assets/nom-du-jeu-1.webp", "assets/nom-du-jeu-2.webp"],
+  "genre":     { "fr": "Genre du jeu", "en": "Game genre" },
+  "pitch":     { "fr": "Deux phrases qui donnent envie.", "en": "Two sentences that make you want to play." },
+  "feats":     { "fr": ["Premier point fort", "Deuxième point fort", "Troisième point fort"], "en": ["First strength", "Second strength", "Third strength"] },
+  "platforms": { "fr": "Navigateur, mobile", "en": "Browser, mobile" },
+  "languages": { "fr": "Français, anglais", "en": "French, English" }
+}
