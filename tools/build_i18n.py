@@ -10,7 +10,7 @@ EN=[b.replace('("The Last Torch", a','(&quot;The Last Torch&quot;, a').replace('
 FRK=[a for a,b in R]
 assert len(EN)==len(ES)==len(PT)==len(FRK)
 ROOT='/home/claude/maxlolgame/'
-LANGS=[('fr','',  'fr','Français','FR'),('en','en/','en','English','EN'),('es','es/','es','Español','ES'),('pt','pt/','pt-BR','Português','PT'),('th','th/','th','ไทย','TH'),('zh','zh/','zh-Hans','中文','中文'),('ja','ja/','ja','日本語','日本語'),('ko','ko/','ko','한국어','한국어'),('ru','ru/','ru','Русский','RU'),('id','id/','id','Bahasa Indonesia','ID')]
+LANGS=[('fr','fr/','fr','Français','FR'),('en','','en','English','EN'),('es','es/','es','Español','ES'),('pt','pt/','pt-BR','Português','PT'),('th','th/','th','ไทย','TH'),('zh','zh/','zh-Hans','中文','中文'),('ja','ja/','ja','日本語','日本語'),('ko','ko/','ko','한국어','한국어'),('ru','ru/','ru','Русский','RU'),('id','id/','id','Bahasa Indonesia','ID')]
 TR={'en':EN,'es':ES,'pt':PT,'th':TH,'zh':ZH,'ja':JA,'ko':KO,'ru':RU,'id':ID}
 LD_DESC={
  'en':["Turn-based dungeon crawler for mobile: your torch fades with every room, 20 bosses to beat.","Mobile puzzle: place the blocks, the board rotates, cascades chain.","Auto-battle fantasy roguelite: 100 floors, 10 bosses, teams of 3 heroes."],
@@ -23,7 +23,7 @@ LD_DESC={
  'id':["Dungeon bergiliran untuk ponsel: obormu melemah di setiap ruangan, 20 bos menanti.","Teka-teki ponsel: letakkan blok, papan berputar, kaskade berantai.","Roguelite fantasi dengan pertarungan otomatis: 100 lantai, 10 bos, tim 3 pahlawan."],
  'pt':["Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.","Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.","Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis."]}
 exec(open('/home/claude/v3_extra.py').read())
-fr=open(ROOT+'index.html').read()
+fr=open(ROOT+'tools/source_fr.html').read()
 
 CSS='''.langmenu{position:relative}
 .langmenu summary{list-style:none;cursor:pointer;font-weight:800;font-size:.82rem;border:1.5px solid rgba(185,174,221,.45);padding:7px 11px;border-radius:999px;color:var(--brume)}
@@ -46,8 +46,7 @@ def menu(cur):
     pref={'fr':'../'} 
     items=[]
     for code,path,hl,name,short in LANGS:
-        href=(path if cur=='fr' else '../'+path) if True else ''
-        if cur!='fr' and code=='fr': href='../'
+        href='/'+path
         cura=' aria-current="true"' if code==cur else ''
         items.append(f'<a href="{href}" hreflang="{hl}" lang="{hl}"{cura}>{name}</a>')
     short=[l for l in LANGS if l[0]==cur][0][4]
@@ -74,7 +73,9 @@ def finish(s,cur):
     s=s[:m.start(1)]+json.dumps(ld,ensure_ascii=False)+s[m.end(1):]
     s=apply_games(s,cur,cur); s=apply_press(s,cur,cur); s=apply_sec(s)
     return s
-fr_out=finish(fr,'fr'); open(ROOT+'index.html','w').write(fr_out)
+fr_out=finish(fr,'fr'); open(ROOT+'tools/source_fr.html','w').write(fr)
+os_=__import__('os'); os_.makedirs(ROOT+'fr',exist_ok=True)
+open(ROOT+'fr/index.html','w').write(re.sub(r'(["\'`(])assets/',r'\1../assets/',fr_out))
 import os
 for cur,path,hl,_,_ in LANGS[1:]:
     s=fr_out
@@ -85,7 +86,7 @@ for cur,path,hl,_,_ in LANGS[1:]:
     s=s.replace('Maxlol Games, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon',{'en':'Maxlol Games, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon','es':'Maxlol Games, estudio de juegos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','pt':'Maxlol Games, estúdio de jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','th':'Maxlol Games สตูดิโอเกมอินดี้: La Dernière Torche, Gravity Turn, Infinite Dungeon','zh':'Maxlol Games 独立游戏工作室：La Dernière Torche、Gravity Turn、Infinite Dungeon','ja':'Maxlol Games、インディーゲームスタジオ：La Dernière Torche、Gravity Turn、Infinite Dungeon','ko':'Maxlol Games, 인디 게임 스튜디오: La Dernière Torche, Gravity Turn, Infinite Dungeon','ru':'Maxlol Games — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon','id':'Maxlol Games, studio game indie: La Dernière Torche, Gravity Turn, Infinite Dungeon'}[cur])
     s=s.replace('content="Maxlol Games – jeux vidéo indépendants"','content="Maxlol Games – '+{'en':'indie games','es':'juegos indie','pt':'jogos indie','th':'เกมอินดี้','zh':'独立游戏','ja':'インディーゲーム','ko':'인디 게임','ru':'инди-игры','id':'game indie'}[cur]+'"')
     s=s.replace('content="fr_FR"','content="'+{'en':'en_US','es':'es_ES','pt':'pt_BR','th':'th_TH','zh':'zh_CN','ja':'ja_JP','ko':'ko_KR','ru':'ru_RU','id':'id_ID'}[cur]+'"')
-    s=re.sub(r'(["\'`(])assets/',r'\1../assets/',s)
+    if path: s=re.sub(r'(["\'`(])assets/',r'\1../assets/',s)
     s=re.sub(r'<html lang="fr">','<html lang="%s">'%hl,s)
     s=finish(s,cur)
     os.makedirs(ROOT+path,exist_ok=True); open(ROOT+path+'index.html','w').write(s)
@@ -96,4 +97,6 @@ for _,path,hl,_,_ in LANGS:
     sm.append('  </url>')
 sm.append(f'  <url><loc>https://maxlolgames.com/press/</loc><lastmod>{__import__("datetime").date.today().isoformat()}</lastmod><priority>0.5</priority></url>')
 sm.append('</urlset>\n'); open(ROOT+'sitemap.xml','w').write('\n'.join(sm))
+# ancienne adresse /en/ -> accueil
+open(ROOT+'en/index.html','w').write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Maxlol Games</title><link rel="canonical" href="https://maxlolgames.com/"><meta name="robots" content="noindex, follow"><meta http-equiv="refresh" content="0; url=/"></head><body><a href="/">Maxlol Games</a></body></html>\n')
 print('built')

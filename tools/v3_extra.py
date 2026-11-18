@@ -59,7 +59,7 @@ def cover_card(g,lang):
     img=('<img src="%s" alt="" width="640" height="960" loading="lazy">'%_e(cover)) if cover else ''
     return '<a class="cover reveal" href="#%s"><div class="art">%s<span class="shine"></span></div><b>%s</b><span>%s</span></a>'%(_e(g["slug"]),img,n,_e(_g(g.get("genre"),lang)))
 def apply_games(s,lang,cur):
-    G=_games(); pre=(lambda t:t) if cur=='fr' else (lambda t:re.sub(r'(["\'`(])assets/',r'\1../assets/',t))
+    G=_games(); pre=(lambda t:t) if cur=='fr' or not [l for l in LANGS if l[0]==cur][0][1] else (lambda t:re.sub(r'(["\'`(])assets/',r'\1../assets/',t))
     s=re.sub(r'<!--GAMES-->.*?<!--/GAMES-->',lambda m:'<!--GAMES-->\n'+pre(''.join(game_section(g,lang,i) for i,g in enumerate(G)))+'<!--/GAMES-->',s,flags=re.S)
     s=re.sub(r'<!--COVERS-->.*?<!--/COVERS-->',lambda m:'<!--COVERS-->'+pre(''.join(cover_card(g,lang) for g in G))+'<!--/COVERS-->',s,flags=re.S)
     shop=''.join(',\n  "%s": { price: %s, itch: %s }'%(g["slug"],json.dumps(g.get("price",""),ensure_ascii=False),json.dumps(g.get("itch",""))) for g in G)
@@ -85,5 +85,5 @@ def apply_sec(s):
     if tok: s=s.replace('</head>','<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "'+tok+'"}\'></script>\n</head>',1)
     return s
 def apply_press(s,lang,cur):
-    href='press/' if cur=='fr' else '../press/'
+    href='/press/'
     return re.sub(r'<a class="presslink"[^>]*>[^<]*</a>|<!--PL-->',lambda m:'<a class="presslink" href="%s">%s</a>'%(href,_e(LAB[lang][6])),s,count=1)

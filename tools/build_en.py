@@ -8,9 +8,9 @@ R=[
 ("Maxlol Games, studio indépendant de jeux mobiles : La Dernière Torche (donjon au tour par tour, 20 boss), Gravity Turn (puzzle de blocs qui tournent) et Infinite Dungeon (roguelite). À jouer dans le navigateur et sur itch.io.","Maxlol Games, an indie game studio: La Dernière Torche (\"The Last Torch\", a dungeon crawler about a fading torch), Gravity Turn (rotating block puzzle) and Infinite Dungeon (roguelite). Play on mobile, in your browser and on itch.io."),
 ('content="Maxlol Games – jeux vidéo indépendants"','content="Maxlol Games – indie games"'),
 ('content="fr_FR"','content="en_US"'),
-("La Dernière Torche, Gravity Turn, Infinite Dungeon : des jeux faits main, pensés d'abord pour le téléphone.","La Dernière Torche, Gravity Turn, Infinite Dungeon: handmade games, designed for the phone first."),
+("La Dernière Torche, Gravity Turn, Infinite Dungeon — Studio indépendant de jeux mobiles : donjons, boss et puzzles, jouables tout de suite dans le navigateur.","La Dernière Torche, Gravity Turn, Infinite Dungeon — Independent mobile game studio: dungeons, bosses and puzzles, playable instantly in your browser."),
 ("Des jeux faits main, pensés d'abord pour le téléphone.</p>","Handmade games, designed for the phone first."),  # placeholder; fixed below
-('<meta property="og:description" content="Des jeux faits main, pensés d\'abord pour le téléphone.">','<meta property="og:description" content="Handmade games, designed for the phone first.">'),
+('<meta property="og:description" content="Studio indépendant de jeux mobiles : donjons, boss et puzzles, jouables tout de suite dans le navigateur.">','<meta property="og:description" content="Independent mobile game studio: dungeons, bosses and puzzles, playable instantly in your browser.">'),
 ('<meta property="og:url" content="https://maxlolgames.com/">','<meta property="og:url" content="https://maxlolgames.com/en/">'),
 ('<link rel="canonical" href="https://maxlolgames.com/">','<link rel="canonical" href="https://maxlolgames.com/en/">'),
 ('<link rel="alternate" hreflang="fr" href="https://maxlolgames.com/">','<link rel="alternate" hreflang="fr" href="https://maxlolgames.com/">\n<link rel="alternate" hreflang="en" href="https://maxlolgames.com/en/">\n<link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/">'),
@@ -22,7 +22,7 @@ R=[
 ('>Nouveau</a>','>New</a>'),('>À propos</a>','>About</a>'),
 ('aria-label="Activer la musique"','aria-label="Turn music on"'),
 # hero
-("Des jeux faits main, pensés d'abord pour le téléphone. Donjons, torches et blocs gelée : on les lance dans le navigateur, sans rien installer.","Handmade games, designed for the phone first. Dungeons, torches and jelly blocks: launch them in your browser, nothing to install."),
+("Studio indépendant de jeux mobiles. Des donjons à conquérir, des boss à abattre, des puzzles qui font tourner la tête. Jouable tout de suite dans le navigateur, sans téléchargement.","Independent mobile game studio. Dungeons to conquer, bosses to slay, puzzles that turn your head. Play instantly in your browser, no download needed."),
 ('Créés par maxlolfr','Made by maxlolfr'),
 ('Découvrir La Dernière Torche','Discover La Dernière Torche'),('Tous les jeux','All games'),('Ma page itch.io','My itch.io page'),
 ('Touche une lettre pour la faire rebondir.','Tap a letter to make it bounce.'),
