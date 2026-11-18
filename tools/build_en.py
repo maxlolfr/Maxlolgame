@@ -81,7 +81,7 @@ R=[
 ("84 niveaux répartis en 7 mondes, avec pierres, glace, gemmes, bombes et éclairs","84 levels across 7 worlds, with stones, ice, gems, bombs and lightning"),
 ("Un défi du jour et un défi de la semaine, les mêmes pour tout le monde","A daily and a weekly challenge, the same for everyone"),
 ("Modes infini et zen pour jouer sans objectif","Endless and zen modes to play without a goal"),
-('<dt>Version</dt><dd>1.3</dd>','<dt>Version</dt><dd>1.3</dd>'),
+('<dt>Version</dt><dd>1.4</dd>','<dt>Version</dt><dd>1.4</dd>'),
 ('<dd>Navigateur, iPhone bientôt</dd>','<dd>Browser, iPhone soon</dd>'),
 ('<dt>Langues</dt><dd>Français, anglais</dd>','<dt>Languages</dt><dd>French, English</dd>'),
 ('Jouer à Gravity Turn','Play Gravity Turn'),('Voir sur itch.io','See on itch.io'),
