@@ -197,7 +197,7 @@ p{margin:0}
 
 /* Infinite Dungeon : donjon violet et or */
 #infinite-dungeon{--a:#F0B94A;--a-ink:#2B1400}
-#infinite-dungeon .bg{background-image:url(../assets/id-camp.webp)}
+#infinite-dungeon.bgon .bg{background-image:url(../assets/id-camp.webp)}
 #infinite-dungeon .bg::after{background:linear-gradient(90deg,rgba(20,8,30,.96) 0%,rgba(20,8,30,.88) 45%,rgba(20,8,30,.55) 100%)}
 @media (max-width:860px){#infinite-dungeon .bg::after{background:linear-gradient(rgba(20,8,30,.75),rgba(20,8,30,.95) 40%)}}
 .poster{position:relative;justify-self:center;width:min(360px,80vw)}
@@ -470,7 +470,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <canvas class="fxc" id="heroFx" aria-hidden="true"></canvas>
     <div class="fan" id="fan" aria-hidden="true">
       <a class="card c1" href="#infinite-dungeon" tabindex="-1"><img src="../assets/id-team.webp" alt="Infinite Dungeon의 영웅 팀" width="720" height="1280"><span class="shine"></span></a>
-      <a class="card c2" href="#la-derniere-torche" tabindex="-1"><img src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 0"><span class="shine"></span></a>
+      <a class="card c2" href="#la-derniere-torche" tabindex="-1"><img fetchpriority="high" src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 0"><span class="shine"></span></a>
       <a class="card c3" href="#gravity-turn" tabindex="-1"><span class="gtc"><img src="../assets/gt-jelly.webp" alt="Gravity Turn의 마스코트 Jelly" width="256" height="256"><img class="gtl" src="../assets/gt-logo.webp" alt="" width="720" height="241"></span><span class="shine"></span></a>
     </div>
     <div class="wrap">
@@ -522,8 +522,8 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
       <h2 id="jeux-t">게임 목록</h2>
       <p class="lead">세 개의 게임, 세 개의 세계. 모두 브라우저에서, 휴대폰과 컴퓨터로 즐길 수 있습니다.</p>
       <div class="covers">
-        <a class="cover reveal" href="#la-derniere-torche"><div class="art"><img src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 8%"><span class="shine"></span></div><b>La Dernière Torche</b><span>신작, 무료 체험</span></a>
-        <a class="cover reveal" href="#gravity-turn"><div class="art"><img src="../assets/gt-icon.webp" alt="Gravity Turn 아이콘" width="180" height="180"><span class="shine"></span></div><b>Gravity Turn</b><span>회전하는 블록 퍼즐</span></a>
+        <a class="cover reveal" href="#la-derniere-torche"><div class="art"><img loading="lazy" decoding="async" src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 8%"><span class="shine"></span></div><b>La Dernière Torche</b><span>신작, 무료 체험</span></a>
+        <a class="cover reveal" href="#gravity-turn"><div class="art"><img loading="lazy" decoding="async" src="../assets/gt-icon.webp" alt="Gravity Turn 아이콘" width="180" height="180"><span class="shine"></span></div><b>Gravity Turn</b><span>회전하는 블록 퍼즐</span></a>
         <a class="cover reveal" href="#infinite-dungeon"><div class="art"><img src="../assets/id-icon.webp" alt="Infinite Dungeon 아이콘" width="256" height="256" loading="lazy"><span class="shine"></span></div><b>Infinite Dungeon</b><span>판타지 로그라이트</span></a>
         <!--COVERS--><!--/COVERS-->
       </div>
@@ -539,7 +539,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <div class="wrap grid">
       <div class="visual reveal from-art" aria-hidden="true">
         <div class="t-stage" id="tStage">
-          <img class="t-key" src="../assets/t-art.webp" alt="La Dernière Torche: 어둠 속에서 횃불을 든 영웅" width="1290" height="1430">
+          <img loading="lazy" decoding="async" class="t-key" src="../assets/t-art.webp" alt="La Dernière Torche: 어둠 속에서 횃불을 든 영웅" width="1290" height="1430">
           <div class="t-dark"></div>
         </div>
         <p class="t-help">손가락이나 마우스를 움직이면 횃불이 던전을 비춥니다.</p>
@@ -580,13 +580,13 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <div class="wrap t-more">
       <div class="phone reveal" aria-label="La Dernière Torche 스크린샷 (스크롤)" role="img">
         <div class="phone-in" id="trailer">
-          <img src="../assets/t-desert.webp" alt="La Dernière Torche 스크린샷: 사막" class="on" width="520" height="935">
-          <img src="../assets/t-dragon.webp" alt="La Dernière Torche 스크린샷: 용" width="520" height="935" loading="lazy">
-          <img src="../assets/t-ultime.webp" alt="La Dernière Torche 스크린샷: 최종 보스" width="520" height="935" loading="lazy">
-          <img src="../assets/t-horloge.webp" alt="La Dernière Torche 스크린샷: 시계" width="520" height="935" loading="lazy">
-          <img src="../assets/t-grotte.webp" alt="La Dernière Torche 스크린샷: 동굴" width="520" height="935" loading="lazy">
-          <img src="../assets/t-carte4.webp" alt="La Dernière Torche 스크린샷: 지도" width="520" height="935" loading="lazy">
-          <img src="../assets/t-journal.webp" alt="La Dernière Torche 스크린샷: 일지" width="520" height="935" loading="lazy">
+          <img loading="lazy" decoding="async" src="../assets/t-desert.webp" alt="La Dernière Torche 스크린샷: 사막" class="on" width="520" height="935">
+          <img data-src="../assets/t-dragon.webp" decoding="async" alt="La Dernière Torche 스크린샷: 용" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-ultime.webp" decoding="async" alt="La Dernière Torche 스크린샷: 최종 보스" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-horloge.webp" decoding="async" alt="La Dernière Torche 스크린샷: 시계" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-grotte.webp" decoding="async" alt="La Dernière Torche 스크린샷: 동굴" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-carte4.webp" decoding="async" alt="La Dernière Torche 스크린샷: 지도" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-journal.webp" decoding="async" alt="La Dernière Torche 스크린샷: 일지" width="520" height="935" loading="lazy">
         </div>
       </div>
       <div class="t-side">
@@ -597,15 +597,15 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
           <div class="reveal"><b data-count="40">40</b><span>레벨 / 영웅당</span></div>
         </div>
         <div class="strip t-strip" aria-label="La Dernière Torche 이미지">
-          <button data-full="../assets/t-necro.webp"><img src="../assets/t-necro.webp" alt="강령술사와 해골 군대" loading="lazy" width="88" height="132"></button>
-          <button data-full="../assets/t-dragon.webp"><img src="../assets/t-dragon.webp" alt="요새의 용과의 전투" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-ultime.webp"><img src="../assets/t-ultime.webp" alt="Ysmère의 궁극기" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-temple.webp"><img src="../assets/t-temple.webp" alt="왕들의 사막의 신전" loading="lazy" width="132" height="132"></button>
-          <button data-full="../assets/t-desert.webp"><img src="../assets/t-desert.webp" alt="왕들의 사막에서의 전투" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-horloge.webp"><img src="../assets/t-horloge.webp" alt="시계 공방에서의 전투" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-grotte.webp"><img src="../assets/t-grotte.webp" alt="심층에서의 전투" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-carte1.webp"><img src="../assets/t-carte1.webp" alt="던전 지도" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-journal.webp"><img src="../assets/t-journal.webp" alt="몬스터 일지" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-necro.webp"><img src="../assets/th/t-necro.webp" decoding="async" alt="강령술사와 해골 군대" loading="lazy" width="88" height="132"></button>
+          <button data-full="../assets/t-dragon.webp"><img src="../assets/th/t-dragon.webp" decoding="async" alt="요새의 용과의 전투" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-ultime.webp"><img src="../assets/th/t-ultime.webp" decoding="async" alt="Ysmère의 궁극기" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-temple.webp"><img src="../assets/th/t-temple.webp" decoding="async" alt="왕들의 사막의 신전" loading="lazy" width="132" height="132"></button>
+          <button data-full="../assets/t-desert.webp"><img src="../assets/th/t-desert.webp" decoding="async" alt="왕들의 사막에서의 전투" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-horloge.webp"><img src="../assets/th/t-horloge.webp" decoding="async" alt="시계 공방에서의 전투" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-grotte.webp"><img src="../assets/th/t-grotte.webp" decoding="async" alt="심층에서의 전투" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-carte1.webp"><img src="../assets/th/t-carte1.webp" decoding="async" alt="던전 지도" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-journal.webp"><img src="../assets/th/t-journal.webp" decoding="async" alt="몬스터 일지" loading="lazy" width="73" height="132"></button>
         </div>
       </div>
     </div>
@@ -684,10 +684,10 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
           <div><dt>언어</dt><dd>프랑스어, 영어</dd></div>
         </dl>
         <div class="strip" aria-label="Infinite Dungeon 이미지">
-          <button data-full="../assets/id-camp.webp"><img src="../assets/id-camp.webp" alt="모닥불 곁의 영웅들의 캠프" loading="lazy" width="198" height="132"></button>
-          <button data-full="../assets/id-team.webp"><img src="../assets/id-team.webp" alt="던전 앞의 팀" loading="lazy" width="74" height="132"></button>
-          <button data-full="../assets/id-victory.webp"><img src="../assets/id-victory.webp" alt="승리 화면" loading="lazy" width="88" height="132"></button>
-          <button data-full="../assets/id-lyra.webp"><img src="../assets/id-lyra.webp" alt="궁수 Lyra" loading="lazy" width="74" height="132"></button>
+          <button data-full="../assets/id-camp.webp"><img src="../assets/th/id-camp.webp" decoding="async" alt="모닥불 곁의 영웅들의 캠프" loading="lazy" width="198" height="132"></button>
+          <button data-full="../assets/id-team.webp"><img src="../assets/th/id-team.webp" decoding="async" alt="던전 앞의 팀" loading="lazy" width="74" height="132"></button>
+          <button data-full="../assets/id-victory.webp"><img src="../assets/th/id-victory.webp" decoding="async" alt="승리 화면" loading="lazy" width="88" height="132"></button>
+          <button data-full="../assets/id-lyra.webp"><img src="../assets/th/id-lyra.webp" decoding="async" alt="궁수 Lyra" loading="lazy" width="74" height="132"></button>
         </div>
         <div class="cta">
           <a class="btn main" data-link="id-play" href="#" target="_blank" rel="noopener">
@@ -1003,6 +1003,7 @@ document.querySelectorAll(".fxc[data-fx]").forEach(cv => {
   const imgs = [...document.querySelectorAll("#trailer img")]; let i = 0, timer;
   if (RM || imgs.length < 2) return;
   new IntersectionObserver(es => { clearInterval(timer);
+    if (es[0].isIntersecting) imgs.forEach(im => { if (im.dataset.src && !im.src) im.src = im.dataset.src; });
     if (es[0].isIntersecting) timer = setInterval(() => { imgs[i].classList.remove("on"); i = (i+1) % imgs.length; imgs[i].classList.add("on"); }, 2400);
   }).observe(document.getElementById("trailer"));
 })();
@@ -1084,7 +1085,7 @@ document.querySelectorAll(".tile:not(.space)").forEach(t => {
   function setup(){
     ac = new (window.AudioContext || window.webkitAudioContext)();
     for (const k in TRACKS){
-      const a = new Audio(TRACKS[k]); a.loop = true; a.preload = "auto"; a.crossOrigin = "anonymous";
+      const a = new Audio(TRACKS[k]); a.loop = true; a.preload = k === "main" ? "auto" : "none"; a.crossOrigin = "anonymous";
       const g = ac.createGain(); g.gain.value = 0;
       ac.createMediaElementSource(a).connect(g).connect(ac.destination);
       nodes[k] = { a, g };
@@ -1153,6 +1154,12 @@ document.addEventListener("click", e => { const d = document.querySelector(".lan
   }, {threshold:[0,.18,.35,.6,.9]});
   secs.forEach(x => io2.observe(x));
 })();
+</script>
+<script>
+(() => { const el = document.getElementById("infinite-dungeon"); if (!el) return;
+  if (!("IntersectionObserver" in window)) { el.classList.add("bgon"); return; }
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { el.classList.add("bgon"); io.disconnect(); } }, { rootMargin: "800px 0px" });
+  io.observe(el); })();
 </script>
 </body>
 </html>

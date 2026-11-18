@@ -197,7 +197,7 @@ p{margin:0}
 
 /* Infinite Dungeon : donjon violet et or */
 #infinite-dungeon{--a:#F0B94A;--a-ink:#2B1400}
-#infinite-dungeon .bg{background-image:url(../assets/id-camp.webp)}
+#infinite-dungeon.bgon .bg{background-image:url(../assets/id-camp.webp)}
 #infinite-dungeon .bg::after{background:linear-gradient(90deg,rgba(20,8,30,.96) 0%,rgba(20,8,30,.88) 45%,rgba(20,8,30,.55) 100%)}
 @media (max-width:860px){#infinite-dungeon .bg::after{background:linear-gradient(rgba(20,8,30,.75),rgba(20,8,30,.95) 40%)}}
 .poster{position:relative;justify-self:center;width:min(360px,80vw)}
@@ -470,7 +470,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <canvas class="fxc" id="heroFx" aria-hidden="true"></canvas>
     <div class="fan" id="fan" aria-hidden="true">
       <a class="card c1" href="#infinite-dungeon" tabindex="-1"><img src="../assets/id-team.webp" alt="Infinite Dungeon の英雄チーム" width="720" height="1280"><span class="shine"></span></a>
-      <a class="card c2" href="#la-derniere-torche" tabindex="-1"><img src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 0"><span class="shine"></span></a>
+      <a class="card c2" href="#la-derniere-torche" tabindex="-1"><img fetchpriority="high" src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 0"><span class="shine"></span></a>
       <a class="card c3" href="#gravity-turn" tabindex="-1"><span class="gtc"><img src="../assets/gt-jelly.webp" alt="Gravity Turn のマスコット、Jelly" width="256" height="256"><img class="gtl" src="../assets/gt-logo.webp" alt="" width="720" height="241"></span><span class="shine"></span></a>
     </div>
     <div class="wrap">
@@ -522,8 +522,8 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
       <h2 id="jeux-t">ゲーム一覧</h2>
       <p class="lead">3つのゲーム、3つの世界。どれもブラウザで、スマホでもパソコンでも遊べます。</p>
       <div class="covers">
-        <a class="cover reveal" href="#la-derniere-torche"><div class="art"><img src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 8%"><span class="shine"></span></div><b>La Dernière Torche</b><span>新作・無料体験版</span></a>
-        <a class="cover reveal" href="#gravity-turn"><div class="art"><img src="../assets/gt-icon.webp" alt="Gravity Turn のアイコン" width="180" height="180"><span class="shine"></span></div><b>Gravity Turn</b><span>回転するブロックパズル</span></a>
+        <a class="cover reveal" href="#la-derniere-torche"><div class="art"><img loading="lazy" decoding="async" src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 8%"><span class="shine"></span></div><b>La Dernière Torche</b><span>新作・無料体験版</span></a>
+        <a class="cover reveal" href="#gravity-turn"><div class="art"><img loading="lazy" decoding="async" src="../assets/gt-icon.webp" alt="Gravity Turn のアイコン" width="180" height="180"><span class="shine"></span></div><b>Gravity Turn</b><span>回転するブロックパズル</span></a>
         <a class="cover reveal" href="#infinite-dungeon"><div class="art"><img src="../assets/id-icon.webp" alt="Infinite Dungeon のアイコン" width="256" height="256" loading="lazy"><span class="shine"></span></div><b>Infinite Dungeon</b><span>ファンタジー・ローグライト</span></a>
         <!--COVERS--><!--/COVERS-->
       </div>
@@ -539,7 +539,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <div class="wrap grid">
       <div class="visual reveal from-art" aria-hidden="true">
         <div class="t-stage" id="tStage">
-          <img class="t-key" src="../assets/t-art.webp" alt="La Dernière Torche：暗闇で松明を掲げる英雄" width="1290" height="1430">
+          <img loading="lazy" decoding="async" class="t-key" src="../assets/t-art.webp" alt="La Dernière Torche：暗闇で松明を掲げる英雄" width="1290" height="1430">
           <div class="t-dark"></div>
         </div>
         <p class="t-help">指かマウスを動かすと、松明がダンジョンを照らします。</p>
@@ -580,13 +580,13 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <div class="wrap t-more">
       <div class="phone reveal" aria-label="La Dernière Torche のスクリーンショット（スクロール）" role="img">
         <div class="phone-in" id="trailer">
-          <img src="../assets/t-desert.webp" alt="La Dernière Torche スクリーンショット：砂漠" class="on" width="520" height="935">
-          <img src="../assets/t-dragon.webp" alt="La Dernière Torche スクリーンショット：ドラゴン" width="520" height="935" loading="lazy">
-          <img src="../assets/t-ultime.webp" alt="La Dernière Torche スクリーンショット：最強のボス" width="520" height="935" loading="lazy">
-          <img src="../assets/t-horloge.webp" alt="La Dernière Torche スクリーンショット：時計" width="520" height="935" loading="lazy">
-          <img src="../assets/t-grotte.webp" alt="La Dernière Torche スクリーンショット：洞窟" width="520" height="935" loading="lazy">
-          <img src="../assets/t-carte4.webp" alt="La Dernière Torche スクリーンショット：マップ" width="520" height="935" loading="lazy">
-          <img src="../assets/t-journal.webp" alt="La Dernière Torche スクリーンショット：日誌" width="520" height="935" loading="lazy">
+          <img loading="lazy" decoding="async" src="../assets/t-desert.webp" alt="La Dernière Torche スクリーンショット：砂漠" class="on" width="520" height="935">
+          <img data-src="../assets/t-dragon.webp" decoding="async" alt="La Dernière Torche スクリーンショット：ドラゴン" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-ultime.webp" decoding="async" alt="La Dernière Torche スクリーンショット：最強のボス" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-horloge.webp" decoding="async" alt="La Dernière Torche スクリーンショット：時計" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-grotte.webp" decoding="async" alt="La Dernière Torche スクリーンショット：洞窟" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-carte4.webp" decoding="async" alt="La Dernière Torche スクリーンショット：マップ" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-journal.webp" decoding="async" alt="La Dernière Torche スクリーンショット：日誌" width="520" height="935" loading="lazy">
         </div>
       </div>
       <div class="t-side">
@@ -597,15 +597,15 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
           <div class="reveal"><b data-count="40">40</b><span>レベル／英雄</span></div>
         </div>
         <div class="strip t-strip" aria-label="La Dernière Torche の画像">
-          <button data-full="../assets/t-necro.webp"><img src="../assets/t-necro.webp" alt="死霊術師とスケルトンの軍勢" loading="lazy" width="88" height="132"></button>
-          <button data-full="../assets/t-dragon.webp"><img src="../assets/t-dragon.webp" alt="要塞のドラゴンとの戦い" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-ultime.webp"><img src="../assets/t-ultime.webp" alt="Ysmèreの必殺技" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-temple.webp"><img src="../assets/t-temple.webp" alt="王の砂漠の神殿" loading="lazy" width="132" height="132"></button>
-          <button data-full="../assets/t-desert.webp"><img src="../assets/t-desert.webp" alt="王の砂漠での戦い" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-horloge.webp"><img src="../assets/t-horloge.webp" alt="時計工房での戦い" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-grotte.webp"><img src="../assets/t-grotte.webp" alt="深層での戦い" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-carte1.webp"><img src="../assets/t-carte1.webp" alt="ダンジョンのマップ" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-journal.webp"><img src="../assets/t-journal.webp" alt="モンスター日誌" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-necro.webp"><img src="../assets/th/t-necro.webp" decoding="async" alt="死霊術師とスケルトンの軍勢" loading="lazy" width="88" height="132"></button>
+          <button data-full="../assets/t-dragon.webp"><img src="../assets/th/t-dragon.webp" decoding="async" alt="要塞のドラゴンとの戦い" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-ultime.webp"><img src="../assets/th/t-ultime.webp" decoding="async" alt="Ysmèreの必殺技" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-temple.webp"><img src="../assets/th/t-temple.webp" decoding="async" alt="王の砂漠の神殿" loading="lazy" width="132" height="132"></button>
+          <button data-full="../assets/t-desert.webp"><img src="../assets/th/t-desert.webp" decoding="async" alt="王の砂漠での戦い" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-horloge.webp"><img src="../assets/th/t-horloge.webp" decoding="async" alt="時計工房での戦い" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-grotte.webp"><img src="../assets/th/t-grotte.webp" decoding="async" alt="深層での戦い" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-carte1.webp"><img src="../assets/th/t-carte1.webp" decoding="async" alt="ダンジョンのマップ" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-journal.webp"><img src="../assets/th/t-journal.webp" decoding="async" alt="モンスター日誌" loading="lazy" width="73" height="132"></button>
         </div>
       </div>
     </div>
@@ -684,10 +684,10 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
           <div><dt>言語</dt><dd>フランス語、英語</dd></div>
         </dl>
         <div class="strip" aria-label="Infinite Dungeon の画像">
-          <button data-full="../assets/id-camp.webp"><img src="../assets/id-camp.webp" alt="焚き火を囲む英雄たちのキャンプ" loading="lazy" width="198" height="132"></button>
-          <button data-full="../assets/id-team.webp"><img src="../assets/id-team.webp" alt="ダンジョンの前に立つチーム" loading="lazy" width="74" height="132"></button>
-          <button data-full="../assets/id-victory.webp"><img src="../assets/id-victory.webp" alt="勝利画面" loading="lazy" width="88" height="132"></button>
-          <button data-full="../assets/id-lyra.webp"><img src="../assets/id-lyra.webp" alt="弓使いのLyra" loading="lazy" width="74" height="132"></button>
+          <button data-full="../assets/id-camp.webp"><img src="../assets/th/id-camp.webp" decoding="async" alt="焚き火を囲む英雄たちのキャンプ" loading="lazy" width="198" height="132"></button>
+          <button data-full="../assets/id-team.webp"><img src="../assets/th/id-team.webp" decoding="async" alt="ダンジョンの前に立つチーム" loading="lazy" width="74" height="132"></button>
+          <button data-full="../assets/id-victory.webp"><img src="../assets/th/id-victory.webp" decoding="async" alt="勝利画面" loading="lazy" width="88" height="132"></button>
+          <button data-full="../assets/id-lyra.webp"><img src="../assets/th/id-lyra.webp" decoding="async" alt="弓使いのLyra" loading="lazy" width="74" height="132"></button>
         </div>
         <div class="cta">
           <a class="btn main" data-link="id-play" href="#" target="_blank" rel="noopener">
@@ -1003,6 +1003,7 @@ document.querySelectorAll(".fxc[data-fx]").forEach(cv => {
   const imgs = [...document.querySelectorAll("#trailer img")]; let i = 0, timer;
   if (RM || imgs.length < 2) return;
   new IntersectionObserver(es => { clearInterval(timer);
+    if (es[0].isIntersecting) imgs.forEach(im => { if (im.dataset.src && !im.src) im.src = im.dataset.src; });
     if (es[0].isIntersecting) timer = setInterval(() => { imgs[i].classList.remove("on"); i = (i+1) % imgs.length; imgs[i].classList.add("on"); }, 2400);
   }).observe(document.getElementById("trailer"));
 })();
@@ -1084,7 +1085,7 @@ document.querySelectorAll(".tile:not(.space)").forEach(t => {
   function setup(){
     ac = new (window.AudioContext || window.webkitAudioContext)();
     for (const k in TRACKS){
-      const a = new Audio(TRACKS[k]); a.loop = true; a.preload = "auto"; a.crossOrigin = "anonymous";
+      const a = new Audio(TRACKS[k]); a.loop = true; a.preload = k === "main" ? "auto" : "none"; a.crossOrigin = "anonymous";
       const g = ac.createGain(); g.gain.value = 0;
       ac.createMediaElementSource(a).connect(g).connect(ac.destination);
       nodes[k] = { a, g };
@@ -1153,6 +1154,12 @@ document.addEventListener("click", e => { const d = document.querySelector(".lan
   }, {threshold:[0,.18,.35,.6,.9]});
   secs.forEach(x => io2.observe(x));
 })();
+</script>
+<script>
+(() => { const el = document.getElementById("infinite-dungeon"); if (!el) return;
+  if (!("IntersectionObserver" in window)) { el.classList.add("bgon"); return; }
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { el.classList.add("bgon"); io.disconnect(); } }, { rootMargin: "800px 0px" });
+  io.observe(el); })();
 </script>
 </body>
 </html>

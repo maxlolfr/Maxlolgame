@@ -197,7 +197,7 @@ p{margin:0}
 
 /* Infinite Dungeon : donjon violet et or */
 #infinite-dungeon{--a:#F0B94A;--a-ink:#2B1400}
-#infinite-dungeon .bg{background-image:url(../assets/id-camp.webp)}
+#infinite-dungeon.bgon .bg{background-image:url(../assets/id-camp.webp)}
 #infinite-dungeon .bg::after{background:linear-gradient(90deg,rgba(20,8,30,.96) 0%,rgba(20,8,30,.88) 45%,rgba(20,8,30,.55) 100%)}
 @media (max-width:860px){#infinite-dungeon .bg::after{background:linear-gradient(rgba(20,8,30,.75),rgba(20,8,30,.95) 40%)}}
 .poster{position:relative;justify-self:center;width:min(360px,80vw)}
@@ -470,7 +470,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <canvas class="fxc" id="heroFx" aria-hidden="true"></canvas>
     <div class="fan" id="fan" aria-hidden="true">
       <a class="card c1" href="#infinite-dungeon" tabindex="-1"><img src="../assets/id-team.webp" alt="A equipe de heróis de Infinite Dungeon" width="720" height="1280"><span class="shine"></span></a>
-      <a class="card c2" href="#la-derniere-torche" tabindex="-1"><img src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 0"><span class="shine"></span></a>
+      <a class="card c2" href="#la-derniere-torche" tabindex="-1"><img fetchpriority="high" src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 0"><span class="shine"></span></a>
       <a class="card c3" href="#gravity-turn" tabindex="-1"><span class="gtc"><img src="../assets/gt-jelly.webp" alt="Jelly, a mascote de Gravity Turn" width="256" height="256"><img class="gtl" src="../assets/gt-logo.webp" alt="" width="720" height="241"></span><span class="shine"></span></a>
     </div>
     <div class="wrap">
@@ -522,8 +522,8 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
       <h2 id="jeux-t">Os jogos</h2>
       <p class="lead">Três jogos, três universos. Todos rodam no navegador, no celular ou no computador.</p>
       <div class="covers">
-        <a class="cover reveal" href="#la-derniere-torche"><div class="art"><img src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 8%"><span class="shine"></span></div><b>La Dernière Torche</b><span>Novidade, teste grátis</span></a>
-        <a class="cover reveal" href="#gravity-turn"><div class="art"><img src="../assets/gt-icon.webp" alt="Ícone de Gravity Turn" width="180" height="180"><span class="shine"></span></div><b>Gravity Turn</b><span>Quebra-cabeça de blocos que gira</span></a>
+        <a class="cover reveal" href="#la-derniere-torche"><div class="art"><img loading="lazy" decoding="async" src="../assets/t-cover.webp" alt="" width="720" height="1049" style="object-position:50% 8%"><span class="shine"></span></div><b>La Dernière Torche</b><span>Novidade, teste grátis</span></a>
+        <a class="cover reveal" href="#gravity-turn"><div class="art"><img loading="lazy" decoding="async" src="../assets/gt-icon.webp" alt="Ícone de Gravity Turn" width="180" height="180"><span class="shine"></span></div><b>Gravity Turn</b><span>Quebra-cabeça de blocos que gira</span></a>
         <a class="cover reveal" href="#infinite-dungeon"><div class="art"><img src="../assets/id-icon.webp" alt="Ícone de Infinite Dungeon" width="256" height="256" loading="lazy"><span class="shine"></span></div><b>Infinite Dungeon</b><span>Roguelite de fantasia</span></a>
         <!--COVERS--><!--/COVERS-->
       </div>
@@ -539,7 +539,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <div class="wrap grid">
       <div class="visual reveal from-art" aria-hidden="true">
         <div class="t-stage" id="tStage">
-          <img class="t-key" src="../assets/t-art.webp" alt="La Dernière Torche: um herói ergue sua tocha no escuro" width="1290" height="1430">
+          <img loading="lazy" decoding="async" class="t-key" src="../assets/t-art.webp" alt="La Dernière Torche: um herói ergue sua tocha no escuro" width="1290" height="1430">
           <div class="t-dark"></div>
         </div>
         <p class="t-help">Mova o dedo ou o mouse: a tocha ilumina a masmorra.</p>
@@ -580,13 +580,13 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <div class="wrap t-more">
       <div class="phone reveal" aria-label="Capturas de tela de La Dernière Torche em rolagem" role="img">
         <div class="phone-in" id="trailer">
-          <img src="../assets/t-desert.webp" alt="Captura de La Dernière Torche: o deserto" class="on" width="520" height="935">
-          <img src="../assets/t-dragon.webp" alt="Captura de La Dernière Torche: o dragão" width="520" height="935" loading="lazy">
-          <img src="../assets/t-ultime.webp" alt="Captura de La Dernière Torche: o chefe supremo" width="520" height="935" loading="lazy">
-          <img src="../assets/t-horloge.webp" alt="Captura de La Dernière Torche: o relógio" width="520" height="935" loading="lazy">
-          <img src="../assets/t-grotte.webp" alt="Captura de La Dernière Torche: a caverna" width="520" height="935" loading="lazy">
-          <img src="../assets/t-carte4.webp" alt="Captura de La Dernière Torche: o mapa" width="520" height="935" loading="lazy">
-          <img src="../assets/t-journal.webp" alt="Captura de La Dernière Torche: o diário" width="520" height="935" loading="lazy">
+          <img loading="lazy" decoding="async" src="../assets/t-desert.webp" alt="Captura de La Dernière Torche: o deserto" class="on" width="520" height="935">
+          <img data-src="../assets/t-dragon.webp" decoding="async" alt="Captura de La Dernière Torche: o dragão" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-ultime.webp" decoding="async" alt="Captura de La Dernière Torche: o chefe supremo" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-horloge.webp" decoding="async" alt="Captura de La Dernière Torche: o relógio" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-grotte.webp" decoding="async" alt="Captura de La Dernière Torche: a caverna" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-carte4.webp" decoding="async" alt="Captura de La Dernière Torche: o mapa" width="520" height="935" loading="lazy">
+          <img data-src="../assets/t-journal.webp" decoding="async" alt="Captura de La Dernière Torche: o diário" width="520" height="935" loading="lazy">
         </div>
       </div>
       <div class="t-side">
@@ -597,15 +597,15 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
           <div class="reveal"><b data-count="40">40</b><span>níveis por herói</span></div>
         </div>
         <div class="strip t-strip" aria-label="Imagens de La Dernière Torche">
-          <button data-full="../assets/t-necro.webp"><img src="../assets/t-necro.webp" alt="O necromante e seu exército de esqueletos" loading="lazy" width="88" height="132"></button>
-          <button data-full="../assets/t-dragon.webp"><img src="../assets/t-dragon.webp" alt="Combate contra o dragão da fortaleza" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-ultime.webp"><img src="../assets/t-ultime.webp" alt="Ataque supremo de Ysmère" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-temple.webp"><img src="../assets/t-temple.webp" alt="O templo do Deserto dos Reis" loading="lazy" width="132" height="132"></button>
-          <button data-full="../assets/t-desert.webp"><img src="../assets/t-desert.webp" alt="Combate no Deserto dos Reis" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-horloge.webp"><img src="../assets/t-horloge.webp" alt="Combate na Relojoaria" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-grotte.webp"><img src="../assets/t-grotte.webp" alt="Combate nas Profundezas" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-carte1.webp"><img src="../assets/t-carte1.webp" alt="O mapa das masmorras" loading="lazy" width="73" height="132"></button>
-          <button data-full="../assets/t-journal.webp"><img src="../assets/t-journal.webp" alt="O diário de monstros" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-necro.webp"><img src="../assets/th/t-necro.webp" decoding="async" alt="O necromante e seu exército de esqueletos" loading="lazy" width="88" height="132"></button>
+          <button data-full="../assets/t-dragon.webp"><img src="../assets/th/t-dragon.webp" decoding="async" alt="Combate contra o dragão da fortaleza" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-ultime.webp"><img src="../assets/th/t-ultime.webp" decoding="async" alt="Ataque supremo de Ysmère" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-temple.webp"><img src="../assets/th/t-temple.webp" decoding="async" alt="O templo do Deserto dos Reis" loading="lazy" width="132" height="132"></button>
+          <button data-full="../assets/t-desert.webp"><img src="../assets/th/t-desert.webp" decoding="async" alt="Combate no Deserto dos Reis" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-horloge.webp"><img src="../assets/th/t-horloge.webp" decoding="async" alt="Combate na Relojoaria" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-grotte.webp"><img src="../assets/th/t-grotte.webp" decoding="async" alt="Combate nas Profundezas" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-carte1.webp"><img src="../assets/th/t-carte1.webp" decoding="async" alt="O mapa das masmorras" loading="lazy" width="73" height="132"></button>
+          <button data-full="../assets/t-journal.webp"><img src="../assets/th/t-journal.webp" decoding="async" alt="O diário de monstros" loading="lazy" width="73" height="132"></button>
         </div>
       </div>
     </div>
@@ -684,10 +684,10 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
           <div><dt>Idiomas</dt><dd>Francês, inglês</dd></div>
         </dl>
         <div class="strip" aria-label="Imagens de Infinite Dungeon">
-          <button data-full="../assets/id-camp.webp"><img src="../assets/id-camp.webp" alt="O acampamento dos heróis ao redor da fogueira" loading="lazy" width="198" height="132"></button>
-          <button data-full="../assets/id-team.webp"><img src="../assets/id-team.webp" alt="A equipe diante da masmorra" loading="lazy" width="74" height="132"></button>
-          <button data-full="../assets/id-victory.webp"><img src="../assets/id-victory.webp" alt="Tela de vitória" loading="lazy" width="88" height="132"></button>
-          <button data-full="../assets/id-lyra.webp"><img src="../assets/id-lyra.webp" alt="Lyra, a arqueira" loading="lazy" width="74" height="132"></button>
+          <button data-full="../assets/id-camp.webp"><img src="../assets/th/id-camp.webp" decoding="async" alt="O acampamento dos heróis ao redor da fogueira" loading="lazy" width="198" height="132"></button>
+          <button data-full="../assets/id-team.webp"><img src="../assets/th/id-team.webp" decoding="async" alt="A equipe diante da masmorra" loading="lazy" width="74" height="132"></button>
+          <button data-full="../assets/id-victory.webp"><img src="../assets/th/id-victory.webp" decoding="async" alt="Tela de vitória" loading="lazy" width="88" height="132"></button>
+          <button data-full="../assets/id-lyra.webp"><img src="../assets/th/id-lyra.webp" decoding="async" alt="Lyra, a arqueira" loading="lazy" width="74" height="132"></button>
         </div>
         <div class="cta">
           <a class="btn main" data-link="id-play" href="#" target="_blank" rel="noopener">
@@ -1003,6 +1003,7 @@ document.querySelectorAll(".fxc[data-fx]").forEach(cv => {
   const imgs = [...document.querySelectorAll("#trailer img")]; let i = 0, timer;
   if (RM || imgs.length < 2) return;
   new IntersectionObserver(es => { clearInterval(timer);
+    if (es[0].isIntersecting) imgs.forEach(im => { if (im.dataset.src && !im.src) im.src = im.dataset.src; });
     if (es[0].isIntersecting) timer = setInterval(() => { imgs[i].classList.remove("on"); i = (i+1) % imgs.length; imgs[i].classList.add("on"); }, 2400);
   }).observe(document.getElementById("trailer"));
 })();
@@ -1084,7 +1085,7 @@ document.querySelectorAll(".tile:not(.space)").forEach(t => {
   function setup(){
     ac = new (window.AudioContext || window.webkitAudioContext)();
     for (const k in TRACKS){
-      const a = new Audio(TRACKS[k]); a.loop = true; a.preload = "auto"; a.crossOrigin = "anonymous";
+      const a = new Audio(TRACKS[k]); a.loop = true; a.preload = k === "main" ? "auto" : "none"; a.crossOrigin = "anonymous";
       const g = ac.createGain(); g.gain.value = 0;
       ac.createMediaElementSource(a).connect(g).connect(ac.destination);
       nodes[k] = { a, g };
@@ -1153,6 +1154,12 @@ document.addEventListener("click", e => { const d = document.querySelector(".lan
   }, {threshold:[0,.18,.35,.6,.9]});
   secs.forEach(x => io2.observe(x));
 })();
+</script>
+<script>
+(() => { const el = document.getElementById("infinite-dungeon"); if (!el) return;
+  if (!("IntersectionObserver" in window)) { el.classList.add("bgon"); return; }
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { el.classList.add("bgon"); io.disconnect(); } }, { rootMargin: "800px 0px" });
+  io.observe(el); })();
 </script>
 </body>
 </html>
