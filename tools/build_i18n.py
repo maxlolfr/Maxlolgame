@@ -6,6 +6,7 @@ R=[r for r in R if r[0]!="Des jeux faits main, pensés d'abord pour le télépho
 exec(open('/home/claude/i18n_es_pt.py').read().replace('print(len(ES),len(PT))',''))
 exec(open('/home/claude/i18n_th_zh.py').read())
 exec(open('/home/claude/i18n_ja_ko_ru_id.py').read())
+exec(open('/home/claude/i18n_about.py').read())
 EN=[b.replace('("The Last Torch", a','(&quot;The Last Torch&quot;, a').replace('"The Last Torch"','&quot;The Last Torch&quot;') for a,b in R]
 FRK=[a for a,b in R]
 assert len(EN)==len(ES)==len(PT)==len(FRK)
