@@ -1,0 +1,293 @@
+{
+ "frames": {
+  "0": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 327,
+    "h": 389
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 55,
+    "y": 2,
+    "w": 327,
+    "h": 389
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "1": {
+   "frame": {
+    "x": 329,
+    "y": 0,
+    "w": 325,
+    "h": 389
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 56,
+    "y": 2,
+    "w": 325,
+    "h": 389
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "2": {
+   "frame": {
+    "x": 656,
+    "y": 0,
+    "w": 327,
+    "h": 389
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 55,
+    "y": 2,
+    "w": 327,
+    "h": 389
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "3": {
+   "frame": {
+    "x": 985,
+    "y": 0,
+    "w": 328,
+    "h": 389
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 55,
+    "y": 2,
+    "w": 328,
+    "h": 389
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "4": {
+   "frame": {
+    "x": 1315,
+    "y": 0,
+    "w": 439,
+    "h": 386
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 3,
+    "w": 439,
+    "h": 386
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "5": {
+   "frame": {
+    "x": 0,
+    "y": 391,
+    "w": 439,
+    "h": 385
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 4,
+    "w": 439,
+    "h": 385
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "6": {
+   "frame": {
+    "x": 441,
+    "y": 391,
+    "w": 439,
+    "h": 387
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 3,
+    "w": 439,
+    "h": 387
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "7": {
+   "frame": {
+    "x": 882,
+    "y": 391,
+    "w": 439,
+    "h": 387
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 3,
+    "w": 439,
+    "h": 387
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "8": {
+   "frame": {
+    "x": 1323,
+    "y": 391,
+    "w": 439,
+    "h": 380
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 3,
+    "w": 439,
+    "h": 380
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "9": {
+   "frame": {
+    "x": 0,
+    "y": 780,
+    "w": 439,
+    "h": 380
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 439,
+    "h": 380
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "10": {
+   "frame": {
+    "x": 441,
+    "y": 780,
+    "w": 439,
+    "h": 381
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 2,
+    "w": 439,
+    "h": 381
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "11": {
+   "frame": {
+    "x": 882,
+    "y": 780,
+    "w": 439,
+    "h": 380
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 439,
+    "h": 380
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "12": {
+   "frame": {
+    "x": 1323,
+    "y": 780,
+    "w": 367,
+    "h": 374
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 31,
+    "y": 12,
+    "w": 367,
+    "h": 374
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  },
+  "13": {
+   "frame": {
+    "x": 0,
+    "y": 1163,
+    "w": 434,
+    "h": 229
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 163,
+    "w": 434,
+    "h": 229
+   },
+   "sourceSize": {
+    "w": 439,
+    "h": 392
+   }
+  }
+ },
+ "meta": {
+  "image": "necro_gold_atlas.webp",
+  "size": {
+   "w": 1762,
+   "h": 1392
+  },
+  "scale": "1",
+  "app": "tools/skin_cut.py"
+ }
+}
