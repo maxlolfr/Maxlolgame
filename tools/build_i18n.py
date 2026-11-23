@@ -24,6 +24,7 @@ LD_DESC={
  'id':["Dungeon bergiliran untuk ponsel: obormu melemah di setiap ruangan, 20 bos menanti.","Teka-teki ponsel: letakkan blok, papan berputar, kaskade berantai.","Roguelite fantasi dengan pertarungan otomatis: 100 lantai, 10 bos, tim 3 pahlawan."],
  'pt':["Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.","Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.","Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis."]}
 exec(open('/home/claude/v3_extra.py').read())
+TORCH_LANGS={'en':'French, English, Spanish, Portuguese','es':'Francés, inglés, español, portugués','pt':'Francês, inglês, espanhol, português','th':'ฝรั่งเศส, อังกฤษ, สเปน, โปรตุเกส','zh':'法语、英语、西班牙语、葡萄牙语','ja':'フランス語、英語、スペイン語、ポルトガル語','ko':'프랑스어, 영어, 스페인어, 포르투갈어','ru':'французский, английский, испанский, португальский','id':'Prancis, Inggris, Spanyol, Portugis'}
 fr=open(ROOT+'tools/source_fr.html').read()
 
 CSS='''.langmenu{position:relative}
@@ -84,6 +85,7 @@ for cur,path,hl,_,_ in LANGS[1:]:
         if v=='@@': continue
         if k not in s: print(cur,'MISSING',k[:60]); continue
         s=s.replace(k,v)
+    s=s.replace('<dt>Langues</dt><dd>Français, anglais, espagnol, portugais</dd>','<dt>'+LAB[cur][5]+'</dt><dd>'+TORCH_LANGS[cur]+'</dd>')
     s=s.replace('Maxlol Games, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon',{'en':'Maxlol Games, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon','es':'Maxlol Games, estudio de juegos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','pt':'Maxlol Games, estúdio de jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','th':'Maxlol Games สตูดิโอเกมอินดี้: La Dernière Torche, Gravity Turn, Infinite Dungeon','zh':'Maxlol Games 独立游戏工作室：La Dernière Torche、Gravity Turn、Infinite Dungeon','ja':'Maxlol Games、インディーゲームスタジオ：La Dernière Torche、Gravity Turn、Infinite Dungeon','ko':'Maxlol Games, 인디 게임 스튜디오: La Dernière Torche, Gravity Turn, Infinite Dungeon','ru':'Maxlol Games — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon','id':'Maxlol Games, studio game indie: La Dernière Torche, Gravity Turn, Infinite Dungeon'}[cur])
     s=s.replace('content="Maxlol Games – jeux vidéo indépendants"','content="Maxlol Games – '+{'en':'indie games','es':'juegos indie','pt':'jogos indie','th':'เกมอินดี้','zh':'独立游戏','ja':'インディーゲーム','ko':'인디 게임','ru':'инди-игры','id':'game indie'}[cur]+'"')
     s=s.replace('content="fr_FR"','content="'+{'en':'en_US','es':'es_ES','pt':'pt_BR','th':'th_TH','zh':'zh_CN','ja':'ja_JP','ko':'ko_KR','ru':'ru_RU','id':'id_ID'}[cur]+'"')
