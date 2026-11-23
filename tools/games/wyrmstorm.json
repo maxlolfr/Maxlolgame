@@ -1,0 +1,17 @@
+{
+  "slug": "wyrmstorm",
+  "name": "WYRMSTORM",
+  "accent": "#B26BFF",
+  "accent_ink": "#1B0B33",
+  "price": "",
+  "itch": "",
+  "play": "https://wyrmstorm.netlify.app",
+  "version": "1.22",
+  "cover": "assets/ws-cover.webp",
+  "images": ["assets/ws-1.webp", "assets/ws-2.webp", "assets/ws-3.webp", "assets/ws-4.webp", "assets/ws-5.webp"],
+  "genre":     { "fr": "Shoot'em up à dragons", "en": "Dragon shoot'em up" },
+  "pitch":     { "fr": "Pilote un héros, déchaîne tes dragons et traverse le ciel, un niveau après l'autre. Des boss gigantesques, des gardiens animés et des dragons à faire éclore t'attendent. Gratuit, à jouer d'une main sur téléphone.", "en": "Pilot a hero, unleash your dragons and cross the sky one level at a time. Giant bosses, animated guardians and dragons to hatch await. Free to play, one thumb on your phone." },
+  "feats":     { "fr": ["7 boss de monde et 14 gardiens animés pièce par pièce", "Des héros à monter jusqu'au niveau 100, avec costumes à débloquer", "Des dragons de 7 éléments à faire éclore, fusionner et améliorer", "Raid, pass de saison, missions et succès"], "en": ["7 world bosses and 14 guardians animated piece by piece", "Heroes to level up to 100, with costumes to unlock", "Dragons of 7 elements to hatch, fuse and upgrade", "Raid, season pass, missions and achievements"] },
+  "platforms": { "fr": "Navigateur, mobile", "en": "Browser, mobile" },
+  "languages": { "fr": "Français, anglais, thaï", "en": "French, English, Thai" }
+}
