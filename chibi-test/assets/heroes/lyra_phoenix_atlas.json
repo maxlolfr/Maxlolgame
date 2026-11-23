@@ -164,16 +164,16 @@
    "frame": {
     "x": 721,
     "y": 303,
-    "w": 366,
-    "h": 308
+    "w": 387,
+    "h": 304
    },
    "rotated": false,
    "trimmed": true,
    "spriteSourceSize": {
-    "x": 0,
-    "y": 23,
-    "w": 366,
-    "h": 308
+    "x": 13,
+    "y": 29,
+    "w": 387,
+    "h": 304
    },
    "sourceSize": {
     "w": 458,
@@ -182,18 +182,18 @@
   },
   "9": {
    "frame": {
-    "x": 1089,
+    "x": 1110,
     "y": 303,
-    "w": 322,
-    "h": 298
+    "w": 375,
+    "h": 384
    },
    "rotated": false,
    "trimmed": true,
    "spriteSourceSize": {
-    "x": 136,
-    "y": 116,
-    "w": 322,
-    "h": 298
+    "x": 82,
+    "y": 46,
+    "w": 375,
+    "h": 384
    },
    "sourceSize": {
     "w": 458,
@@ -202,18 +202,18 @@
   },
   "10": {
    "frame": {
-    "x": 1413,
+    "x": 1487,
     "y": 303,
-    "w": 381,
-    "h": 316
+    "w": 384,
+    "h": 296
    },
    "rotated": false,
    "trimmed": true,
    "spriteSourceSize": {
-    "x": 52,
-    "y": 132,
-    "w": 381,
-    "h": 316
+    "x": 74,
+    "y": 152,
+    "w": 384,
+    "h": 296
    },
    "sourceSize": {
     "w": 458,
@@ -223,16 +223,16 @@
   "11": {
    "frame": {
     "x": 0,
-    "y": 621,
-    "w": 364,
+    "y": 689,
+    "w": 352,
     "h": 356
    },
    "rotated": false,
    "trimmed": true,
    "spriteSourceSize": {
-    "x": 94,
+    "x": 106,
     "y": 92,
-    "w": 364,
+    "w": 352,
     "h": 356
    },
    "sourceSize": {
@@ -242,18 +242,18 @@
   },
   "12": {
    "frame": {
-    "x": 366,
-    "y": 621,
-    "w": 400,
-    "h": 333
+    "x": 354,
+    "y": 689,
+    "w": 361,
+    "h": 278
    },
    "rotated": false,
    "trimmed": true,
    "spriteSourceSize": {
-    "x": 14,
-    "y": 115,
-    "w": 400,
-    "h": 333
+    "x": 45,
+    "y": 116,
+    "w": 361,
+    "h": 278
    },
    "sourceSize": {
     "w": 458,
@@ -262,18 +262,18 @@
   },
   "13": {
    "frame": {
-    "x": 768,
-    "y": 621,
-    "w": 336,
-    "h": 319
+    "x": 717,
+    "y": 689,
+    "w": 332,
+    "h": 316
    },
    "rotated": false,
    "trimmed": true,
    "spriteSourceSize": {
-    "x": 122,
-    "y": 108,
-    "w": 336,
-    "h": 319
+    "x": 126,
+    "y": 111,
+    "w": 332,
+    "h": 316
    },
    "sourceSize": {
     "w": 458,
@@ -284,8 +284,8 @@
  "meta": {
   "image": "lyra_phoenix_atlas.webp",
   "size": {
-   "w": 1794,
-   "h": 977
+   "w": 1871,
+   "h": 1045
   },
   "scale": "1",
   "app": "tools/skin_cut.py"
