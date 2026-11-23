@@ -24,6 +24,9 @@ LD_DESC={
  'id':["Dungeon bergiliran untuk ponsel: obormu melemah di setiap ruangan, 20 bos menanti.","Teka-teki ponsel: letakkan blok, papan berputar, kaskade berantai.","Roguelite fantasi dengan pertarungan otomatis: 100 lantai, 10 bos, tim 3 pahlawan."],
  'pt':["Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.","Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.","Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis."]}
 exec(open('/home/claude/v3_extra.py').read())
+PITCH_FIX={'en':('Three heroes.','Eight heroes, a team of three.'),'es':('Tres héroes.','Ocho héroes, un equipo de tres.'),'pt':('Três heróis.','Oito heróis, uma equipe de três.'),'th':('ฮีโร่สามคน','ฮีโร่แปดคน ทีมละสามคน'),'zh':('三位英雄，','八位英雄，三人一队，'),'ja':('3人の英雄と、','8人の英雄（3人で1チーム）と、'),'ko':('영웅 세 명과','영웅 여덟 명(팀은 세 명)과'),'ru':('Три героя.','Восемь героев, в отряде трое.'),'id':('Tiga pahlawan.','Delapan pahlawan, tim berisi tiga.')}
+COS_FR='28 costumes pour les 8 héros, et des voix pendant les combats'
+COS_TR={'en':'28 costumes for the 8 heroes, and voices during battles','es':'28 trajes para los 8 héroes y voces durante los combates','pt':'28 trajes para os 8 heróis e vozes durante as batalhas','th':'ชุดแต่งกาย 28 แบบสำหรับฮีโร่ทั้ง 8 คน พร้อมเสียงพากย์ระหว่างการต่อสู้','zh':'8 位英雄共有 28 套服装，战斗中还有语音','ja':'8人の英雄に28種類のコスチューム、戦闘中のボイス','ko':'영웅 8명을 위한 코스튬 28종, 전투 중 음성','ru':'28 костюмов для 8 героев и озвучка в боях','id':'28 kostum untuk 8 pahlawan, plus suara saat bertarung'}
 TORCH_LANGS={'en':'French, English, Spanish, Portuguese','es':'Francés, inglés, español, portugués','pt':'Francês, inglês, espanhol, português','th':'ฝรั่งเศส, อังกฤษ, สเปน, โปรตุเกส','zh':'法语、英语、西班牙语、葡萄牙语','ja':'フランス語、英語、スペイン語、ポルトガル語','ko':'프랑스어, 영어, 스페인어, 포르투갈어','ru':'французский, английский, испанский, португальский','id':'Prancis, Inggris, Spanyol, Portugis'}
 fr=open(ROOT+'tools/source_fr.html').read()
 
@@ -80,11 +83,12 @@ os_=__import__('os'); os_.makedirs(ROOT+'fr',exist_ok=True)
 open(ROOT+'fr/index.html','w').write(re.sub(r'(["\'`(])assets/',r'\1../assets/',fr_out))
 import os
 for cur,path,hl,_,_ in LANGS[1:]:
-    s=fr_out
+    s=fr_out.replace('Huit héros, une équipe de trois.','Trois héros.')
     for k,v in zip(FRK,TR[cur]):
         if v=='@@': continue
         if k not in s: print(cur,'MISSING',k[:60]); continue
         s=s.replace(k,v)
+    o,n=PITCH_FIX[cur]; assert o in s,('pitch',cur); s=s.replace(o,n,1); assert COS_FR in s; s=s.replace(COS_FR,COS_TR[cur],1)
     s=s.replace('<dt>Langues</dt><dd>Français, anglais, espagnol, portugais</dd>','<dt>'+LAB[cur][5]+'</dt><dd>'+TORCH_LANGS[cur]+'</dd>')
     s=s.replace('Maxlol Games, studio de jeux vidéo indépendant : La Dernière Torche, Gravity Turn, Infinite Dungeon',{'en':'Maxlol Games, indie game studio: La Dernière Torche, Gravity Turn, Infinite Dungeon','es':'Maxlol Games, estudio de juegos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','pt':'Maxlol Games, estúdio de jogos indie: La Dernière Torche, Gravity Turn, Infinite Dungeon','th':'Maxlol Games สตูดิโอเกมอินดี้: La Dernière Torche, Gravity Turn, Infinite Dungeon','zh':'Maxlol Games 独立游戏工作室：La Dernière Torche、Gravity Turn、Infinite Dungeon','ja':'Maxlol Games、インディーゲームスタジオ：La Dernière Torche、Gravity Turn、Infinite Dungeon','ko':'Maxlol Games, 인디 게임 스튜디오: La Dernière Torche, Gravity Turn, Infinite Dungeon','ru':'Maxlol Games — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon','id':'Maxlol Games, studio game indie: La Dernière Torche, Gravity Turn, Infinite Dungeon'}[cur])
     s=s.replace('content="Maxlol Games – jeux vidéo indépendants"','content="Maxlol Games – '+{'en':'indie games','es':'juegos indie','pt':'jogos indie','th':'เกมอินดี้','zh':'独立游戏','ja':'インディーゲーム','ko':'인디 게임','ru':'инди-игры','id':'game indie'}[cur]+'"')
