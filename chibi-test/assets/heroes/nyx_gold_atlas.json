@@ -1,0 +1,293 @@
+{
+ "frames": {
+  "0": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 467,
+    "h": 432
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 98,
+    "y": 4,
+    "w": 467,
+    "h": 432
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "1": {
+   "frame": {
+    "x": 469,
+    "y": 0,
+    "w": 479,
+    "h": 433
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 89,
+    "y": 4,
+    "w": 479,
+    "h": 433
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "2": {
+   "frame": {
+    "x": 950,
+    "y": 0,
+    "w": 487,
+    "h": 434
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 77,
+    "y": 2,
+    "w": 487,
+    "h": 434
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "3": {
+   "frame": {
+    "x": 1439,
+    "y": 0,
+    "w": 462,
+    "h": 434
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 105,
+    "y": 2,
+    "w": 462,
+    "h": 434
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "4": {
+   "frame": {
+    "x": 0,
+    "y": 436,
+    "w": 439,
+    "h": 324
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 112,
+    "y": 117,
+    "w": 439,
+    "h": 324
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "5": {
+   "frame": {
+    "x": 441,
+    "y": 436,
+    "w": 538,
+    "h": 343
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 144,
+    "y": 98,
+    "w": 538,
+    "h": 343
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "6": {
+   "frame": {
+    "x": 981,
+    "y": 436,
+    "w": 525,
+    "h": 384
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 95,
+    "y": 57,
+    "w": 525,
+    "h": 384
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "7": {
+   "frame": {
+    "x": 1508,
+    "y": 436,
+    "w": 461,
+    "h": 381
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 106,
+    "y": 60,
+    "w": 461,
+    "h": 381
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "8": {
+   "frame": {
+    "x": 0,
+    "y": 822,
+    "w": 439,
+    "h": 388
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 136,
+    "y": 46,
+    "w": 439,
+    "h": 388
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "9": {
+   "frame": {
+    "x": 441,
+    "y": 822,
+    "w": 392,
+    "h": 415
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 180,
+    "y": 22,
+    "w": 392,
+    "h": 415
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "10": {
+   "frame": {
+    "x": 835,
+    "y": 822,
+    "w": 474,
+    "h": 434
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 258,
+    "y": 2,
+    "w": 474,
+    "h": 434
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "11": {
+   "frame": {
+    "x": 1311,
+    "y": 822,
+    "w": 447,
+    "h": 387
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 126,
+    "y": 47,
+    "w": 447,
+    "h": 387
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "12": {
+   "frame": {
+    "x": 0,
+    "y": 1258,
+    "w": 410,
+    "h": 402
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 87,
+    "y": 37,
+    "w": 410,
+    "h": 402
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  },
+  "13": {
+   "frame": {
+    "x": 412,
+    "y": 1258,
+    "w": 494,
+    "h": 300
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 74,
+    "y": 136,
+    "w": 494,
+    "h": 300
+   },
+   "sourceSize": {
+    "w": 732,
+    "h": 441
+   }
+  }
+ },
+ "meta": {
+  "image": "nyx_gold_atlas.webp",
+  "size": {
+   "w": 1969,
+   "h": 1660
+  },
+  "scale": "1",
+  "app": "tools/skin_cut.py"
+ }
+}
