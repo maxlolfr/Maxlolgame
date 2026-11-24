@@ -8,7 +8,7 @@ Usage : python3 -I tools/v19_signature.py [--check]
 import re, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-VERSION = "3"
+VERSION = "6"
 LINK = '<link rel="stylesheet" href="/assets/css/signature.css?v=%s">' % VERSION
 SKIP = ("chibi-legends/", "chibi-test/", "backend/", "art/", "tools/", ".git/")
 

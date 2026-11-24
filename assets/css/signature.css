@@ -175,6 +175,7 @@ body{background:
 .gp-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:18px;max-width:640px}
 .gp-cta .btn{justify-content:center;text-align:center}
 .gp-cta .btn.paypal{grid-column:1/-1}
+.gp-gravity-turn .gp-cta .btn.main{grid-column:1/-1}
 .btn .price{white-space:nowrap}
 @media (min-width:900px){
   .gp2{--gp-h:520px}
