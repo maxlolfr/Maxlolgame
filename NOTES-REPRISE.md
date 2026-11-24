@@ -23,4 +23,5 @@ Règles : annonce + estimation de coût + liste de tâches dès le début ; barr
 
 ## Refonte graphique « Maxlol Signature » (24 nov. 2026, validée par Max)
 Faite : tokens, header, hero, carrousel, bandeau, catalogue, actus avec miniatures, studio, fiches des 4 jeux (bannière, ambiance par jeu, galeries, héros). Publiée sur `main`.
+v23 (liens Jouer statiques, tools/v23_static_links.py) à lancer en dernier. Analytics Cloudflare : en attente du jeton Web Analytics (CSP à ouvrir sur static.cloudflareinsights.com + cloudflareinsights.com).
 Reste : accueil plus proche des maquettes (menu à onglet actif, carrousel avec captures, pied de page réseaux), date des actus localisée, Lighthouse, images de `ART-ASSETS-REQUEST.md` (jaquette + bannière Chibi Legends, illustration studio).
