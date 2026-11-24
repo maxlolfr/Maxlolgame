@@ -26,7 +26,15 @@
   },
   "pitch": {
     "fr": "Chibi Legends est un RPG d'action idle : tu bâtis l'équipe, tes héros se battent. Recrute 8 héros, choisis-en 4, associe-les en duos et grimpe 400 niveaux répartis sur 20 mondes, chacun gardé par un boss qui change de tactique en plein combat. Améliore, équipe, apprends des sorts, puis renais plus fort. Même quand tu n'es pas là, ton équipe continue de gagner de l'or.",
-    "en": "Chibi Legends is an idle action RPG: you build the team, your heroes do the fighting. Recruit 8 heroes, pick 4, pair them in duos and climb 400 levels across 20 worlds, each guarded by a boss that changes tactics mid-fight. Upgrade, equip, learn skills, then be reborn stronger. Even when you're away, your team keeps earning gold."
+    "en": "Chibi Legends is an idle action RPG: you build the team, your heroes do the fighting. Recruit 8 heroes, pick 4, pair them in duos and climb 400 levels across 20 worlds, each guarded by a boss that changes tactics mid-fight. Upgrade, equip, learn skills, then be reborn stronger. Even when you're away, your team keeps earning gold.",
+    "es": "Chibi Legends es un RPG de acción idle: tú formas el equipo y tus héroes luchan. Recluta 8 héroes, elige 4, únelos en dúos y sube 400 niveles repartidos en 20 mundos, cada uno custodiado por un jefe que cambia de táctica en pleno combate. Mejora, equipa, aprende habilidades y renace más fuerte. Aunque no estés, tu equipo sigue ganando oro.",
+    "pt": "Chibi Legends é um RPG de ação idle: você monta a equipe, seus heróis lutam. Recrute 8 heróis, escolha 4, junte-os em duplas e suba 400 níveis em 20 mundos, cada um guardado por um chefe que muda de tática em plena luta. Melhore, equipe, aprenda habilidades e renasça mais forte. Mesmo quando você não está, sua equipe continua ganhando ouro.",
+    "th": "Chibi Legends เป็นเกม RPG แอ็กชันแบบไอเดิล: คุณสร้างทีม ฮีโร่ของคุณลุยต่อสู้เอง รับฮีโร่ 8 คน เลือก 4 คน จับคู่เป็นดูโอ แล้วไต่ 400 ด่านใน 20 โลก แต่ละโลกมีบอสที่เปลี่ยนแท็กติกกลางการต่อสู้ อัปเกรด สวมอุปกรณ์ เรียนรู้สกิล แล้วเกิดใหม่ให้แกร่งขึ้น แม้คุณไม่อยู่ ทีมของคุณก็ยังหาทองต่อไป",
+    "zh": "Chibi Legends 是一款放置动作角色扮演游戏:你来组队,英雄们自动战斗。招募 8 位英雄,选出 4 位,组成双人羁绊,在 20 个世界中攀登 400 个关卡,每个世界都由会在战斗中改变战术的首领守护。升级、装备、学习技能,然后转生变得更强。即使你不在,队伍也会继续赚取金币。",
+    "ja": "Chibi Legends は放置型アクションRPG。チームを育てれば、ヒーローたちが自動で戦います。8人のヒーローから4人を選び、デュオで組み合わせて、20のワールドにわたる400レベルを駆け上がろう。各ワールドを守るのは、戦いの最中に戦術を変えるボス。強化し、装備し、スキルを覚え、転生してさらに強く。あなたが不在でも、チームはゴールドを稼ぎ続けます。",
+    "ko": "Chibi Legends는 방치형 액션 RPG입니다. 팀을 꾸리면 영웅들이 알아서 싸웁니다. 영웅 8명 중 4명을 골라 듀오로 엮고, 20개 월드에 걸친 400개 레벨을 올라가세요. 각 월드는 전투 중에 전술을 바꾸는 보스가 지킵니다. 강화하고, 장비하고, 스킬을 익히고, 환생해 더 강해지세요. 자리를 비워도 팀은 계속 골드를 법니다.",
+    "ru": "Chibi Legends — idle-экшен-RPG: ты собираешь команду, герои сражаются сами. Набери 8 героев, выбери 4, объедини их в дуэты и поднимайся по 400 уровням в 20 мирах, каждый из которых охраняет босс, меняющий тактику прямо в бою. Улучшай, экипируй, учи навыки, а затем перерождайся сильнее. Даже когда тебя нет, команда продолжает зарабатывать золото.",
+    "id": "Chibi Legends adalah RPG aksi idle: kamu membangun tim, para pahlawanmu yang bertarung. Rekrut 8 pahlawan, pilih 4, pasangkan dalam duo, lalu daki 400 level di 20 dunia, masing-masing dijaga bos yang mengubah taktik di tengah pertarungan. Tingkatkan, lengkapi, pelajari skill, lalu lahir kembali lebih kuat. Bahkan saat kamu pergi, timmu terus mengumpulkan emas."
   },
   "feats": {
     "fr": [
@@ -50,14 +58,118 @@
       "Rebirth and Ember talents to restart stronger, daily quests, achievements and a daily merchant",
       "Offline earnings up to 8 h",
       "Pause, audio mixer, a 16-track jukebox and hero voices"
+    ],
+    "es": [
+      "8 héroes (caballero, paladina, mago, arquera, ladrona, artificiero, chamán, nigromante), 3 habilidades y un definitivo cada uno",
+      "Un equipo de 4 entre 8: 70 combinaciones posibles y 28 vínculos de dúo que activan ataques combinados",
+      "20 mundos, 400 niveles, y la ascensión continúa más allá",
+      "20 jefes, cada uno con un gran ataque anunciado y una 2.ª fase a media vida (muro, furia, invocaciones, regeneración…)",
+      "130 entradas de bestiario: 104 monstruos, 20 jefes y 6 élites, con debilidades, resistencias y 10 comportamientos",
+      "Botín en 6 ranuras y 5 rarezas hasta Mítico, 22 reliquias permanentes",
+      "Renacimiento y talentos de Brasas para empezar más fuerte, misiones diarias, logros y mercader del día",
+      "Ganancias sin conexión hasta 8 h",
+      "Pausa, mezclador de audio, jukebox de 16 temas y voces de los héroes"
+    ],
+    "pt": [
+      "8 heróis (cavaleiro, paladina, mago, arqueira, ladra, artífice, xamã, necromante), 3 habilidades e um ultimate cada",
+      "Uma equipe de 4 entre 8: 70 composições possíveis e 28 elos de dupla que disparam ataques combinados",
+      "20 mundos, 400 níveis, e a subida continua além",
+      "20 chefes, cada um com um grande ataque anunciado e uma 2ª fase com metade da vida (muralha, fúria, invocações, regeneração…)",
+      "130 entradas no bestiário: 104 monstros, 20 chefes e 6 elites, com fraquezas, resistências e 10 comportamentos",
+      "Itens em 6 espaços e 5 raridades até Mítico, 22 relíquias permanentes",
+      "Renascimento e talentos de Brasas para recomeçar mais forte, missões diárias, conquistas e mercador do dia",
+      "Ganhos offline por até 8 h",
+      "Pausa, mixer de áudio, jukebox de 16 músicas e vozes dos heróis"
+    ],
+    "th": [
+      "ฮีโร่ 8 คน (อัศวิน พาลาดิน จอมเวทย์ นักธนู โจร ช่างประดิษฐ์ หมอผี นักเรียกวิญญาณ) คนละ 3 สกิลและท่าไม้ตาย 1 ท่า",
+      "ทีม 4 คนจาก 8 คน: จัดทีมได้ 70 แบบ และมีลิงก์ดูโอ 28 แบบที่ปล่อยการโจมตีผสาน",
+      "20 โลก 400 ด่าน และการไต่ขึ้นยังไปต่อได้อีก",
+      "บอส 20 ตัว แต่ละตัวมีท่าใหญ่ที่แจ้งเตือนล่วงหน้า และเฟสสองเมื่อเลือดเหลือครึ่ง (กำแพง คลั่ง อัญเชิญ ฟื้นฟู…)",
+      "สมุดสัตว์ประหลาด 130 รายการ: มอนสเตอร์ 104 ตัว บอส 20 ตัว และอีลิท 6 ตัว พร้อมจุดอ่อน ความต้านทาน และพฤติกรรม 10 แบบ",
+      "ไอเทม 6 ช่อง 5 ระดับความหายากถึงมิธิก และเรลิกถาวร 22 ชิ้น",
+      "เกิดใหม่และพรสวรรค์แห่งถ่านไฟเพื่อเริ่มใหม่ให้แกร่งขึ้น พร้อมเควสต์ประจำวัน ความสำเร็จ และพ่อค้าประจำวัน",
+      "รายได้ออฟไลน์สูงสุด 8 ชั่วโมง",
+      "หยุดเกม มิกเซอร์เสียง จุ๊กบ็อกซ์ 16 เพลง และเสียงพากย์ฮีโร่"
+    ],
+    "zh": [
+      "8 位英雄(骑士、圣骑士、法师、弓箭手、盗贼、工匠、萨满、死灵法师),每人 3 个技能和 1 个大招",
+      "8 选 4 组队:共 70 种阵容,另有 28 组双人羁绊可触发合体攻击",
+      "20 个世界、400 个关卡,攀登之路还在继续",
+      "20 个首领,每个都有预告的大招,并在血量过半时进入第二阶段(骨墙、狂暴、召唤、再生……)",
+      "130 条图鉴:104 种怪物、20 个首领和 6 个精英,含弱点、抗性和 10 种行为",
+      "6 个装备栏、5 种稀有度直至神话,另有 22 件永久遗物",
+      "转生与余烬天赋助你更强地重新开始,还有每日任务、成就和每日商人",
+      "离线收益最长 8 小时",
+      "暂停、音频混音器、16 首曲目的点唱机和英雄配音"
+    ],
+    "ja": [
+      "8人のヒーロー(騎士、聖騎士、魔法使い、弓使い、盗賊、機工士、シャーマン、ネクロマンサー)。各3つのスキルと必殺技を持つ",
+      "8人から4人を選ぶチーム編成は70通り。28種のデュオリンクが合体攻撃を発動",
+      "20ワールド、400レベル。その先も登り続けられる",
+      "20体のボス。それぞれ予告される大技と、HP半分での第2フェーズ(壁、激昂、召喚、再生…)",
+      "図鑑は130項目:モンスター104、ボス20、エリート6。弱点、耐性、10種の行動パターン",
+      "装備6部位・5段階のレアリティ(最高はミシック)、永続レリック22個",
+      "転生と残り火の才能で強くなって再スタート。デイリークエスト、実績、日替わり商人",
+      "オフライン収益は最大8時間",
+      "ポーズ、オーディオミキサー、16曲入りジュークボックス、ヒーローのボイス"
+    ],
+    "ko": [
+      "영웅 8명(기사, 성기사, 마법사, 궁수, 도적, 기공사, 주술사, 네크로맨서), 각자 스킬 3개와 궁극기 1개",
+      "8명 중 4명으로 팀 구성: 70가지 조합, 합동 공격을 발동하는 듀오 링크 28개",
+      "20개 월드, 400개 레벨, 그리고 등반은 그 너머까지 이어집니다",
+      "보스 20명, 각자 예고되는 큰 공격과 체력 절반에서 시작되는 2페이즈(벽, 광폭화, 소환, 재생…)",
+      "도감 130개 항목: 몬스터 104, 보스 20, 엘리트 6, 약점·저항·행동 10종",
+      "장비 6칸, 5단계 희귀도(최고 등급 신화), 영구 유물 22개",
+      "환생과 불씨 재능으로 더 강하게 재시작, 일일 퀘스트, 업적, 오늘의 상인",
+      "오프라인 수익 최대 8시간",
+      "일시정지, 오디오 믹서, 16곡 주크박스, 영웅 음성"
+    ],
+    "ru": [
+      "8 героев (рыцарь, паладин, маг, лучница, воровка, механик, шаман, некромант), у каждого 3 навыка и ультимейт",
+      "Команда из 4 из 8: 70 возможных составов и 28 связок-дуэтов, запускающих совместные атаки",
+      "20 миров, 400 уровней, и подъём продолжается дальше",
+      "20 боссов: у каждого заранее объявляемая мощная атака и вторая фаза на половине здоровья (стена, ярость, призывы, регенерация…)",
+      "130 записей бестиария: 104 монстра, 20 боссов и 6 элит, со слабостями, сопротивлениями и 10 типами поведения",
+      "Добыча в 6 слотах и 5 редкостей до мифической, 22 постоянные реликвии",
+      "Перерождение и таланты Углей, чтобы начать сильнее, ежедневные задания, достижения и торговец дня",
+      "Доход в офлайне до 8 часов",
+      "Пауза, аудиомикшер, джукбокс на 16 треков и голоса героев"
+    ],
+    "id": [
+      "8 pahlawan (ksatria, paladin, penyihir, pemanah, pencuri, perakit, syaman, nekromancer), masing-masing 3 skill dan satu ultimate",
+      "Tim 4 dari 8 pahlawan: 70 susunan mungkin, dan 28 tautan duo yang memicu serangan gabungan",
+      "20 dunia, 400 level, dan pendakian terus berlanjut",
+      "20 bos, masing-masing dengan serangan besar yang diumumkan dan fase kedua saat nyawa tinggal setengah (tembok, mengamuk, pemanggilan, regenerasi…)",
+      "130 entri bestiari: 104 monster, 20 bos, dan 6 elit, lengkap dengan kelemahan, resistansi, dan 10 perilaku",
+      "Loot di 6 slot dan 5 tingkat kelangkaan hingga Mitos, 22 relik permanen",
+      "Kelahiran kembali dan bakat Bara untuk memulai lebih kuat, misi harian, pencapaian, dan pedagang harian",
+      "Penghasilan offline hingga 8 jam",
+      "Jeda, mixer audio, jukebox 16 lagu, dan suara para pahlawan"
     ]
   },
   "platforms": {
     "fr": "Navigateur, mobile",
-    "en": "Browser, mobile"
+    "en": "Browser, mobile",
+    "es": "Navegador, móvil",
+    "pt": "Navegador, celular",
+    "th": "เบราว์เซอร์, มือถือ",
+    "zh": "浏览器、手机",
+    "ja": "ブラウザ、モバイル",
+    "ko": "브라우저, 모바일",
+    "ru": "Браузер, мобильные устройства",
+    "id": "Peramban, seluler"
   },
   "languages": {
     "fr": "Français, anglais, espagnol, portugais, thaï",
-    "en": "French, English, Spanish, Portuguese, Thai"
+    "en": "French, English, Spanish, Portuguese, Thai",
+    "es": "Francés, inglés, español, portugués, tailandés",
+    "pt": "Francês, inglês, espanhol, português, tailandês",
+    "th": "ฝรั่งเศส, อังกฤษ, สเปน, โปรตุเกส, ไทย",
+    "zh": "法语、英语、西班牙语、葡萄牙语、泰语",
+    "ja": "フランス語、英語、スペイン語、ポルトガル語、タイ語",
+    "ko": "프랑스어, 영어, 스페인어, 포르투갈어, 태국어",
+    "ru": "французский, английский, испанский, португальский, тайский",
+    "id": "Prancis, Inggris, Spanyol, Portugis, Thai"
   }
 }
