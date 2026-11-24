@@ -125,6 +125,7 @@ body{background:
 @media (max-width:520px){.shelf .scard .sdesc{-webkit-line-clamp:3;font-size:.82rem}}
 .shelf .scard .sact{margin-top:auto;padding-top:8px}
 .sprice{border-radius:999px;font-weight:900;letter-spacing:.02em}
+.shelf .scard .sprice{top:8px;bottom:auto;left:8px}   /* en haut : le bas des jaquettes porte parfois un titre */
 
 /* ---------- Actualités avec miniature ---------- */
 .news{padding:clamp(8px,3vw,24px) 0 clamp(28px,5vw,48px)}
