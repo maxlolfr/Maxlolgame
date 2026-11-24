@@ -1,17 +1,24 @@
 {
+  "published": false,
   "slug": "nom-du-jeu",
   "name": "Nom du jeu",
   "accent": "#3DD6C6",
   "accent_ink": "#06201D",
   "price": "7,99 €",
+  "model": "gratuit | payant | gratuit + achat unique",
+  "purchase": { "product_id": "", "note": "id du produit dans backend/lib/core.mjs CATALOG ; vide = pas d'achat" },
   "itch": "https://maxlolfr.itch.io/nom-du-jeu",
   "play": "https://lien-pour-jouer-dans-le-navigateur",
+  "trailer": "",
   "version": "1.0",
   "cover": "assets/nom-du-jeu-cover.webp",
+  "logo": "assets/nom-du-jeu-logo.webp",
+  "banner": "assets/nom-du-jeu-banner.webp",
   "images": ["assets/nom-du-jeu-1.webp", "assets/nom-du-jeu-2.webp"],
   "genre":     { "fr": "Genre du jeu", "en": "Game genre" },
   "pitch":     { "fr": "Deux phrases qui donnent envie.", "en": "Two sentences that make you want to play." },
   "feats":     { "fr": ["Premier point fort", "Deuxième point fort", "Troisième point fort"], "en": ["First strength", "Second strength", "Third strength"] },
   "platforms": { "fr": "Navigateur, mobile", "en": "Browser, mobile" },
-  "languages": { "fr": "Français, anglais", "en": "French, English" }
+  "languages": { "fr": "Français, anglais", "en": "French, English" },
+  "seo":       { "fr": { "title": "", "description": "" }, "en": { "title": "", "description": "" } }
 }

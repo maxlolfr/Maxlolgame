@@ -8,7 +8,9 @@ def _games():
     out=[]
     for f in sorted(glob.glob(TOOLS+'games/*.json')):
         if os.path.basename(f).startswith('_'): continue
-        out.append(json.load(open(f)))
+        g=json.load(open(f))
+        if g.get('published',True) is False: continue   # jeu non publié : invisible partout
+        out.append(g)
     return out
 LAB={
 'fr':('Jouer à {n}','Acheter','Voir sur itch.io','Plateformes','Version','Langues','Presse'),

@@ -2,8 +2,19 @@
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://maxlol-pay.netlify.app; img-src 'self' data:; base-uri 'none'; form-action 'none'">
-<title>%s | Maxlol Games</title>
+<title>Paiement | Maxlol Games</title>
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#1A1238;color:#EDE9FF;font:16px/1.5 system-ui,sans-serif;padding:20px}
-main{max-width:460px;width:100%%;text-align:center}h1{font-size:1.6rem;margin:.2em 0}p{color:#B9B0DD}code{display:block;margin:14px 0;padding:14px;border-radius:12px;background:#2A1F56;color:#FFB547;font-size:1.25rem;letter-spacing:.04em;user-select:all;-webkit-user-select:all}
+main{max-width:460px;width:100%;text-align:center}h1{font-size:1.6rem;margin:.2em 0}p{color:#B9B0DD}code{display:block;margin:14px 0;padding:14px;border-radius:12px;background:#2A1F56;color:#FFB547;font-size:1.25rem;letter-spacing:.04em;user-select:all;-webkit-user-select:all}
 a,button{display:inline-block;margin:6px;padding:12px 20px;border-radius:14px;border:0;background:#FFB547;color:#2A1300;font:700 1rem system-ui;text-decoration:none;cursor:pointer}</style></head>
-<body><main id="m">%s</main><script src="/assets/maxlol-pay.js"></script><script>%s</script></body></html>
+<body><main id="m"><h1 id="t">Validation du paiement…</h1><p id="s">Merci de patienter, ne fermez pas cette page.</p><code id="k" hidden></code><a href="/fr/">Retour au site</a></main><script src="/assets/maxlol-pay.js"></script><script>(function(){
+var t=document.getElementById('t'),s=document.getElementById('s'),k=document.getElementById('k');
+function say(a,b){t.textContent=a;s.textContent=b}
+var id=new URLSearchParams(location.search).get('token');
+if(!id||!/^[A-Za-z0-9_-]{6,64}$/.test(id)){say('Lien de retour invalide','Aucun paiement n\u2019a été enregistré. Si vous avez payé, écrivez-nous avec votre numéro de transaction PayPal.');return}
+if(!window.MaxlolPay){say('Service indisponible','Réessayez dans quelques minutes.');return}
+MaxlolPay.complete(id).then(function(r){var b=r.body||{};
+ if(b.status==='COMPLETED'){say('Merci ! Achat confirmé','Conservez votre clé de licence : elle permet de restaurer l\u2019achat sur un autre appareil.');if(b.licenseKey){k.textContent=b.licenseKey;k.hidden=false}}
+ else if(b.status==='PENDING'){say('Paiement en attente','PayPal n\u2019a pas encore validé le paiement. Le contenu sera débloqué dès sa confirmation ; vous pouvez revenir sur cette page plus tard.')}
+ else{say('Paiement non confirmé','Aucun débit n\u2019a été enregistré par notre serveur. Contactez-nous si vous avez été débité.')}
+}).catch(function(){say('Erreur réseau','Le paiement n\u2019a pas pu être vérifié. Ne payez pas une seconde fois : rechargez cette page.')});
+})();</script></body></html>
