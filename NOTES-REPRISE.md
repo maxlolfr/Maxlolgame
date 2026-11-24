@@ -3,7 +3,7 @@ Répondre en français. Max travaille uniquement depuis le téléphone ; Claude 
 Production = branche `main` (GitHub Pages). Push : `git fetch origin main`, rebase/merge, `git -c push.negotiate=true push origin HEAD:main`. Une autre session pousse aussi (Chibi Legends) : toujours fetch avant.
 
 ## Chaîne de génération (tools/, voir tools/README.md)
-build_en/i18n → v7_css → v8_legal → v9_gallery → v10_home → v11_gamepages → v12 héros → v13 bannières → v14 captures téléphone → v15 fiches héros → v16 ID indisponible → v17 intro → **v18 Chibi Legends**. Tous idempotents. Contrôle : `python3 -I tools/seo_check.py` (doit donner 0 erreur / 0 avertissement). Partage : `python3 -I tools/make_og2.py`.
+build_en/i18n → v7_css → v8_legal → v9_gallery → v10_home → v11_gamepages → v12 héros → v13 bannières → v14 captures téléphone → v15 fiches héros → v16 ID indisponible → v17 intro → **v18 Chibi Legends** → **v19 Signature** (charte « Maxlol Signature », `assets/css/signature.css`, à lancer en dernier ; changer une couleur = modifier les variables `--mx-*`). Tous idempotents. Contrôle : `python3 -I tools/seo_check.py` (doit donner 0 erreur / 0 avertissement). Partage : `python3 -I tools/make_og2.py`.
 
 ## Fait aujourd'hui
 - Bannières, héros cliquables, captures téléphone traduites, images de partage, fiches héros/dragons, intro v2 avec sons ElevenLabs.
@@ -20,3 +20,7 @@ build_en/i18n → v7_css → v8_legal → v9_gallery → v10_home → v11_gamepa
 ## Prochaine étape demandée
 **Refonte graphique du site** (nouvelle fenêtre). Rien à changer sur maxlolgames.com avant validation de Max si possible via le site test Netlify `maxlolgames-test`.
 Règles : annonce + estimation de coût + liste de tâches dès le début ; barre de progression et coût en tokens dans chaque réponse ; demander l'accord avant de générer des sons payants hors site.
+
+## Refonte graphique « Maxlol Signature » (24 nov. 2026, validée par Max)
+Faite : tokens, header, hero, carrousel, bandeau, catalogue, actus avec miniatures, studio, fiches des 4 jeux (bannière, ambiance par jeu, galeries, héros). Publiée sur `main`.
+Reste : accueil plus proche des maquettes (menu à onglet actif, carrousel avec captures, pied de page réseaux), date des actus localisée, Lighthouse, images de `ART-ASSETS-REQUEST.md` (jaquette + bannière Chibi Legends, illustration studio).
