@@ -10,10 +10,54 @@
   "version": "1.8.1",
   "cover": "assets/cl-cover.webp",
   "banner": "assets/b/chibi-legends-rpg.webp",
-  "images": ["assets/cl-1.webp", "assets/cl-2.webp", "assets/cl-3.webp", "assets/cl-4.webp", "assets/cl-5.webp", "assets/cl-6.webp", "assets/cl-7.webp", "assets/cl-8.webp"],
-  "genre":     { "fr": "RPG d'action idle", "en": "Idle action RPG" },
-  "pitch":     { "fr": "Forme une équipe de héros chibi et regarde-les combattre tout seuls, monde après monde. Améliore-les, trouve du butin, débloque leurs ultimes et affronte des boss qui changent de tactique. Même quand tu n'es pas là, ton équipe gagne de l'or.", "en": "Build a team of chibi heroes and watch them fight on their own, world after world. Upgrade them, find loot, unleash their ultimates and face bosses that change tactics. Even when you're away, your team keeps earning gold." },
-  "feats":     { "fr": ["8 héros, une équipe de 4, des liens de duo et des ultimes", "20 mondes, des boss à phases et un bestiaire à compléter", "Butin, reliques, sorts et gains hors ligne jusqu'à 8 h", "Pause, mixeur audio et jukebox des musiques débloquées"], "en": ["8 heroes, a team of 4, duo links and ultimates", "20 worlds, multi-phase bosses and a bestiary to complete", "Loot, relics, skills and offline earnings up to 8 h", "Pause, audio mixer and a jukebox of unlocked music"] },
-  "platforms": { "fr": "Navigateur, mobile", "en": "Browser, mobile" },
-  "languages": { "fr": "Français, anglais, espagnol, portugais, thaï", "en": "French, English, Spanish, Portuguese, Thai" }
+  "images": [
+    "assets/cl-1.webp",
+    "assets/cl-2.webp",
+    "assets/cl-3.webp",
+    "assets/cl-4.webp",
+    "assets/cl-5.webp",
+    "assets/cl-6.webp",
+    "assets/cl-7.webp",
+    "assets/cl-8.webp"
+  ],
+  "genre": {
+    "fr": "RPG d'action idle",
+    "en": "Idle action RPG"
+  },
+  "pitch": {
+    "fr": "Chibi Legends est un RPG d'action idle : tu bâtis l'équipe, tes héros se battent. Recrute 8 héros, choisis-en 4, associe-les en duos et grimpe 400 niveaux répartis sur 20 mondes, chacun gardé par un boss qui change de tactique en plein combat. Améliore, équipe, apprends des sorts, puis renais plus fort. Même quand tu n'es pas là, ton équipe continue de gagner de l'or.",
+    "en": "Chibi Legends is an idle action RPG: you build the team, your heroes do the fighting. Recruit 8 heroes, pick 4, pair them in duos and climb 400 levels across 20 worlds, each guarded by a boss that changes tactics mid-fight. Upgrade, equip, learn skills, then be reborn stronger. Even when you're away, your team keeps earning gold."
+  },
+  "feats": {
+    "fr": [
+      "8 héros (chevalier, paladine, mage, archère, voleuse, artificier, chamane, nécromancien), 3 sorts et un ultime chacun",
+      "Une équipe de 4 parmi 8 : 70 compositions possibles, et 28 liens de duo qui déclenchent des attaques combinées",
+      "20 mondes, 400 niveaux, et la montée continue au-delà",
+      "20 boss, chacun avec sa grande attaque annoncée et une 2e phase à mi-vie (muraille, rage, invocations, régénération…)",
+      "130 fiches de bestiaire : 104 monstres, 20 boss et 6 élites, avec faiblesses, résistances et 10 comportements",
+      "Butin sur 6 emplacements et 5 raretés jusqu'au Mythique, 22 reliques permanentes",
+      "Renaissance et talents de Braises pour repartir plus fort, quêtes du jour, succès et marchand du jour",
+      "Gains hors ligne jusqu'à 8 h",
+      "Pause, mixeur audio, jukebox de 16 musiques et voix des héros"
+    ],
+    "en": [
+      "8 heroes (knight, paladin, mage, archer, thief, engineer, shaman, necromancer), 3 skills and an ultimate each",
+      "A team of 4 out of 8: 70 possible line-ups, and 28 duo links that trigger combined attacks",
+      "20 worlds, 400 levels, and the climb goes on beyond",
+      "20 bosses, each with a telegraphed big attack and a second phase at half health (wall, rage, summons, regeneration…)",
+      "130 bestiary entries: 104 monsters, 20 bosses and 6 elites, with weaknesses, resistances and 10 behaviours",
+      "Loot in 6 slots and 5 rarities up to Mythic, 22 permanent relics",
+      "Rebirth and Ember talents to restart stronger, daily quests, achievements and a daily merchant",
+      "Offline earnings up to 8 h",
+      "Pause, audio mixer, a 16-track jukebox and hero voices"
+    ]
+  },
+  "platforms": {
+    "fr": "Navigateur, mobile",
+    "en": "Browser, mobile"
+  },
+  "languages": {
+    "fr": "Français, anglais, espagnol, portugais, thaï",
+    "en": "French, English, Spanish, Portuguese, Thai"
+  }
 }
