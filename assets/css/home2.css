@@ -1,10 +1,10 @@
 /* Accueil « maquette 3 » : hero titre sur image, carrousel vedette, stats avec icônes, cartes verticales. Généré par tools/v10_home.py (HTML) */
 /* ---------- Hero ---------- */
-.hero2{min-height:min(138vw,640px);display:block;padding:clamp(84px,14vw,120px) 0 clamp(28px,5vw,48px);
+.hero2{min-height:min(150vw,640px);display:block;padding:clamp(84px,14vw,120px) 0 clamp(28px,5vw,48px);
  background:
   linear-gradient(180deg,rgba(18,12,43,.5) 0,rgba(18,12,43,.78) 30%,rgba(18,12,43,.25) 58%,rgba(18,12,43,0) 74%,var(--nuit) 100%),
   linear-gradient(90deg,rgba(18,12,43,.55) 0,rgba(18,12,43,0) 70%),
-  url(/assets/b/la-derniere-torche.webp) 78% 100%/cover no-repeat}
+  url(/assets/b/la-derniere-torche.webp) 100% 100%/auto 64% no-repeat,var(--nuit)}
 .hero2::before{display:none}
 .hero2 .fxc,.hero2 .fan{display:none}
 .hero2>.wrap{max-width:var(--maxw,1100px)}
