@@ -17,7 +17,8 @@
 .hm-role{margin:0;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#FFB547}
 .hm-name{margin:2px 48px 0 0;font:400 clamp(1.9rem,6vw,2.6rem)/1.05 var(--display);color:#fff}
 .hm-stage{margin:10px auto 0;max-width:440px;aspect-ratio:440/275;display:grid;place-items:center;border-radius:18px;background:radial-gradient(closest-side,rgba(255,150,50,.28),rgba(255,150,50,0) 75%),rgba(255,255,255,.04)}
-.hm-stage img{width:100%;height:auto;display:block}
+.hm-stage img{width:100%;height:100%;object-fit:contain;display:block}
+.hm.sq .hm-stage{aspect-ratio:1/1;max-width:340px}.hm.sq .hm-pose img{aspect-ratio:1/1}
 .hm-skin{margin:8px 0 0;text-align:center;font:400 1.15rem var(--display);color:#FFD9A0}
 .hm-h{margin:18px 0 8px;font-weight:800;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:#E8B48A}
 .hm-chips{display:flex;flex-wrap:wrap;gap:8px}

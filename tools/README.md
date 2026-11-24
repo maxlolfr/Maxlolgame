@@ -18,3 +18,10 @@ Quand il y a plus de trois jeux : mettre à jour la phrase « Trois jeux, trois 
 
 ## Compteur de visites
 Cloudflare Web Analytics : mettre le jeton dans `config.json` (`analytics_token`), relancer le build. Sans jeton, aucun compteur n'est chargé.
+
+## Étapes 12 à 15 (héros, bannières, captures, fiches des jeux)
+- `v12_heroes.py` : cartes « héros » cliquables de l'accueil (fiche : `assets/js/heroes.js`, `assets/css/heroes.css`). Images : `extract_heroes.py` (Latorche).
+- `v13_banners.py` : bannières 16:9 (`assets/b/<jeu>.webp`) dans le carrousel de l'accueil.
+- `v14_phone.py` : captures du cadre téléphone en fr/en/es/pt (`assets/t-<lang>-<scène>.webp`, prises dans le jeu).
+- `v15_gameheroes.py` : fiches cliquables des pages Infinite Dungeon et WYRMSTORM (`assets/js/gallery-modal.js`, `gh.css`). Images : `extract_gamesheroes.py`.
+- `make_og2.py` : images de partage (remplace `make_og.py` / `make_og_home.py`).

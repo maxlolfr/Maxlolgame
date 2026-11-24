@@ -1,0 +1,15 @@
+/* Cartes cliquables des pages jeu (fiche : assets/js/gallery-modal.js). Même style que l'accueil. */
+.gh{margin-top:26px}
+.gh .t-hint{margin:6px 0 0;color:#E8B48A;font-weight:700;font-size:.92rem}
+.gh ul{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:760px){.gh ul{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.gh li{padding:0;border-radius:14px;background:rgba(255,140,40,.08);box-shadow:inset 0 0 0 1px rgba(255,170,80,.18)}
+.gh .hc{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border-radius:14px;cursor:pointer;min-height:64px;color:inherit;transition:background .2s,transform .15s}
+.gh .hc:hover,.gh .hc:focus-visible{background:rgba(255,140,40,.2);transform:translateY(-2px)}
+.gh .hc:focus-visible{outline:3px solid #FFD9A0;outline-offset:2px}
+.gh .hc-face{flex:none;width:48px;height:48px;border-radius:12px;object-fit:cover;box-shadow:0 0 0 2px rgba(255,170,80,.5)}
+.gh .hc-t{display:block;min-width:0}
+.gh .hc-t b{display:block;font:400 1.15rem var(--display);color:#FFF1DA}
+.gh li .hc-t span{display:block;font-size:.86rem;font-weight:700;color:#E8B48A}
+.gh .hc-go{margin-left:auto;font-style:normal;font-size:1.6rem;color:#FFD9A0;opacity:.8}
+.gh .hc-face{object-fit:contain;background:rgba(255,255,255,.06)}
