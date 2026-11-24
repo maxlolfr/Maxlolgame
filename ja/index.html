@@ -46,6 +46,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://maxlolgames.com/#studio", "name": "Maxlol Games", "url": "https://maxlolgames.com/", "logo": "https://maxlolgames.com/assets/icon-512.png", "sameAs": ["https://maxlolfr.itch.io", "https://github.com/maxlolfr"], "alternateName": ["Maxlol Game", "maxlolfr"], "founder": {"@type": "Person", "name": "maxlolfr"}}, {"@type": "WebSite", "@id": "https://maxlolgames.com/ja/#site", "url": "https://maxlolgames.com/ja/", "name": "Maxlol Games", "inLanguage": "ja", "publisher": {"@id": "https://maxlolgames.com/#studio"}, "alternateName": "maxlolgames.com"}, {"@type": "ItemList", "name": "Maxlol Games", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "VideoGame", "name": "La Dernière Torche", "url": "https://maxlolgames.com/ja/#la-derniere-torche", "image": "https://maxlolgames.com/assets/og/la-derniere-torche.jpg", "applicationCategory": "Game", "gamePlatform": "Web browser", "author": {"@id": "https://maxlolgames.com/#studio"}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "VideoGame", "name": "WYRMSTORM", "url": "https://maxlolgames.com/ja/#wyrmstorm", "image": "https://maxlolgames.com/assets/og/wyrmstorm.jpg", "applicationCategory": "Game", "gamePlatform": "Web browser", "author": {"@id": "https://maxlolgames.com/#studio"}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "VideoGame", "name": "Gravity Turn", "url": "https://maxlolgames.com/ja/#gravity-turn", "image": "https://maxlolgames.com/assets/og/gravity-turn.jpg", "applicationCategory": "Game", "gamePlatform": "Web browser", "author": {"@id": "https://maxlolgames.com/#studio"}}}, {"@type": "ListItem", "position": 4, "item": {"@type": "VideoGame", "name": "Infinite Dungeon", "url": "https://maxlolgames.com/ja/#infinite-dungeon", "image": "https://maxlolgames.com/assets/og/infinite-dungeon.jpg", "applicationCategory": "Game", "gamePlatform": "Web browser", "author": {"@id": "https://maxlolgames.com/#studio"}}}]}]}</script>
 <link rel="stylesheet" href="/assets/css/home.ebf2bf9f.css">
 <link rel="stylesheet" href="../assets/css/home2.css">
+<link rel="stylesheet" href="../assets/css/intro2.css">
 <link rel="stylesheet" href="../assets/css/heroes.css">
 <link rel="stylesheet" href="/assets/css/legal.css"></head>
 <body class="intro">
@@ -58,9 +59,12 @@
     <div class="in-col"><img src="../assets/intro/i1.webp" alt="" width="240" height="360" decoding="async"><img src="../assets/intro/i3.webp" alt="" width="240" height="360" decoding="async"><img src="../assets/intro/i2.webp" alt="" width="240" height="360" decoding="async"><img src="../assets/intro/i4.webp" alt="" width="240" height="360" decoding="async"></div>
   </div>
   <div class="in-veil"></div>
+  <div class="in-rays"></div><div class="in-ring"></div><div class="in-ring2"></div>
   <canvas id="introFx"></canvas>
+  <div class="in-flash"></div>
   <p class="in-t1">maxlolfr 作品</p>
-  <p class="in-t2">Maxlol Games</p>
+  <p class="in-t2"><span style="--i:0">M</span><span style="--i:1">a</span><span style="--i:2">x</span><span style="--i:3">l</span><span style="--i:4">o</span><span style="--i:5">l</span><span style="--i:6">&nbsp;</span><span style="--i:7">G</span><span style="--i:8">a</span><span style="--i:9">m</span><span style="--i:10">e</span><span style="--i:11">s</span></p>
+  <button class="in-gate" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>タップして入る</span></button>
   <p class="in-skip">タップでスキップ</p>
 </div>
 
@@ -497,44 +501,68 @@ document.querySelectorAll(".card").forEach(c => c.addEventListener("animationend
 /* petit jingle d'intro : joué seulement si le navigateur l'autorise (sinon silence, sans erreur) */
 function introSound(){ try { const a = new Audio("../assets/audio/maxlol-intro.mp3"); a.volume = .7; const p = a.play(); if (p) p.catch(() => {}); } catch(e){} }
 
-/* --- Intro studio : la mosaïque des jeux se lève, le logo éclate en confettis --- */
+/* --- Intro studio v2 : « touche pour entrer » (débloque le son), montée, impact, titre, confettis (tools/v17_intro.py) --- */
 (() => {
   const el = document.getElementById("intro");
   el.querySelectorAll(".in-col").forEach(c => { c.innerHTML += c.innerHTML; });   // boucle sans fin : on double les 4 images ici plutôt que dans le HTML
-  let seen = false; try { seen = sessionStorage.getItem("mg.intro") === "1"; } catch(e){}
+  let seen = false, muted = false; try { seen = sessionStorage.getItem("mg.intro") === "1"; muted = localStorage.getItem("mg.music") === "0"; } catch(e){}
+  const timers = [], at = (ms, fn) => timers.push(setTimeout(fn, ms));
   function finish(){
     if (el.classList.contains("gone")) return;
+    timers.forEach(clearTimeout);
     el.classList.add("open"); document.body.classList.remove("intro");
     try { sessionStorage.setItem("mg.intro","1"); } catch(e){}
     heroImpacts();
     setTimeout(() => el.classList.add("gone"), 1050);
   }
   if (seen || RM){ el.classList.add("gone"); document.body.classList.remove("intro"); heroImpacts(); return; }
-  el.addEventListener("click", finish);
+  /* sons : Web Audio (calé sur l'horloge audio, fonctionne sur iPhone après le toucher) */
+  const SRC = { riser: "/assets/audio/intro-riser.mp3", boom: "/assets/audio/intro-boom.mp3", sparkle: "/assets/audio/intro-sparkle.mp3" }, buf = {};
+  let ac = null;
+  if (!muted) try {
+    ac = new (window.AudioContext || window.webkitAudioContext)();
+    for (const k in SRC) fetch(SRC[k]).then(r => r.arrayBuffer()).then(b => ac.decodeAudioData(b, d => { buf[k] = d; }, () => {})).catch(() => {});
+  } catch(e){ ac = null; }
+  function snd(k, when, vol){
+    if (!ac || !buf[k]) return;
+    try { const s = ac.createBufferSource(), g = ac.createGain(); s.buffer = buf[k]; g.gain.value = vol; s.connect(g); g.connect(ac.destination); s.start(ac.currentTime + when); } catch(e){}
+  }
+  /* particules : confettis à l'impact + braises qui montent */
   const cv = document.getElementById("introFx"), ctx = cv.getContext("2d");
-  const COL = ["#FFB547","#FF5E9C","#3DD6C6","#EEE8FF"];
-  let W, H, ps = [], burst = false;
+  const COL = ["#FFB547","#FF5E9C","#3DD6C6","#EEE8FF","#FFE08A"];
+  let W, H, ps = [], embers = false;
   const r0 = fitCanvas(cv); W = r0.width; H = r0.height;
-  function pop(){
-    burst = true;
-    for (let i = 0; i < 46; i++){ const a = Math.random()*Math.PI*2, sp = Math.random()*7+2;
-      ps.push({x:W/2, y:H/2, vx:Math.cos(a)*sp*1.3, vy:Math.sin(a)*sp - 2, l:1, d:Math.random()*.014+.01, r:Math.random()*3+1.5, c:COL[i%4], sq:i%3===0, a:Math.random()*6}); }
+  function pop(n){
+    for (let i = 0; i < n; i++){ const a = Math.random()*Math.PI*2, sp = Math.random()*11+2;
+      ps.push({x:W/2, y:H/2, vx:Math.cos(a)*sp*1.35, vy:Math.sin(a)*sp - 3, l:1, d:Math.random()*.011+.007, r:Math.random()*3.4+1.5, c:COL[i%5], k:i%3, a:Math.random()*6, g:.13}); }
   }
   function loop(){
     if (el.classList.contains("gone")) return;
     ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,W,H);
+    if (embers && Math.random() < .55) ps.push({x:Math.random()*W, y:H+8, vx:(Math.random()-.5)*.8, vy:-(Math.random()*2.2+.8), l:1, d:.006+Math.random()*.006, r:Math.random()*2.2+.8, c:"#FFB04A", k:3, a:0, g:-.002});
     ps = ps.filter(p => (p.l -= p.d) > 0);
-    for (const p of ps){ p.vy += .12; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.a += .15;
-      ctx.globalAlpha = p.l; ctx.fillStyle = p.c;
-      if (p.sq){ ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a); ctx.fillRect(-p.r,-p.r,p.r*2,p.r*2); ctx.restore(); }
+    for (const p of ps){ p.vy += p.g; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.a += .15;
+      ctx.globalAlpha = Math.min(1, p.l*1.6); ctx.fillStyle = p.c;
+      if (p.k === 0){ ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a); ctx.fillRect(-p.r,-p.r*.6,p.r*2,p.r*1.2); ctx.restore(); }
+      else if (p.k === 3){ ctx.globalCompositeOperation = "lighter"; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*2.2,0,7); ctx.globalAlpha *= .25; ctx.fill(); ctx.globalAlpha = Math.min(1, p.l*1.6); ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill(); ctx.globalCompositeOperation = "source-over"; }
       else { ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill(); } }
     ctx.globalAlpha = 1;
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
-  setTimeout(() => el.classList.add("lit"), 150);
-  setTimeout(() => { el.classList.add("title"); pop(); introSound(); }, 800);
-  setTimeout(finish, 2900);
+  let started = false;
+  function start(){
+    if (started) return; started = true; el.classList.add("started");
+    if (ac){ try { ac.resume(); } catch(e){} snd("riser", 0, .85); snd("boom", 3.0, 1); snd("sparkle", 3.25, .75); }
+    at(250, () => el.classList.add("lit", "warp"));
+    at(3000, () => { el.classList.add("title", "shake"); pop(190); embers = true; });
+    at(3600, () => el.classList.remove("shake"));
+    at(3750, () => pop(70));
+    at(7000, finish);
+  }
+  el.querySelector(".in-gate").addEventListener("click", e => { e.stopPropagation(); start(); });
+  el.addEventListener("click", () => { if (started) finish(); else start(); });
+  if (muted) at(300, start);      // visiteur qui a coupé le son : pas d'écran d'attente, intro silencieuse
 })();
 
 /* --- Inclinaison 3D + reflet holographique qui suit le doigt / la souris --- */

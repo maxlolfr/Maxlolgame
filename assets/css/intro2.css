@@ -1,0 +1,31 @@
+/* Intro studio v2 : écran « touche pour entrer » (débloque le son), montée, impact, titre lettre par lettre. Généré avec tools/v17_intro.py */
+#intro:not(.lit) .in-wall{opacity:.3;transform:rotate(-9deg) scale(1.15)}
+#intro.warp .in-wall{opacity:.8;transform:rotate(-9deg) scale(1.55);transition:opacity 1.2s ease,transform 3.2s cubic-bezier(.5,0,.9,.4)}
+#intro.warp .in-col{animation-duration:2.4s}
+#intro.warp .in-col:nth-child(3){animation-duration:3.1s}
+.in-gate{position:absolute;z-index:5;left:50%;top:calc(50% - 1.6rem);transform:translateX(-50%);display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border:0;border-radius:999px;cursor:pointer;
+  font:400 clamp(1.25rem,5vw,1.6rem)/1 var(--display);color:#2a1500;background:linear-gradient(180deg,#FFE08A,#FFA62B);box-shadow:0 6px 0 #B25E00,0 0 0 0 rgba(255,181,71,.7),0 12px 40px rgba(255,150,40,.45);animation:inPulse 1.6s ease-in-out infinite;white-space:nowrap;transition:opacity .35s,transform .35s}
+.in-gate svg{width:1.3em;height:1.3em}
+.in-gate:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@keyframes inPulse{0%,100%{box-shadow:0 6px 0 #B25E00,0 0 0 0 rgba(255,181,71,.55),0 12px 40px rgba(255,150,40,.45)}50%{box-shadow:0 6px 0 #B25E00,0 0 0 18px rgba(255,181,71,0),0 12px 54px rgba(255,150,40,.7)}}
+#intro.started .in-gate{opacity:0;pointer-events:none;transform:translateX(-50%) scale(.7)}
+#intro:not(.started) .in-skip{display:none}
+.in-rays{position:absolute;inset:-60%;z-index:1;pointer-events:none;opacity:0;transform:scale(.3);background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,205,110,.30) 0 5deg,transparent 5deg 15deg);-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0,transparent 42%);mask-image:radial-gradient(circle at 50% 50%,#000 0,transparent 42%);animation:inSpin 16s linear infinite}
+#intro.title .in-rays{opacity:1;transform:scale(1);transition:opacity .5s,transform 1.4s cubic-bezier(.2,.9,.2,1)}
+@keyframes inSpin{to{rotate:360deg}}
+.in-ring,.in-ring2{position:absolute;left:50%;top:50%;width:24px;height:24px;translate:-50% -50%;border-radius:50%;border:5px solid #FFD27A;opacity:0;z-index:2;pointer-events:none}
+.in-ring2{border-color:#FF5E9C;border-width:3px}
+#intro.title .in-ring{animation:inRing 1.3s cubic-bezier(.15,.7,.3,1) both}
+#intro.title .in-ring2{animation:inRing 1.5s cubic-bezier(.15,.7,.3,1) .18s both}
+@keyframes inRing{0%{opacity:.95;width:24px;height:24px}100%{opacity:0;width:170vmax;height:170vmax}}
+.in-flash{position:absolute;inset:0;z-index:4;background:radial-gradient(circle at 50% 50%,#fff 0,#FFE9B0 35%,rgba(255,200,100,0) 75%);opacity:0;pointer-events:none}
+#intro.title .in-flash{animation:inFlash .7s ease-out both}
+@keyframes inFlash{0%{opacity:.95}100%{opacity:0}}
+#intro.shake{animation:inShake .55s cubic-bezier(.36,.07,.19,.97) both}
+@keyframes inShake{10%,90%{translate:-2px 1px}20%,80%{translate:5px -3px}30%,50%,70%{translate:-9px 4px}40%,60%{translate:9px -4px}}
+#intro .in-t2{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:inherit;transform:none;filter:drop-shadow(0 4px 22px rgba(255,94,156,.55)) drop-shadow(0 0 30px rgba(255,181,71,.35));z-index:3;white-space:nowrap}
+#intro .in-t2 span{display:inline-block;opacity:0;transform:translateY(-140%) scale(1.8) rotate(-10deg);background:linear-gradient(180deg,#FFF3C4,#FFB547 50%,#FF5E9C);-webkit-background-clip:text;background-clip:text;color:transparent}
+#intro.title .in-t2 span{animation:inDrop .75s cubic-bezier(.2,1.35,.3,1) calc(var(--i) * 55ms) both}
+@keyframes inDrop{0%{opacity:0;transform:translateY(-140%) scale(1.8) rotate(-10deg)}60%{opacity:1}100%{opacity:1;transform:none}}
+#intro.title .in-t1{opacity:0;transition-duration:.25s}
+@media (prefers-reduced-motion:reduce){.in-gate{animation:none}}
