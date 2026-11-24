@@ -1,0 +1,115 @@
+{
+ "_aide": "Pour ajouter une actualité : ajouter une entrée EN HAUT de la liste (id unique, date AAAA-MM-JJ, tag = nom du jeu, game = slug de la page du jeu ou 'studio', title dans les 10 langues, body en fr et en), puis relancer tools/build_i18n.py.",
+ "items": [
+  {
+   "id": "2026-11-24-wyrmstorm",
+   "date": "2026-11-24",
+   "tag": "WYRMSTORM",
+   "game": "wyrmstorm",
+   "title": {
+    "fr": "WYRMSTORM arrive : un shoot'em up à dragons, gratuit",
+    "en": "WYRMSTORM is here: a free dragon shoot'em up",
+    "es": "Llega WYRMSTORM: un shoot'em up de dragones gratis",
+    "pt": "Chegou WYRMSTORM: um shoot'em up de dragões grátis",
+    "th": "WYRMSTORM มาแล้ว: เกมยิงมังกรเล่นฟรี",
+    "zh": "WYRMSTORM 上线：免费的龙主题射击游戏",
+    "ja": "WYRMSTORM 登場：無料のドラゴン・シューティング",
+    "ko": "WYRMSTORM 공개: 무료 드래곤 슈팅 게임",
+    "ru": "Вышел WYRMSTORM — бесплатный шутер с драконами",
+    "id": "WYRMSTORM hadir: shoot'em up naga gratis"
+   },
+   "body": {
+    "fr": "WYRMSTORM rejoint le catalogue : un shoot'em up à dragons, gratuit, qui se joue d'un seul pouce directement dans le navigateur.",
+    "en": "WYRMSTORM joins the catalogue: a free dragon shoot'em up you play with one thumb, right in your browser."
+   }
+  },
+  {
+   "id": "2026-11-24-la-derniere-torche-pp",
+   "date": "2026-11-24",
+   "tag": "La Dernière Torche",
+   "game": "la-derniere-torche",
+   "title": {
+    "fr": "Achat possible via PayPal",
+    "en": "You can now buy it with PayPal",
+    "es": "Ya puedes comprarla con PayPal",
+    "pt": "Agora dá para comprar com PayPal",
+    "th": "ซื้อผ่าน PayPal ได้แล้ว",
+    "zh": "现在可通过 PayPal 购买",
+    "ja": "PayPal で購入できるようになりました",
+    "ko": "이제 PayPal로 구매할 수 있어요",
+    "ru": "Теперь можно купить через PayPal",
+    "id": "Kini bisa dibeli lewat PayPal"
+   },
+   "body": {
+    "fr": "Le jeu complet de La Dernière Torche peut s'acheter via PayPal depuis la page du jeu.",
+    "en": "The full version of La Dernière Torche can be bought with PayPal from the game page."
+   }
+  },
+  {
+   "id": "2026-11-24-studio-intro",
+   "date": "2026-11-24",
+   "tag": "Maxlol Games",
+   "game": "hero",
+   "title": {
+    "fr": "Nouvelle intro du studio",
+    "en": "New studio intro",
+    "es": "Nueva intro del estudio",
+    "pt": "Nova abertura do estúdio",
+    "th": "อินโทรใหม่ของสตูดิโอ",
+    "zh": "全新的工作室开场动画",
+    "ja": "スタジオの新しいイントロ",
+    "ko": "새로운 스튜디오 인트로",
+    "ru": "Новая заставка студии",
+    "id": "Intro studio yang baru"
+   },
+   "body": {
+    "fr": "La page d'accueil du studio s'ouvre sur une nouvelle intro qui réunit les jeux, avec un petit jingle.",
+    "en": "The studio home page now opens with a new intro that brings all the games together, with a short jingle."
+   }
+  },
+  {
+   "id": "2026-11-23-la-derniere-torche",
+   "date": "2026-11-23",
+   "tag": "La Dernière Torche",
+   "game": "la-derniere-torche",
+   "title": {
+    "fr": "8 héros, 28 costumes et des voix",
+    "en": "8 heroes, 28 costumes and voices",
+    "es": "8 héroes, 28 trajes y voces",
+    "pt": "8 heróis, 28 trajes e vozes",
+    "th": "ฮีโร่ 8 คน ชุด 28 แบบ และเสียงพากย์",
+    "zh": "8 位英雄、28 套服装和语音",
+    "ja": "8人の英雄、28種のコスチューム、ボイス",
+    "ko": "영웅 8명, 코스튬 28종, 음성",
+    "ru": "8 героев, 28 костюмов и озвучка",
+    "id": "8 pahlawan, 28 kostum, dan suara"
+   },
+   "body": {
+    "fr": "La Dernière Torche : 8 héros, 28 costumes, et des voix pendant les combats.",
+    "en": "La Dernière Torche: 8 heroes, 28 costumes, and voices during battles."
+   }
+  },
+  {
+   "id": "2026-11-18-gravity-turn",
+   "date": "2026-11-18",
+   "tag": "Gravity Turn",
+   "game": "gravity-turn",
+   "title": {
+    "fr": "Passage en version 1.4",
+    "en": "Now at version 1.4",
+    "es": "Pasa a la versión 1.4",
+    "pt": "Chega à versão 1.4",
+    "th": "อัปเดตเป็นเวอร์ชัน 1.4",
+    "zh": "更新至 1.4 版",
+    "ja": "バージョン1.4に",
+    "ko": "1.4 버전 업데이트",
+    "ru": "Обновление до версии 1.4",
+    "id": "Naik ke versi 1.4"
+   },
+   "body": {
+    "fr": "Gravity Turn passe en version 1.4.",
+    "en": "Gravity Turn is now at version 1.4."
+   }
+  }
+ ]
+}

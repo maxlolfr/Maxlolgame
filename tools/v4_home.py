@@ -19,13 +19,8 @@ V4_ABOUT_LI=_d(
  "🐉 <b>WYRMSTORM</b>: управляй героем, выпускай драконов и пересекай небо, босс за боссом.",
  "🐉 <b>WYRMSTORM</b>: pandu pahlawanmu, lepaskan naga-nagamu dan jelajahi langit, bos demi bos.")
 # (date, jeu, ancre, titres) : uniquement des mises à jour réelles (historique du dépôt)
-V4_NEWS=[
- ('2026-11-24','WYRMSTORM','wyrmstorm',_d("WYRMSTORM arrive : un shoot'em up à dragons, gratuit","WYRMSTORM is here: a free dragon shoot'em up","Llega WYRMSTORM: un shoot'em up de dragones gratis","Chegou WYRMSTORM: um shoot'em up de dragões grátis","WYRMSTORM มาแล้ว: เกมยิงมังกรเล่นฟรี","WYRMSTORM 上线：免费的龙主题射击游戏","WYRMSTORM 登場：無料のドラゴン・シューティング","WYRMSTORM 공개: 무료 드래곤 슈팅 게임","Вышел WYRMSTORM — бесплатный шутер с драконами","WYRMSTORM hadir: shoot'em up naga gratis")),
- ('2026-11-24','La Dernière Torche','la-derniere-torche',_d("Achat possible via PayPal","You can now buy it with PayPal","Ya puedes comprarla con PayPal","Agora dá para comprar com PayPal","ซื้อผ่าน PayPal ได้แล้ว","现在可通过 PayPal 购买","PayPal で購入できるようになりました","이제 PayPal로 구매할 수 있어요","Теперь можно купить через PayPal","Kini bisa dibeli lewat PayPal")),
- ('2026-11-24','Maxlol Games','hero',_d("Nouvelle intro du studio","New studio intro","Nueva intro del estudio","Nova abertura do estúdio","อินโทรใหม่ของสตูดิโอ","全新的工作室开场动画","スタジオの新しいイントロ","새로운 스튜디오 인트로","Новая заставка студии","Intro studio yang baru")),
- ('2026-11-23','La Dernière Torche','la-derniere-torche',_d("8 héros, 28 costumes et des voix","8 heroes, 28 costumes and voices","8 héroes, 28 trajes y voces","8 heróis, 28 trajes e vozes","ฮีโร่ 8 คน ชุด 28 แบบ และเสียงพากย์","8 位英雄、28 套服装和语音","8人の英雄、28種のコスチューム、ボイス","영웅 8명, 코스튬 28종, 음성","8 героев, 28 костюмов и озвучка","8 pahlawan, 28 kostum, dan suara")),
- ('2026-11-18','Gravity Turn','gravity-turn',_d("Passage en version 1.4","Now at version 1.4","Pasa a la versión 1.4","Chega à versão 1.4","อัปเดตเป็นเวอร์ชัน 1.4","更新至 1.4 版","バージョン1.4に","1.4 버전 업데이트","Обновление до версии 1.4","Naik ke versi 1.4")),
-]
+import json as _jn
+V4_NEWS=[(n['date'],n['tag'],n['game'],n['title']) for n in _jn.load(open(ROOT+'tools/news.json'))['items']]   # tools/news.json = source unique des actualités
 V4_CSS='''
 /* ===== V4 : accueil boutique ===== */
 .card{width:44%}

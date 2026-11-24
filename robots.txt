@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /backend/
+Disallow: /account/
+Disallow: /pay/
+Disallow: /tools/
+Disallow: /chibi-test/
 
 Sitemap: https://maxlolgames.com/sitemap.xml

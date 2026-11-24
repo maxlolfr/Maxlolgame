@@ -157,6 +157,22 @@ V5_G={
    ("Which devices and languages?","In the browser, on phone and computer. The game is in French and English."),
    ("Is my progress saved?","Yes, automatically, on the device you use. If you clear your browser data, the save is gone.")])},
 }
+
+V5_SEO={
+'la-derniere-torche':{
+ 'fr':("La Dernière Torche – RPG de donjon, essai gratuit | Maxlol Games","RPG de donjon au tour par tour : 8 héros, 20 boss et une torche qui s'éteint. Essai gratuit dans le navigateur, jeu complet à {p}, achat unique.","Les huit héros de La Dernière Torche réunis devant l'entrée du donjon, la torche au centre"),
+ 'en':("La Dernière Torche – Turn-Based Dungeon RPG | Maxlol Games","Turn-based dungeon RPG (The Last Torch): 8 heroes, 20 bosses and a torch that fades. Free demo in your browser, full game for {p}, one-time purchase.","The eight heroes of La Dernière Torche gathered at the dungeon entrance, torch in the middle")},
+'wyrmstorm':{
+ 'fr':("WYRMSTORM – Shoot'em up à dragons gratuit | Maxlol Games","Shoot'em up à dragons gratuit, joué d'un seul pouce : 7 boss de monde, 14 gardiens, dragons de 7 éléments. Boutique facultative, sans compte.","Affiche de WYRMSTORM, shoot'em up à dragons"),
+ 'en':("WYRMSTORM – Free Dragon Shoot'em Up | Maxlol Games","Free dragon shoot'em up you play with one thumb: 7 world bosses, 14 guardians, dragons of 7 elements. Optional shop, no account needed.","WYRMSTORM key art, a dragon shoot'em up")},
+'gravity-turn':{
+ 'fr':("Gravity Turn – Puzzle de blocs gratuit | Maxlol Games","Puzzle de blocs gratuit : le plateau 8×8 tourne toutes les trois pièces et les blocs retombent. 84 niveaux, cascades, défi du jour. Sans achat.","Jelly, la mascotte de Gravity Turn, puzzle de blocs qui tournent"),
+ 'en':("Gravity Turn – Free Rotating Block Puzzle | Maxlol Games","Free block puzzle: the 8×8 board turns every three pieces and blocks fall. 84 levels, cascades, daily challenge. No purchases.","Jelly, the mascot of Gravity Turn, a rotating block puzzle")},
+'infinite-dungeon':{
+ 'fr':("Infinite Dungeon – Roguelite fantasy gratuit | Maxlol Games","Roguelite fantasy gratuit : forme une équipe de trois héros et descends 100 étages. Combats automatiques, reliques à fusionner. Version 0.8.","Les cinq héros d'Infinite Dungeon devant la tour du donjon"),
+ 'en':("Infinite Dungeon – Free Auto-Battle Roguelite | Maxlol Games","Free fantasy roguelite: build a team of three heroes and descend 100 floors. Auto-battles, relics to fuse. Version 0.8, in development.","The five heroes of Infinite Dungeon in front of the dungeon tower")},
+}
+V5_LANGS={'la-derniere-torche':['fr','en','es','pt'],'wyrmstorm':['fr','en','th'],'gravity-turn':['fr','en'],'infinite-dungeon':['fr','en']}
 V5_CSS='''
 /* ===== V5 : pages commerciales ===== */
 body.gp{--a:#FFB547;--a-ink:#2A1300}
@@ -221,10 +237,7 @@ def v5_cover_html(slug,pre='/'):
     b=V5_BASE[slug]
     if b['cover']: return '<img src="%s%s" alt="%s" width="640" height="960" loading="lazy" decoding="async">'%(pre,b['cover'],_x(b['name']))
     return '<span class="gtc"><img src="%sassets/gt-jelly.webp" alt="" width="256" height="256" loading="lazy"><img class="gtl" src="%sassets/gt-logo.webp" alt="" width="720" height="241" loading="lazy"></span>'%(pre,pre)
-def v5_page(slug,lang,home):
-    b=V5_BASE[slug]; g=V5_G[slug][lang]; U=V5_U[lang]; key=V5_KEY[slug]; P=v5_fmt_price(lang,home); pre=v5_pref(lang)
-    T=lambda t:_x(t.replace('{p}',P))
-    url='https://maxlolgames.com'+pre+slug+'/'; url_fr='https://maxlolgames.com/fr/'+slug+'/'; url_en='https://maxlolgames.com/'+slug+'/'
+def v5_chrome(lang,home,fr_href,en_href,pre,P):
     fix=lambda t:re.sub(r'(["\'`(])(?:\.\./)?assets/',r'\1/assets/',t)
     hd=home[:home.index('<style>')]
     links=''.join(fix(x) for x in re.findall(r'<link rel="(?:manifest|apple-touch-icon|preload|icon)"[^>]*>\n?',hd))
@@ -235,20 +248,29 @@ def v5_page(slug,lang,home):
     header=re.sub(r'href="#([a-z-]*)"',lambda m:'href="%s%s"'%(pre,('#'+m.group(1)) if m.group(1) else ''),header)
     items=[]
     for code,path,hl,name,short in LANGS:
-        href=('/fr/%s/'%slug) if code=='fr' else ('/%s/'%slug) if code=='en' else '/'+path
+        href=fr_href if code=='fr' else en_href if code=='en' else '/'+path
         items.append('<a href="%s" hreflang="%s" lang="%s"%s>%s</a>'%(href,hl,hl,' aria-current="true"' if code==lang else '',name))
     lm='<details class="langmenu"><summary aria-label="Language / Langue">%s</summary><div class="lm">%s</div></details>'%(lang.upper(),''.join(items))
     header=re.sub(r'<details class="langmenu">.*?</details>',lambda m:lm,header,count=1,flags=re.S)
     footer=re.search(r'<footer>.*?</footer>',home,re.S).group(0)
     script=re.search(r"(/\* =+\n\s+BOUTIQUE.*?)/\* =+ MOTEUR D'EFFETS",home,re.S).group(1)
     if lang=='en': script=script.replace('price: "7,99 €"','price: "%s"'%P)
-    img_abs='https://maxlolgames.com/'+(b['cover'] or 'assets/gt-icon.webp')
-    # JSON-LD
-    ld=[{"@type":"VideoGame","name":b['name'],"description":g['desc'],"url":url,"image":img_abs,"genre":g['genre'],"inLanguage":lang,"applicationCategory":"Game","operatingSystem":"Web browser",
-         "author":{"@type":"Organization","name":"Maxlol Games","url":"https://maxlolgames.com/"},"publisher":{"@type":"Organization","name":"Maxlol Games","url":"https://maxlolgames.com/"},
-         "offers":{"@type":"Offer","price":(re.search(r'[\d.]+','%s'%P.replace(',','.')).group(0) if b['price'] else "0"),"priceCurrency":"EUR","availability":"https://schema.org/InStock","url":url}},
-        {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a.replace('{p}',P)}} for q,a in g['faq']]},
-        {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":U['home'],"item":'https://maxlolgames.com'+pre},{"@type":"ListItem","position":2,"name":b['name'],"item":url}]}]
+    return links,csp,css,header,footer,script
+def v5_page(slug,lang,home):
+    b=V5_BASE[slug]; g=V5_G[slug][lang]; U=V5_U[lang]; key=V5_KEY[slug]; P=v5_fmt_price(lang,home); pre=v5_pref(lang)
+    T=lambda t:_x(t.replace('{p}',P))
+    url='https://maxlolgames.com'+pre+slug+'/'; url_fr='https://maxlolgames.com/fr/'+slug+'/'; url_en='https://maxlolgames.com/'+slug+'/'
+    links,csp,css,header,footer,script=v5_chrome(lang,home,'/fr/%s/'%slug,'/%s/'%slug,pre,P)
+    img_abs='https://maxlolgames.com/assets/og/%s.jpg'%slug; cover_abs='https://maxlolgames.com/'+(b['cover'] or 'assets/gt-icon.webp')
+    ORG={"@type":"Organization","@id":"https://maxlolgames.com/#studio","name":"Maxlol Games","url":"https://maxlolgames.com/","logo":"https://maxlolgames.com/assets/icon-512.png","sameAs":["https://maxlolfr.itch.io","https://github.com/maxlolfr"]}
+    st,sm,sa=V5_SEO[slug][lang]; sm=sm.replace('{p}',P)
+    num=re.search(r'[\d.]+',P.replace(',','.')).group(0) if b['price'] else None
+    offers=[{"@type":"Offer","name":U['demo'] if b['price'] else U['free'],"price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":url}]
+    if b['price']: offers.append({"@type":"Offer","name":U['full'],"price":num,"priceCurrency":"EUR","availability":"https://schema.org/InStock","url":url})
+    ld=[ORG,{"@type":"VideoGame","@id":url+"#game","name":b['name'],"description":sm,"url":url,"image":img_abs,"genre":g['genre'],"inLanguage":V5_LANGS[slug],"applicationCategory":"Game","gamePlatform":"Web browser","operatingSystem":"Any (web browser)","playMode":"SinglePlayer","isAccessibleForFree":True,
+         "author":{"@id":"https://maxlolgames.com/#studio"},"publisher":{"@id":"https://maxlolgames.com/#studio"},"offers":offers if len(offers)>1 else offers[0]},
+        {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q.replace('{p}',P),"acceptedAnswer":{"@type":"Answer","text":a.replace('{p}',P)}} for q,a in g['faq']]},
+        {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":U['home'],"item":'https://maxlolgames.com'+pre},{"@type":"ListItem","position":2,"name":U['games'],"item":'https://maxlolgames.com'+pre+'#jeux'},{"@type":"ListItem","position":3,"name":b['name'],"item":url}]}]
     ldj=json.dumps({"@context":"https://schema.org","@graph":ld},ensure_ascii=False).replace('</','<\\/')
     # hero
     chips=''.join('<span class="chip">%s</span>'%T(c) for c in g['chips'])
@@ -292,14 +314,14 @@ def v5_page(slug,lang,home):
         'const cta=document.getElementById("cta"),bar=document.getElementById("sbar");\n'
         'if(cta&&bar&&"IntersectionObserver" in window){new IntersectionObserver(es=>{bar.classList.toggle("show",!es[0].isIntersecting)}).observe(cta)}\n'
         'document.addEventListener("click",e=>{document.querySelectorAll(".mmenu[open],.langmenu[open]").forEach(d=>{if(!d.contains(e.target)||e.target.closest(".mm a"))d.open=false});});\n</script>\n')
-    seo_t=g['seo']+' | Maxlol Games'
+    seo_t=st
     alts='<link rel="alternate" hreflang="fr" href="%s">\n<link rel="alternate" hreflang="en" href="%s">\n<link rel="alternate" hreflang="x-default" href="%s">\n'%(url_fr,url_en,url_en)
     out=('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="utf-8">\n%s\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n%s'
          '<title>%s</title>\n<meta name="description" content="%s">\n<meta name="robots" content="index, follow, max-image-preview:large">\n<link rel="canonical" href="%s">\n%s'
-         '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Maxlol Games">\n<meta property="og:title" content="%s">\n<meta property="og:description" content="%s">\n<meta property="og:url" content="%s">\n<meta property="og:image" content="%s">\n'
-         '<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">%s</script>\n<style>%s%s</style>\n</head>\n'
+         '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Maxlol Games">\n<meta property="og:locale" content="%s">\n<meta property="og:locale:alternate" content="%s">\n<meta property="og:title" content="%s">\n<meta property="og:description" content="%s">\n<meta property="og:url" content="%s">\n<meta property="og:image" content="%s">\n<meta property="og:image:type" content="image/jpeg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="%s">\n'
+         '<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="%s">\n<meta name="twitter:description" content="%s">\n<meta name="twitter:image" content="%s">\n<meta name="twitter:image:alt" content="%s">\n%s<script type="application/ld+json">%s</script>\n<style>%s%s</style>\n</head>\n'
          '<body class="gp hasbar" style="--a:%s;--a-ink:%s">\n%s\n%s\n%s\n<div class="sbar" id="sbar">%s</div>\n<dialog id="viewer" aria-label="%s"><img id="viewerImg" alt=""><form method="dialog"><button>%s</button></form></dialog>\n%s</body>\n</html>\n')%(
-         lang,csp,links,_x(seo_t),_x(g['desc']),url,alts,_x(seo_t),_x(g['desc']),url,_x(img_abs),ldj,css,V5_CSS,b['a'],b['ink'],header,main,footer,bar,_x(b['name']),_x(U['close']),js)
+         lang,csp,links,_x(seo_t),_x(sm),url,alts,{'fr':'fr_FR','en':'en_US'}[lang],{'fr':'en_US','en':'fr_FR'}[lang],_x(seo_t),_x(sm),url,_x(img_abs),_x(sa),_x(seo_t),_x(sm),_x(img_abs),_x(sa),v6_head(lang),ldj,css,V5_CSS,b['a'],b['ink'],header,main,footer,bar,_x(b['name']),_x(U['close']),js)
     return out
 def v5_build():
     import os
