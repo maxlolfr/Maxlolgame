@@ -199,6 +199,8 @@ def build_gamepage(lang):
     head = head.replace('/wyrmstorm/', '/chibi-legends-game/').replace('og/wyrmstorm.jpg', 'og/chibi-legends.jpg')
     head = re.sub(r'<link rel="stylesheet" href="/assets/css/(heroes|gh)\.css">\n?', '', head)
     head += '\n<link rel="stylesheet" href="/assets/css/chibi.css">'
+    head = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', head)
+    head = re.sub(r'<link rel="canonical"[^>]*>\n?|<link rel="alternate" hreflang=[^>]*>\n?', '', head)
     s = head + '</head>' + rest
     s = s.replace('--a:#B26BFF;--a-ink:#1B0B33', '--a:%s;--a-ink:%s' % (A, INK))
     s = s.replace('/wyrmstorm/', '/chibi-legends-game/')
@@ -231,7 +233,9 @@ def build_gamepage(lang):
 
 def patch_misc():
     p = R + 'sitemap.xml'; s = open(p, encoding='utf8').read()
-    if 'chibi-legends-game' not in s:
+    if 'chibi-legends-game' in s:   # retire une ancienne entrée
+        s = re.sub(r'  <url><loc>https://maxlolgames.com/(?:fr/)?chibi-legends-game/</loc>.*?</url>\n', '', s, flags=re.S); open(p, 'w', encoding='utf8').write(s)
+    if False:
         def u(loc):
             return ('  <url><loc>https://maxlolgames.com/%s</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>\n'
                     '    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/chibi-legends-game/"/>\n    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/chibi-legends-game/"/>\n'
