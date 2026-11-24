@@ -24,6 +24,7 @@ LD_DESC={
  'id':["Dungeon bergiliran untuk ponsel: obormu melemah di setiap ruangan, 20 bos menanti.","Teka-teki ponsel: letakkan blok, papan berputar, kaskade berantai.","Roguelite fantasi dengan pertarungan otomatis: 100 lantai, 10 bos, tim 3 pahlawan."],
  'pt':["Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.","Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.","Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis."]}
 exec(open('/home/claude/v3_extra.py').read())
+exec(open('/home/claude/v4_home.py').read())
 PITCH_FIX={'en':('Three heroes.','Eight heroes, a team of three.'),'es':('Tres héroes.','Ocho héroes, un equipo de tres.'),'pt':('Três heróis.','Oito heróis, uma equipe de três.'),'th':('ฮีโร่สามคน','ฮีโร่แปดคน ทีมละสามคน'),'zh':('三位英雄，','八位英雄，三人一队，'),'ja':('3人の英雄と、','8人の英雄（3人で1チーム）と、'),'ko':('영웅 세 명과','영웅 여덟 명(팀은 세 명)과'),'ru':('Три героя.','Восемь героев, в отряде трое.'),'id':('Tiga pahlawan.','Delapan pahlawan, tim berisi tiga.')}
 COS_FR='28 costumes pour les 8 héros, et des voix pendant les combats'
 COS_TR={'en':'28 costumes for the 8 heroes, and voices during battles','es':'28 trajes para los 8 héroes y voces durante los combates','pt':'28 trajes para os 8 heróis e vozes durante as batalhas','th':'ชุดแต่งกาย 28 แบบสำหรับฮีโร่ทั้ง 8 คน พร้อมเสียงพากย์ระหว่างการต่อสู้','zh':'8 位英雄共有 28 套服装，战斗中还有语音','ja':'8人の英雄に28種類のコスチューム、戦闘中のボイス','ko':'영웅 8명을 위한 코스튬 28종, 전투 중 음성','ru':'28 костюмов для 8 героев и озвучка в боях','id':'28 kostum untuk 8 pahlawan, plus suara saat bertarung'}
@@ -86,7 +87,7 @@ def finish(s,cur):
     return s
 fr_out=finish(fr,'fr'); open(ROOT+'tools/source_fr.html','w').write(fr)
 os_=__import__('os'); os_.makedirs(ROOT+'fr',exist_ok=True)
-open(ROOT+'fr/index.html','w').write(re.sub(r'(["\'`(])assets/',r'\1../assets/',fr_out))
+open(ROOT+'fr/index.html','w').write(re.sub(r'(["\'`(])assets/',r'\1../assets/',home_patch(fr_out,'fr','')))
 import os
 for cur,path,hl,_,_ in LANGS[1:]:
     s=fr_out.replace('Huit héros, une équipe de trois.','Trois héros.')
@@ -105,6 +106,7 @@ for cur,path,hl,_,_ in LANGS[1:]:
     if path: s=re.sub(r'(["\'`(])assets/',r'\1../assets/',s)
     s=re.sub(r'<html lang="fr">','<html lang="%s">'%hl,s)
     s=finish(s,cur)
+    s=home_patch(s,cur,'../' if path else '')
     os.makedirs(ROOT+path,exist_ok=True); open(ROOT+path+'index.html','w').write(s)
 sm=['<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
 for _,path,hl,_,_ in LANGS:

@@ -7,8 +7,8 @@
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Maxlol Games – инди-игры: La Dernière Torche, Gravity Turn, Infinite Dungeon</title>
-<meta name="description" content="Maxlol Games — студия инди-игр: La Dernière Torche (&quot;Последний факел&quot;, пошаговая игра в подземелье с гаснущим факелом), Gravity Turn (головоломка с вращающимися блоками) и Infinite Dungeon (рогалик). Играйте на телефоне, в браузере и на itch.io.">
+<title>Maxlol Games – инди-игры: La Dernière Torche, Gravity Turn, Infinite Dungeon, WYRMSTORM</title>
+<meta name="description" content="Maxlol Games — студия инди-игр: La Dernière Torche (&quot;Последний факел&quot;, пошаговая игра в подземелье с гаснущим факелом), Gravity Turn (головоломка с вращающимися блоками) и Infinite Dungeon (рогалик). Играйте на телефоне, в браузере и на itch.io. Новинка: WYRMSTORM — бесплатный шутер с драконами.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="maxlolfr">
 <meta name="theme-color" content="#1A1238">
@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="Maxlol Games">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Maxlol Games – инди-игры">
-<meta property="og:description" content="Независимая студия мобильных игр: подземелья, боссы и головоломки — играйте сразу в браузере.">
+<meta property="og:description" content="Независимая студия мобильных игр: подземелья, боссы и головоломки — играйте сразу в браузере. Новинка: WYRMSTORM — бесплатный шутер с драконами.">
 <meta property="og:url" content="https://maxlolgames.com/ru/">
 <meta property="og:image" content="https://maxlolgames.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Maxlol Games : La Dernière Torche, Gravity Turn, Infinite Dungeon">
+<meta property="og:image:alt" content="Maxlol Games : La Dernière Torche, Gravity Turn, Infinite Dungeon, WYRMSTORM">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Maxlol Games – инди-игры">
-<meta name="twitter:description" content="La Dernière Torche, Gravity Turn, Infinite Dungeon — Независимая студия мобильных игр: подземелья, боссы и головоломки — играйте сразу в браузере.">
+<meta name="twitter:description" content="La Dernière Torche, Gravity Turn, Infinite Dungeon, WYRMSTORM — Независимая студия мобильных игр: подземелья, боссы и головоломки — играйте сразу в браузере.">
 <meta name="twitter:image" content="https://maxlolgames.com/assets/og.jpg">
 <link rel="canonical" href="https://maxlolgames.com/ru/">
 <link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/">
@@ -445,6 +445,49 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
 .about .ap-games{list-style:none;padding:0;margin:16px 0;display:grid;gap:10px}
 .about .ap-games li{line-height:1.5}
 .about .ap-games b{color:var(--bonbon)}
+
+/* ===== V4 : accueil boutique ===== */
+.card{width:44%}
+.card.c1{left:0;top:8%;--base:rotate(-12deg)}
+.card.c2{left:19%;top:0;--base:rotate(-3deg) translateY(-3%);z-index:3}
+.card.c4{left:38%;top:5%;--base:rotate(6deg);animation-delay:1.7s;z-index:4}
+.card.c3{left:56%;top:12%;--base:rotate(14deg);animation-delay:1.85s;z-index:2}
+.card.c4.dealt{animation-delay:-1s}
+@media (max-width:860px){.card.c2{left:19%}.card.c4{left:38%}.card.c3{left:56%}}
+.store{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
+@media (max-width:900px){.store{grid-template-columns:1fr}}
+.scard{position:relative;display:flex;background:var(--prune);border-radius:22px;overflow:hidden;box-shadow:0 14px 30px rgba(5,2,20,.45),inset 0 0 0 1px rgba(255,255,255,.08);transition:transform .2s cubic-bezier(.3,1.4,.5,1)}
+.scard:hover{transform:translateY(-4px)}
+.scard.feat{box-shadow:0 14px 34px rgba(5,2,20,.5),inset 0 0 0 2px var(--a,#FFB547)}
+.simg{position:relative;flex:0 0 38%;aspect-ratio:3/4;overflow:hidden;background:#120C2B;display:block}
+.simg>img{width:100%;height:100%;object-fit:cover;object-position:50% 10%}
+.simg .gtc{position:absolute;inset:0}
+.sprice{position:absolute;left:10px;top:10px;padding:4px 11px;border-radius:999px;background:rgba(18,12,43,.88);color:var(--bonbon);font-weight:800;font-size:.82rem}
+.sstar{position:absolute;right:8px;top:8px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--a,#FFB547);color:#1B0B33;font-size:.85rem;font-weight:900}
+.sbody{padding:16px 16px 16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+.sgenre{font-size:.76rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--a,#B9AEDD)}
+.sname{font:400 clamp(1.25rem,3vw,1.6rem)/1.1 var(--display);margin:0}
+.sname a{text-decoration:none;color:var(--lavande)}
+.sdesc{font-size:.92rem;line-height:1.45;color:var(--brume);margin:0;flex:1}
+.sact{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sact .btn{padding:9px 14px;font-size:.88rem}
+@media (max-width:420px){.simg{flex-basis:36%}.sbody{padding:12px 12px 12px 14px}.sdesc{font-size:.86rem}}
+.news{padding:0 0 44px}
+.news h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+.nl{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.nl li{display:flex;gap:14px;align-items:baseline;background:var(--prune);border-radius:16px;padding:12px 16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.nl time{flex:0 0 auto;min-width:7.5em;font-weight:800;font-size:.82rem;color:var(--brume)}
+.nl a{text-decoration:none;color:var(--lavande);font-weight:700;line-height:1.35}
+.ntag{display:inline-block;font-size:.72rem;font-weight:800;padding:2px 8px;border-radius:999px;background:rgba(255,181,71,.18);color:var(--bonbon);margin-right:8px}
+@media (max-width:520px){.nl li{flex-direction:column;gap:4px}}
+.mmenu{display:none;position:relative}
+.mmenu summary{list-style:none;cursor:pointer;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(185,174,221,.45);color:var(--brume)}
+.mmenu summary::-webkit-details-marker{display:none}
+.mmenu[open] summary{color:var(--lavande);background:rgba(255,255,255,.08)}
+.mmenu svg{width:20px;height:20px}
+.mmenu .mm{position:absolute;right:0;top:calc(100% + 8px);background:var(--prune);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:6px;display:grid;min-width:190px;z-index:60;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.mmenu .mm a{padding:12px 14px;border-radius:12px;color:var(--lavande);font-size:1rem}
+@media (max-width:600px){.mmenu{display:block}.nav .itch{display:none}.nav>.snd{margin-left:0}}
 </style>
 </head>
 <body class="intro">
@@ -471,8 +514,9 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     </a>
     <nav class="nav" aria-label="Меню">
       <a class="opt" href="#jeux">Игры</a>
-      <a class="opt" href="#la-derniere-torche">Новинка</a>
+      <a class="opt" href="#nouveautes">Новости</a>
       <a class="opt" href="#apropos">О студии</a>
+<details class="mmenu"><summary aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><div class="mm"><a href="#jeux">Игры</a><a href="#nouveautes">Новости</a><a href="#apropos">О студии</a><a href="/press/">Пресса</a><a data-link="itch" href="#suivre" target="_blank" rel="noopener">itch.io</a></div></details>
 <details class="langmenu"><summary aria-label="Language / Langue / Idioma">RU</summary><div class="lm"><a href="/fr/" hreflang="fr" lang="fr">Français</a><a href="/" hreflang="en" lang="en">English</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/pt/" hreflang="pt-BR" lang="pt-BR">Português</a><a href="/th/" hreflang="th" lang="th">ไทย</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/ja/" hreflang="ja" lang="ja">日本語</a><a href="/ko/" hreflang="ko" lang="ko">한국어</a><a href="/ru/" hreflang="ru" lang="ru" aria-current="true">Русский</a><a href="/id/" hreflang="id" lang="id">Bahasa Indonesia</a></div></details>
       <a class="itch" data-link="itch" href="#suivre">itch.io</a>
       <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Включить музыку">
@@ -491,9 +535,10 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
       <a class="card c1" href="#infinite-dungeon" tabindex="-1"><img src="../assets/id-team.webp" alt="Команда героев Infinite Dungeon" width="720" height="1280"><span class="shine"></span></a>
       <a class="card c2" href="#la-derniere-torche" tabindex="-1"><img fetchpriority="high" src="../assets/t-cover2.webp" alt="" width="720" height="1080" style="object-position:50% 0"><span class="shine"></span></a>
       <a class="card c3" href="#gravity-turn" tabindex="-1"><span class="gtc"><img src="../assets/gt-jelly.webp" alt="Jelly, талисман Gravity Turn" width="256" height="256"><img class="gtl" src="../assets/gt-logo.webp" alt="" width="720" height="241"></span><span class="shine"></span></a>
+      <a class="card c4" href="#wyrmstorm" tabindex="-1"><img src="../assets/ws-cover.webp" alt="" width="640" height="960"><span class="shine"></span></a>
     </div>
     <div class="wrap">
-      <h1 id="titre" class="sr">Maxlol Games — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon</h1>
+      <h1 id="titre" class="sr">Maxlol Games — студия инди-игр: La Dernière Torche, Gravity Turn, Infinite Dungeon, WYRMSTORM</h1>
       <div class="word" aria-hidden="true">
         <div class="row">
           <button class="tile" tabindex="-1" style="--c:#FF6B6B;--d:.05s">M</button>
@@ -517,8 +562,7 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
         <p class="sign">Создано maxlolfr</p>
       </div>
       <div class="cta">
-        <a class="btn main" href="#la-derniere-torche">Узнать про La Dernière Torche</a>
-        <a class="btn ghost" href="#jeux">Все игры</a>
+        <a class="btn main" href="#jeux">Все игры</a>
         <a class="btn ghost" data-link="itch" href="#suivre">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16l-1.5-5h-13z"/><path d="M5 9v10h14V9"/><path d="M10 19v-5h4v5"/></svg>
           Моя страница на itch.io
@@ -540,14 +584,11 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
     <div class="wrap">
       <h2 id="jeux-t">Игры</h2>
       <p class="lead">Четыре игры, четыре мира. Все работают в браузере — на телефоне и на компьютере.</p>
-      <div class="covers">
-        <a class="cover reveal" href="#la-derniere-torche"><div class="art"><img loading="lazy" decoding="async" src="../assets/t-cover2.webp" alt="" width="720" height="1080" style="object-position:50% 8%"><span class="shine"></span></div><b>La Dernière Torche</b><span>Новинка, бесплатная проба</span></a>
-        <a class="cover reveal" href="#gravity-turn"><div class="art"><img loading="lazy" decoding="async" src="../assets/gt-icon.webp" alt="Иконка Gravity Turn" width="180" height="180"><span class="shine"></span></div><b>Gravity Turn</b><span>Головоломка с вращающимися блоками</span></a>
-        <a class="cover reveal" href="#infinite-dungeon"><div class="art"><img src="../assets/id-icon.webp" alt="Иконка Infinite Dungeon" width="256" height="256" loading="lazy"><span class="shine"></span></div><b>Infinite Dungeon</b><span>Фэнтезийный рогалик</span></a>
-        <!--COVERS--><a class="cover reveal" href="#wyrmstorm"><div class="art"><img src="../assets/ws-cover.webp" alt="" width="640" height="960" loading="lazy"><span class="shine"></span></div><b>WYRMSTORM</b><span>Dragon shoot&#x27;em up</span></a><!--/COVERS-->
-      </div>
+      <div class="store"><article class="scard feat" style="--a:#FF9F2E"><a class="simg" href="#la-derniere-torche" aria-label="La Dernière Torche"><img src="../assets/t-cover2.webp" alt="La Dernière Torche" width="640" height="960" loading="lazy" decoding="async"><span class="sprice" data-price="torch"></span><span class="sstar" aria-hidden="true">★</span></a><div class="sbody"><p class="sgenre">Пошаговое подземелье</p><h3 class="sname"><a href="#la-derniere-torche">La Dernière Torche</a></h3><p class="sdesc">Восемь героев, в отряде трое. Один факел, который слабеет с каждой комнатой.</p><div class="sact"><a class="btn main" data-link="torch-play" href="#" target="_blank" rel="noopener">Играть в La Dernière Torche</a><a class="btn buy" data-buy="torch" href="#" target="_blank" rel="noopener">Купить <span class="price"></span></a><a class="btn paypal" data-paypal="torch" href="#" target="_blank" rel="noopener">PayPal <span class="price"></span></a><a class="btn ghost" href="#la-derniere-torche">Подробнее</a></div></div></article><article class="scard feat" style="--a:#B26BFF"><a class="simg" href="#wyrmstorm" aria-label="WYRMSTORM"><img src="../assets/ws-cover.webp" alt="WYRMSTORM" width="640" height="960" loading="lazy" decoding="async"><span class="sprice" data-price="wyrmstorm"></span><span class="sstar" aria-hidden="true">★</span></a><div class="sbody"><p class="sgenre">Dragon shoot&#x27;em up</p><h3 class="sname"><a href="#wyrmstorm">WYRMSTORM</a></h3><p class="sdesc">Pilot a hero, unleash your dragons and cross the sky one level at a time.</p><div class="sact"><a class="btn main" data-link="wyrmstorm-play" href="#" target="_blank" rel="noopener">Играть в WYRMSTORM</a><a class="btn buy" data-buy="wyrmstorm" href="#" target="_blank" rel="noopener">Купить <span class="price"></span></a><a class="btn paypal" data-paypal="wyrmstorm" href="#" target="_blank" rel="noopener">PayPal <span class="price"></span></a><a class="btn ghost" href="#wyrmstorm">Подробнее</a></div></div></article><article class="scard" style="--a:#4FA8FF"><a class="simg" href="#gravity-turn" aria-label="Gravity Turn"><span class="gtc"><img src="../assets/gt-jelly.webp" alt="" width="256" height="256" loading="lazy"><img class="gtl" src="../assets/gt-logo.webp" alt="" width="720" height="241" loading="lazy"></span><span class="sprice" data-price="gt"></span></a><div class="sbody"><p class="sgenre">Мобильная головоломка</p><h3 class="sname"><a href="#gravity-turn">Gravity Turn</a></h3><p class="sdesc">Размещайте желейные блоки на поле 8 на 8. Каждые три фигуры поле поворачивается на четверть оборота, и всё падает.</p><div class="sact"><a class="btn main" data-link="gt-play" href="#" target="_blank" rel="noopener">Играть в Gravity Turn</a><a class="btn buy" data-buy="gt" href="#" target="_blank" rel="noopener">Купить <span class="price"></span></a><a class="btn paypal" data-paypal="gt" href="#" target="_blank" rel="noopener">PayPal <span class="price"></span></a><a class="btn ghost" href="#gravity-turn">Подробнее</a></div></div></article><article class="scard" style="--a:#FFB547"><a class="simg" href="#infinite-dungeon" aria-label="Infinite Dungeon"><img src="../assets/id-title.webp" alt="Infinite Dungeon" width="640" height="960" loading="lazy" decoding="async"><span class="sprice" data-price="id"></span></a><div class="sbody"><p class="sgenre">Фэнтезийный рогалик</p><h3 class="sname"><a href="#infinite-dungeon">Infinite Dungeon</a></h3><p class="sdesc">Соберите команду из трёх героев и спуститесь как можно глубже. Бои идут сами: ваша задача — выбирать реликвии, снаряжение и двери.</p><div class="sact"><a class="btn main" data-link="id-play" href="#" target="_blank" rel="noopener">Играть в Infinite Dungeon</a><a class="btn buy" data-buy="id" href="#" target="_blank" rel="noopener">Купить <span class="price"></span></a><a class="btn paypal" data-paypal="id" href="#" target="_blank" rel="noopener">PayPal <span class="price"></span></a><a class="btn ghost" href="#infinite-dungeon">Подробнее</a></div></div></article></div>
     </div>
   </section>
+
+  <section class="news" id="nouveautes" aria-labelledby="news-t"><div class="wrap"><h2 id="news-t">Новости</h2><ol class="nl"><li><time datetime="2026-11-24">2026-11-24</time><a href="#wyrmstorm"><span class="ntag">WYRMSTORM</span>Вышел WYRMSTORM — бесплатный шутер с драконами</a></li><li><time datetime="2026-11-24">2026-11-24</time><a href="#la-derniere-torche"><span class="ntag">La Dernière Torche</span>Теперь можно купить через PayPal</a></li><li><time datetime="2026-11-24">2026-11-24</time><a href="#hero"><span class="ntag">Maxlol Games</span>Новая заставка студии</a></li><li><time datetime="2026-11-23">2026-11-23</time><a href="#la-derniere-torche"><span class="ntag">La Dernière Torche</span>8 героев, 28 костюмов и озвучка</a></li><li><time datetime="2026-11-18">2026-11-18</time><a href="#gravity-turn"><span class="ntag">Gravity Turn</span>Обновление до версии 1.4</a></li></ol></div></section>
 
   <!-- ===== La Dernière Torche (vedette) ===== -->
   <section class="game torch flip" id="la-derniere-torche" aria-labelledby="ldt-t">
@@ -762,12 +803,13 @@ body.intro .tile,body.intro .card{animation-play-state:paused}
   <section class="about" id="apropos" aria-labelledby="ap-t">
     <div class="wrap grid">
       <div>
-        <h2 id="ap-t">Qui fait ces jeux ?</h2>
+        <h2 id="ap-t">Кто делает эти игры?</h2>
         <p>Maxlol Games — маленькая инди-студия, которая делает игры, в которые мне самому хочется играть, в первую очередь для телефона.</p>
         <ul class="ap-games">
           <li>🔥 <b>La Dernière Torche</b>: факел слабеет в каждой комнате. Как глубоко вы рискнёте спуститься?</li>
           <li>🧩 <b>Gravity Turn</b>: вращайте поле, смотрите, как падают желейные блоки, и пройдите все 84 уровня.</li>
           <li>⚔️ <b>Infinite Dungeon</b>: соберите команду героев и спуститесь на 100 этажей, босс за боссом.</li>
+          <li>🐉 <b>WYRMSTORM</b>: управляй героем, выпускай драконов и пересекай небо, босс за боссом.</li>
         </ul>
         <p class="soft">Новые игры уже на подходе. Следите за новостями и заходите поздороваться! Спасибо, что играете 💛</p>
       </div>
@@ -1230,6 +1272,11 @@ document.addEventListener("click", e => { const d = document.querySelector(".lan
   if (!("IntersectionObserver" in window)) { el.classList.add("bgon"); return; }
   const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { el.classList.add("bgon"); io.disconnect(); } }, { rootMargin: "800px 0px" });
   io.observe(el); })();
+</script>
+<script>
+document.querySelectorAll(".nl time").forEach(t=>{try{t.textContent=new Date(t.dateTime+"T12:00:00").toLocaleDateString(document.documentElement.lang||undefined,{day:"numeric",month:"short",year:"numeric"})}catch(e){}});
+document.addEventListener("click",e=>{document.querySelectorAll(".mmenu[open]").forEach(d=>{if(!d.contains(e.target)||e.target.closest(".mm a"))d.open=false});});
+document.querySelectorAll(".mmenu,.langmenu").forEach(d=>d.addEventListener("toggle",()=>{if(d.open)document.querySelectorAll(".mmenu[open],.langmenu[open]").forEach(o=>{if(o!==d)o.open=false})}));
 </script>
 </body>
 </html>
