@@ -225,3 +225,7 @@ body{background:
   .btn,.shelf .scard,.nl li,.brand .mini{transition:none}
   .shelf .scard:hover,.nl li:hover,.btn:hover{transform:none}
 }
+
+/* Pastille « Démo gratuite » sous le prix (v21) */
+.sfree{position:absolute;left:10px;top:46px;padding:3px 10px;border-radius:999px;background:rgba(18,12,43,.9);color:var(--mx-turq);border:1px solid rgba(61,214,198,.5);font-weight:800;font-size:.72rem;letter-spacing:.02em;white-space:nowrap}
+.shelf .scard .sfree{left:8px;top:44px}
