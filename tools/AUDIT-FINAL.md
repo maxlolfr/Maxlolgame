@@ -63,3 +63,26 @@ Design 85 · Ergonomie 78 · Compatibilité mobile 80 · Performances 92 · Séc
 
 ## Fichiers modifiés
 `pay/return/index.html`, `pay/cancel/index.html`, 22 pages HTML (CSS externalisé), `press/index.html`, `assets/css/*` (3 nouveaux), `tools/v7_css.py`, `tools/v3_extra.py`, `tools/check_games.py`, `tools/games/_exemple.json`, `tools/AUDIT-FINAL.md`.
+
+---
+## Mise à jour — suite du prompt 6 (24/11/2026, après validation de Max)
+
+**Site de test mis à jour** : http://maxlolgames-test.netlify.app (déploiement Netlify « ready », protégé par connexion Netlify, noindex + robots Disallow). Dossier déployé allégé (sans chibi-*, tools, art, backend, account). Production maxlolgames.com : **inchangée**.
+
+**Fait**
+- Couvertures La Dernière Torche et WYRMSTORM remplacées (versions propres du ZIP), images de partage régénérées ; 32 visuels rangés dans `art/<jeu>/`.
+- Pages juridiques FR + EN (assistance, CGV, remboursements, confidentialité, mentions légales, cookies, CGU) : `tools/v8_legal.py`, sources ChatGPT conservées, noindex + bandeau brouillon, hors sitemap. Liens dans le pied de page des 34 pages publiques.
+- Parcours d'achat PayPal : encadré « Avant de payer » (prix total, devise, contenu, compatibilité, livraison, lien CGV), case CGV non précochée qui active le bouton, bouton « Payer … avec PayPal » + mention d'obligation de paiement. Testé FR/EN (Chromium mobile).
+- Faits vérifiés dans le projet et intégrés : hébergeurs (GitHub Pages, Netlify), aucun cookie/traceur/analytics (token vide), stockage local (mg.music, mxl-license-v1), données du backend de paiement (empreintes, pas d'e-mail en clair), compte joueur non activé.
+- Non-régression : 42 pages, 0 débordement, 0 erreur JS, 0 lien cassé, SEO 0 erreur.
+
+**Tests PayPal** : 32/32 tests du backend (`backend/test`, **PayPal simulé par un mock**, pas le vrai Sandbox : aucun identifiant disponible). Scénarios couverts par le mock : achat, annulation, refus, attente, double clic, rechargement, restauration, réutilisation de transaction, remboursement, manipulation du localStorage, anti-force-brute, aucun secret exposé. **Non réalisé : vrai Sandbox PayPal et branchement de MaxlolPay dans les pages.**
+
+**Bloquants — état**
+1. HTTPS : **non corrigé** (réglage GitHub Pages, à activer par le propriétaire).
+2. Paiement : parcours d'achat conforme préparé, mais les boutons restent des liens PayPal.me (prix modifiable, livraison manuelle) ; backend prêt mais non branché ; livraison/délai à confirmer.
+3. Infinite Dungeon : jeu redéployé sur http://maxlolgames-infinite-dungeon.netlify.app (v0.8) mais **verrouillé 401** par la protection d'équipe Netlify ; le lien du site n'est pas encore changé.
+
+**Informations juridiques manquantes (marqueurs « À compléter »)** : identité du vendeur (nom légal, statut/pays, adresse, immatriculation, TVA), e-mails support et confidentialité, responsable de publication, téléphone si requis, coordonnées des hébergeurs, mode et délai de livraison, taxes du prix, médiation, droit applicable, autorité de protection des données, durées de conservation, garanties de transfert hors UE, règles pour les mineurs, validation des bases légales. Les 21 liens « contact » du site pointent encore vers `contact@exemple.com`.
+
+**Traductions** : les pages juridiques existent en FR et EN (comme les pages jeux). Les 8 autres langues renvoient vers l'anglais ; à traduire une fois le contenu juridique figé.
