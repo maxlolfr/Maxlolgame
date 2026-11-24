@@ -3,8 +3,8 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import os
 R=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+'/'
 LIL=R+'assets/fonts/lilita-one.woff'; NUN=R+'assets/fonts/nunito.woff'
-GAMES={'la-derniere-torche':('La Dernière Torche',(255,159,46),'assets/t-cover2.webp'),'wyrmstorm':('WYRMSTORM',(178,107,255),'assets/ws-cover.webp'),
-       'gravity-turn':('Gravity Turn',(79,168,255),None),'infinite-dungeon':('Infinite Dungeon',(255,181,71),'assets/id-title.webp')}
+GAMES={'la-derniere-torche':('La Dernière Torche',(255,159,46),'art/La-Derniere-Torche/02-les-huit-heros.webp'),'wyrmstorm':('WYRMSTORM',(178,107,255),'art/WYRMSTORM/12-affiche-heros.webp'),
+       'gravity-turn':('Gravity Turn',(79,168,255),None),'infinite-dungeon':('Infinite Dungeon',(255,181,71),'art/Infinite-Dungeon/02-couverture.webp')}
 W,H=1200,630
 def grad(c):
     im=Image.new('RGB',(W,H)); px=im.load(); base=(26,18,56)
