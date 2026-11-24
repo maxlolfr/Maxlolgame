@@ -1,0 +1,71 @@
+/* Accueil « maquette 3 » : hero titre sur image, carrousel vedette, stats avec icônes, cartes verticales. Généré par tools/v10_home.py (HTML) */
+/* ---------- Hero ---------- */
+.hero2{min-height:min(138vw,640px);display:block;padding:clamp(84px,14vw,120px) 0 clamp(28px,5vw,48px);
+ background:
+  linear-gradient(180deg,rgba(18,12,43,.5) 0,rgba(18,12,43,.78) 30%,rgba(18,12,43,.25) 58%,rgba(18,12,43,0) 74%,var(--nuit) 100%),
+  linear-gradient(90deg,rgba(18,12,43,.55) 0,rgba(18,12,43,0) 70%),
+  url(/assets/t-art2.webp) 50% 100%/cover no-repeat}
+.hero2::before{display:none}
+.hero2 .fxc,.hero2 .fan{display:none}
+.hero2>.wrap{max-width:var(--maxw,1100px)}
+.hero2 .eyebrow{margin:0;font:800 .8rem/1.2 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--bonbon,#FFB547)}
+.hero2 .h-title{margin:6px 0 0;font:400 clamp(2.9rem,12.5vw,5.6rem)/.98 var(--display);color:#fff;text-shadow:0 5px 0 rgba(20,8,50,.45),0 0 30px rgba(10,5,30,.5)}
+.hero2 .h-title span{background:linear-gradient(180deg,#FFE08A,#FFA62B);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 4px 0 rgba(120,50,0,.4))}
+.hero2 .hero-text{margin-top:14px;max-width:30ch}
+.hero2 .hero-text p{font-size:clamp(1rem,2.6vw,1.2rem);line-height:1.5;color:#E9E3FF;text-shadow:0 2px 10px rgba(10,5,30,.7)}
+.hero2 .hero-text .sign{display:none}
+.hero2 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.hero2 .cta .btn.main{display:inline-flex;align-items:center;gap:8px}
+@media (min-width:700px){.hero2 .hero-text{max-width:44ch}
+.hero2{min-height:560px;background:
+  linear-gradient(180deg,rgba(18,12,43,.35) 0,rgba(18,12,43,0) 22%,rgba(18,12,43,0) 72%,var(--nuit) 100%),
+  linear-gradient(90deg,var(--nuit) 0,rgba(18,12,43,.92) 30%,rgba(18,12,43,0) 62%),
+  url(/assets/t-art2.webp) right 6% bottom/auto 118% no-repeat,var(--nuit)}}
+
+/* ---------- Carrousel vedette ---------- */
+.fcar{position:relative;padding:6px 0 10px}
+.fc-wrap{position:relative;max-width:1100px;margin-inline:auto}
+.fc-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px 16px 10px;scroll-padding-inline:16px}
+.fc-track::-webkit-scrollbar{display:none}
+.fc-track .fslide{flex:0 0 calc(100% - 4px);scroll-snap-align:start;position:relative;display:flex;min-height:230px;background:var(--prune);border-radius:24px;overflow:hidden;box-shadow:0 14px 34px rgba(5,2,20,.5),inset 0 0 0 2px var(--a,#FFB547)}
+.fslide .simg{flex:0 0 42%;aspect-ratio:auto}
+.fslide .simg>img{object-position:50% 12%}
+.fslide .sbody{padding:14px 14px 14px 16px;justify-content:center}
+.fslide .sname{margin:0;font:400 clamp(1.3rem,4.6vw,1.8rem)/1.1 var(--display)}
+.fslide .sact .btn{padding:10px 14px}
+.fc-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;color:#fff;background:rgba(18,12,43,.78);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28);cursor:pointer}
+.fc-nav svg{width:20px;height:20px}
+.fc-prev{left:2px}.fc-next{right:2px}
+.fc-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.fc-dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;transition:all .2s}
+.fc-dots i.on{background:var(--bonbon,#FFB547);width:22px;border-radius:9px}
+@media (min-width:700px){.fc-track .fslide{flex-basis:calc(50% - 8px);height:300px;min-height:0}.fslide .simg>img{position:absolute;inset:0}.fslide .simg{position:relative}}
+
+/* ---------- Stats ---------- */
+.nums .num{display:flex;align-items:center;gap:10px;text-align:left;justify-content:center}
+.nums .num .ni{flex:none;display:grid;place-items:center;width:clamp(34px,8vw,48px);height:clamp(34px,8vw,48px);color:rgba(255,255,255,.92)}
+.nums .num .ni svg{width:100%;height:100%;filter:drop-shadow(0 3px 0 rgba(40,10,80,.35))}
+.nums .num .nt{display:block;min-width:0}
+@media (max-width:640px){.nums .num{flex-direction:column;gap:4px;text-align:center}.nums .num .ni{width:30px;height:30px}}
+
+/* ---------- Les jeux : 4 cartes verticales ---------- */
+.shelf .store{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:900px){.shelf .store{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}}
+.shelf .scard{flex-direction:column;border-radius:20px}
+.shelf .scard .simg{flex:none;width:100%;aspect-ratio:4/3}
+.shelf .scard .simg>img{object-position:50% 18%}
+.shelf .scard .sbody{padding:12px 12px 14px;gap:4px;flex:1}
+.shelf .scard .sgenre{display:none}
+.shelf .scard .sname{margin:0;font:400 1.15rem/1.15 var(--display)}
+.shelf .scard .sdesc{font-size:.88rem;line-height:1.4;color:var(--brume);flex:1}
+.shelf .scard .sact{flex-direction:column;align-items:stretch;gap:8px;margin-top:8px}
+.shelf .scard .sact .btn{justify-content:center;text-align:center;padding:10px 8px;font-size:.88rem;white-space:normal;min-width:0}
+.shelf .scard .sact .btn.paypal{display:none}
+.shelf .scard .sact .btn.main{order:1}.shelf .scard .sact .btn.ghost{order:3}.shelf .scard .sact .btn.buy,.shelf .scard .sact .btn.paypal{order:2}
+
+/* ---------- Actus : lignes avec chevron ---------- */
+.nl li{position:relative;padding-right:40px}
+.nl li::after{content:"";position:absolute;right:16px;top:50%;width:9px;height:9px;border-top:2.5px solid var(--brume);border-right:2.5px solid var(--brume);transform:translateY(-50%) rotate(45deg);opacity:.8}
+@media (prefers-reduced-motion:reduce){.fc-track{scroll-behavior:auto}}
+.hero2 .cta .btn.ghost{background:rgba(18,12,43,.72);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.shelf .scard .sprice{top:auto;bottom:8px;left:8px}
