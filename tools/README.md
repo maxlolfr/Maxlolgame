@@ -33,3 +33,4 @@ Cloudflare Web Analytics : mettre le jeton dans `config.json` (`analytics_token`
   Images : `assets/cl-cover.webp`, `assets/cl-icon.webp`, `assets/b/chibi-legends.webp`, captures `assets/cl-<fr|en>-<combat|heroes|team|skills|quests|album|shop>.webp` + miniatures `assets/th/cl-*`. Originaux : `art/Chibi-Legends/`. Partage : `python3 -I tools/make_og2.py`.
 - `v20_infinite_dungeon.py` : réintègre Infinite Dungeon au catalogue après v18 et v19 et réactive les liens itch.io.
 - `v21_prices.py` : à lancer EN DERNIER (après v19 et les v20) : prix 4,99 € Chibi Legends + WYRMSTORM (PayPal.me maxlolfr2) et pastille « Démo gratuite » sur les cartes payantes. Les JSON de `games/` portent aussi ce prix.
+- `v22_clean.py` : à lancer EN DERNIER (après v21) : retire taxes/TVA (encart d'achat, mentions légales) et remplit la livraison (code par e-mail PayPal sous 48 h).

@@ -49,7 +49,7 @@ T = {
          '<div class="h">Niveaux</div><div>24 niveaux (mondes 1 et 2)</div><div>Les 84 niveaux et 7 mondes</div>'
          '<div class="h">Prix</div><div>Gratuit</div><div>2,99 €, achat unique</div></div></div>'),
   bb=('<div class="buybox" data-buybox><p class="bb-t">Avant de payer avec PayPal</p><ul>'
-      '<li>Prix total : <b data-bb-price></b>, en euros (EUR). Taxes : <mark class="todo">À compléter : TAXES_PRIX</mark></li>'
+      '<li>Prix total : <b data-bb-price></b>, en euros (EUR).</li>'
       '<li>Contenu : le jeu complet (84 niveaux, 7 mondes ; la démo gratuite donne accès aux 24 premiers niveaux).</li>'
       '<li>Compatibilité : navigateur web récent, sur ordinateur, téléphone ou tablette.</li>'
       '<li>Livraison : un code de déblocage est envoyé par e-mail à l’adresse de ton compte PayPal, au plus tard sous 48 h après le paiement.</li></ul>'
@@ -76,7 +76,7 @@ T = {
          '<div class="h">Levels</div><div>24 levels (worlds 1 and 2)</div><div>All 84 levels and 7 worlds</div>'
          '<div class="h">Price</div><div>Free</div><div>€2.99, one-time purchase</div></div></div>'),
   bb=('<div class="buybox" data-buybox><p class="bb-t">Before paying with PayPal</p><ul>'
-      '<li>Total price: <b data-bb-price></b>, in euros (EUR). Taxes: <mark class="todo">To complete: TAXES_PRIX</mark></li>'
+      '<li>Total price: <b data-bb-price></b>, in euros (EUR).</li>'
       '<li>Content: the full game (84 levels, 7 worlds; the free demo covers the first 24 levels).</li>'
       '<li>Compatibility: recent web browser, on computer, phone or tablet.</li>'
       '<li>Delivery: an unlock code is sent by e-mail to your PayPal account address, within 48 hours of payment at the latest.</li></ul>'
