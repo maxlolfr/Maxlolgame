@@ -29,7 +29,7 @@ R=[
 ('Les jeux en chiffres','The games in numbers'),
 ('boss dans La Dernière Torche','bosses in La Dernière Torche'),('niveaux dans Gravity Turn','levels in Gravity Turn'),('étages dans Infinite Dungeon','floors in Infinite Dungeon'),
 ('<h2 id="jeux-t">Les jeux</h2>','<h2 id="jeux-t">The games</h2>'),
-("Quatre jeux, quatre univers. Tous se jouent dans le navigateur, sur téléphone comme sur ordinateur.","Four games, four worlds. All of them play in your browser, on phone or computer."),
+("Cinq jeux, cinq univers. Tous se jouent dans le navigateur, sur téléphone comme sur ordinateur.","Five games, five worlds. All of them play in your browser, on phone or computer."),
 ('Nouveau, essai gratuit','New, free trial'),('Puzzle de blocs qui tourne','Rotating block puzzle'),('Roguelite fantasy</span></a>','Fantasy roguelite</span></a>'),
 # torche
 ('alt="La Dernière Torche : un héros brandit sa torche dans le noir"','alt="La Dernière Torche: a hero raises a torch in the dark"'),

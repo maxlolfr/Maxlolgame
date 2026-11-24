@@ -1,0 +1,18 @@
+{
+  "slug": "chibi-legends-rpg",
+  "name": "Chibi Legends",
+  "accent": "#FFC247",
+  "accent_ink": "#2A1700",
+  "price": "3,99 €",
+  "itch": "",
+  "play": "https://maxlolgames.com/chibi-legends/",
+  "version": "1.8.1",
+  "cover": "assets/cl-cover.webp",
+  "banner": "assets/b/chibi-legends-rpg.webp",
+  "images": ["assets/cl-1.webp", "assets/cl-2.webp", "assets/cl-3.webp", "assets/cl-4.webp", "assets/cl-5.webp", "assets/cl-6.webp", "assets/cl-7.webp", "assets/cl-8.webp"],
+  "genre":     { "fr": "RPG d'action idle", "en": "Idle action RPG" },
+  "pitch":     { "fr": "Forme une équipe de héros chibi et regarde-les combattre tout seuls, monde après monde. Améliore-les, trouve du butin, débloque leurs ultimes et affronte des boss qui changent de tactique. Même quand tu n'es pas là, ton équipe gagne de l'or.", "en": "Build a team of chibi heroes and watch them fight on their own, world after world. Upgrade them, find loot, unleash their ultimates and face bosses that change tactics. Even when you're away, your team keeps earning gold." },
+  "feats":     { "fr": ["8 héros, une équipe de 4, des liens de duo et des ultimes", "20 mondes, des boss à phases et un bestiaire à compléter", "Butin, reliques, sorts et gains hors ligne jusqu'à 8 h", "Pause, mixeur audio et jukebox des musiques débloquées"], "en": ["8 heroes, a team of 4, duo links and ultimates", "20 worlds, multi-phase bosses and a bestiary to complete", "Loot, relics, skills and offline earnings up to 8 h", "Pause, audio mixer and a jukebox of unlocked music"] },
+  "platforms": { "fr": "Navigateur, mobile", "en": "Browser, mobile" },
+  "languages": { "fr": "Français, anglais, espagnol, portugais, thaï", "en": "French, English, Spanish, Portuguese, Thai" }
+}
