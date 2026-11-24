@@ -1,9 +1,9 @@
 // Chibi Legends — jeu disponible hors ligne une fois installé.
 // Ressources (images, sons, polices) : cache d'abord ; pages et scripts : réseau d'abord (mises à jour immédiates).
-const CACHE = 'chibi-test-1.7.3';
+const CACHE = 'chibi-test-1.8';
 self.addEventListener('install', (e) => { self.skipWaiting(); });
 self.addEventListener('activate', (e) => {
-  e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k.startsWith('chibi-legends-') && k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
+  e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k.startsWith('chibi-test-') && k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', (e) => {
   const req = e.request;
