@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preload" href="/assets/fonts/lilita-one.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/nunito.woff" as="font" type="font/woff" crossorigin>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<title>Refunds | Maxlol Games</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/assets/css/news.a3dba399.css">
+<link rel="stylesheet" href="/assets/css/legal.css"></head>
+<body class="gp">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Maxlol Games, back to top">
+      <span class="mini" aria-hidden="true"><i style="background:#FF6B6B"></i><i style="background:#FFB547"></i><i style="background:#4FA8FF"></i><i style="background:#9B7BFF"></i></span>
+      Maxlol Games
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a class="opt" href="/#jeux">Games</a>
+      <a class="opt" href="/#nouveautes">News</a>
+      <a class="opt" href="/#apropos">About</a>
+<details class="mmenu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><div class="mm"><a href="/#jeux">Games</a><a href="/#nouveautes">News</a><a href="/#apropos">About</a><a href="/press/">Press kit</a><a data-link="itch" href="/#suivre" target="_blank" rel="noopener">itch.io</a></div></details>
+<details class="langmenu"><summary aria-label="Language / Langue">EN</summary><div class="lm"><a href="/fr/remboursements/" hreflang="fr" lang="fr">Français</a><a href="/refunds/" hreflang="en" lang="en" aria-current="true">English</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/pt/" hreflang="pt-BR" lang="pt-BR">Português</a><a href="/th/" hreflang="th" lang="th">ไทย</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/ja/" hreflang="ja" lang="ja">日本語</a><a href="/ko/" hreflang="ko" lang="ko">한국어</a><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/id/" hreflang="id" lang="id">Bahasa Indonesia</a></div></details>
+      <a class="itch" data-link="itch" href="/#suivre">itch.io</a>
+      </nav>
+  </div>
+</header>
+<main class="nw legal"><div class="wrap"><p class="crumb"><a href="/">Home</a> › Refunds</p><h1>Refunds</h1><p class="draft">Pre-production draft — information to be verified before publication.</p><section><h2>Request support or a refund</h2><p>Write to <mark class="todo">To complete: EMAIL_SUPPORT</mark> with your order reference, the game and the purchase date. No reason is required for a withdrawal where that right applies.</p></section><section><h2>Right of withdrawal</h2><p>For consumers under the European regime, the period is in principle 14 days from the conclusion of the contract. The digital-content exception applies only if all legal conditions are met. Rights relating to conformity and non-delivery remain.</p></section><section><h2>Withdrawal notice template</h2><p>To <mark class="todo">To complete: VENDEUR_LEGAL</mark>, <mark class="todo">To complete: ADRESSE</mark>, <mark class="todo">To complete: EMAIL_SUPPORT</mark>: I hereby notify you of my withdrawal from the contract for the following content: …; ordered on: …; name: …; address: …; date: …; signature only if sent on paper.</p></section><section><h2>Processing</h2><p>Legally due refunds are made within the applicable time limits, in principle using the original payment method. Requests are not subject to processing fees where the law forbids it.</p></section></div></main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Maxlol Games, by maxlolfr</span>
+    <span>Game images and music: maxlolfr. Lilita One and Nunito fonts (OFL license).</span>
+    <a class="presslink" href="/press/">Press kit</a>
+  </div>
+<div class="wrap legal-nav" role="navigation" aria-label="Legal information and support"><a href="/support/">Support</a><a href="/terms-of-sale/">Terms of sale</a><a href="/refunds/">Refunds</a><a href="/privacy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/cookies/">Cookies</a><a href="/terms-of-use/">Terms of use</a></div></footer>
+
+<script>
+/* ============================================================
+   BOUTIQUE : prix affiché + adresse itch.io du jeu.
+   Le bouton « Acheter » ouvre le paiement itch.io (adresse + /purchase).
+   Prix vide = gratuit (pas de bouton Acheter).
+   ============================================================ */
+const SHOP = {
+  "torch": { price: "€7.99", itch: "https://maxlolfr.itch.io/la-derniere-torche", paypal: "https://www.paypal.me/maxlolfr2/7.99EUR" },
+  "gt":    { price: "",       itch: "" },
+  "id":    { price: "",       itch: "" }/*GS*/,
+  "wyrmstorm": { price: "", itch: "" }/*GE*/
+};
+
+/* ============================================================
+   RÉGLAGES : change seulement ces adresses.
+   Une adresse vide ("") cache le bouton correspondant.
+   ============================================================ */
+const LINKS = {
+  "itch":    "https://maxlolfr.itch.io",
+  "torch-play": "https://la-derniere-torche.netlify.app",
+  "gt-itch": "",   // page itch.io de Gravity Turn
+  "id-itch": "",   // page itch.io d'Infinite Dungeon
+    "gt-play": "https://gravity-turn.netlify.app",
+  "id-play": "https://maxlolfr.github.io/Stepquest/infinite-dungeon-v08/",
+  /*LS*/"wyrmstorm-play": "https://wyrmstorm.netlify.app", "wyrmstorm-itch": "",
+  /*LE*/
+  "github":  "https://github.com/maxlolfr",
+  "mail":    ""    // ex. mailto:contact@exemple.com
+};
+
+document.querySelectorAll("[data-link]").forEach(el => {
+  const url = LINKS[el.dataset.link];
+  if (url) { el.href = url; return; }
+  // pas d'adresse : on cache le bouton (le lien itch du menu renvoie vers « Suivre »)
+  if (el.closest(".nav")) { el.href = "#suivre"; el.removeAttribute("target"); return; }
+  if (el.classList.contains("link")) {
+    el.classList.add("off"); el.setAttribute("aria-disabled", "true"); el.removeAttribute("href");
+    const n = el.querySelector("[data-note]"); if (n) n.textContent = "Soon";
+    return;
+  }
+  el.hidden = true;
+});
+document.querySelectorAll("[data-price]").forEach(el => {
+  const g = SHOP[el.dataset.price]; el.textContent = g && g.price ? g.price : "Free";
+});
+document.querySelectorAll("[data-buy]").forEach(el => {
+  const g = SHOP[el.dataset.buy];
+  if (!g || !g.price || !g.itch){ el.hidden = true; return; }
+  el.href = g.itch.replace(/\/$/, "") + "/purchase";
+  el.querySelector(".price").textContent = g.price;
+});
+document.querySelectorAll("[data-paypal]").forEach(el => {
+  const g = SHOP[el.dataset.paypal];
+  if (!g || !g.price || !g.paypal){ el.hidden = true; return; }
+  el.href = g.paypal; el.querySelector(".price").textContent = g.price;
+});
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+
+document.addEventListener("click",e=>{document.querySelectorAll(".mmenu[open],.langmenu[open]").forEach(d=>{if(!d.contains(e.target)||e.target.closest(".mm a"))d.open=false});});
+</script>
+</body>
+</html>

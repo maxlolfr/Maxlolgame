@@ -94,6 +94,7 @@ for f in ('feed.xml','fr/feed.xml'):
 for f in glob.glob(R+'**/index.html',recursive=True):
     rel=f[len(R):]
     if rel.split('/')[0] in('tools','backend','account','pay','chibi-test','chibi-legends','legal','node_modules','en'): continue
+    if re.search(r'<meta name="robots" content="[^"]*noindex',open(f,encoding='utf8',errors='ignore').read()): continue   # brouillons noindex
     u=B+'/'+rel[:-10]
     if u not in urls and u!=B+'/': w('page publique hors sitemap : '+u)
 print('===== Contrôle SEO =====')
