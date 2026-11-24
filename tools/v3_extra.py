@@ -54,8 +54,9 @@ def game_section(g,lang,i):
     '        <ul class="feats reveal">%s</ul>\n        <dl class="facts">%s</dl>\n        %s\n'
     '        <div class="cta">\n          <a class="btn main" data-link="%s-play" href="#" target="_blank" rel="noopener">%s%s</a>\n'
     '          <a class="btn buy" data-buy="%s" href="#" target="_blank" rel="noopener">%s%s <span class="price"></span></a>\n'
+    '          <a class="btn paypal" data-paypal="%s" href="#" target="_blank" rel="noopener">PayPal <span class="price"></span></a>\n'
     '          <a class="btn ghost" data-link="%s-itch" href="#" target="_blank" rel="noopener">%s</a>\n'
-    '        </div>\n      </div>\n    </div>\n  </section>\n')%(flip,_e(sl),_e(sl),a,ink,_rgb(a),vis,_e(_g(g.get('genre'),lang)),_e(sl),_e(sl),n,_e(_g(g.get('pitch'),lang)),feats,dl,strip,_e(sl),PLAYSVG,_e(L[0].format(n=g['name'])),_e(sl),BUYSVG,_e(L[1]),_e(sl),_e(L[2]))
+    '        </div>\n      </div>\n    </div>\n  </section>\n')%(flip,_e(sl),_e(sl),a,ink,_rgb(a),vis,_e(_g(g.get('genre'),lang)),_e(sl),_e(sl),n,_e(_g(g.get('pitch'),lang)),feats,dl,strip,_e(sl),PLAYSVG,_e(L[0].format(n=g['name'])),_e(sl),BUYSVG,_e(L[1]),_e(sl),_e(sl),_e(L[2]))
 def cover_card(g,lang):
     cover=g.get('cover',''); n=_e(g['name'])
     img=('<img src="%s" alt="" width="640" height="960" loading="lazy">'%_e(cover)) if cover else ''
@@ -64,7 +65,7 @@ def apply_games(s,lang,cur):
     G=_games(); pre=(lambda t:t) if cur=='fr' or not [l for l in LANGS if l[0]==cur][0][1] else (lambda t:re.sub(r'(["\'`(])assets/',r'\1../assets/',t))
     s=re.sub(r'<!--GAMES-->.*?<!--/GAMES-->',lambda m:'<!--GAMES-->\n'+pre(''.join(game_section(g,lang,i) for i,g in enumerate(G)))+'<!--/GAMES-->',s,flags=re.S)
     s=re.sub(r'<!--COVERS-->.*?<!--/COVERS-->',lambda m:'<!--COVERS-->'+pre(''.join(cover_card(g,lang) for g in G))+'<!--/COVERS-->',s,flags=re.S)
-    shop=''.join(',\n  "%s": { price: %s, itch: %s }'%(g["slug"],json.dumps(g.get("price",""),ensure_ascii=False),json.dumps(g.get("itch",""))) for g in G)
+    shop=''.join(',\n  "%s": { price: %s, itch: %s, paypal: %s }'%(g["slug"],json.dumps(g.get("price",""),ensure_ascii=False),json.dumps(g.get("itch","")),json.dumps(g.get("paypal",""))) for g in G)
     s=re.sub(r'/\*GS\*/.*?/\*GE\*/',lambda m:'/*GS*/'+shop+'/*GE*/',s,flags=re.S)
     links=''.join('"%s-play": %s, "%s-itch": %s,\n  '%(g["slug"],json.dumps(g.get("play","")),g["slug"],json.dumps(g.get("itch",""))) for g in G)
     s=re.sub(r'/\*LS\*/.*?/\*LE\*/',lambda m:'/*LS*/'+links+'/*LE*/',s,flags=re.S)
