@@ -17,6 +17,8 @@ for p in glob.glob(R + '**/index.html', recursive=True):
     if '/tools/' in p: continue
     s = open(p, encoding='utf8').read(); o = s
     rel = p[len(R):]; lang = rel.split('/')[0] if rel.split('/')[0] in LAB else 'en'
+    if re.fullmatch(r'(?:fr/)?infinite-dungeon/index\.html', rel):
+        s = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', s, count=1)
     first = [True]
     def rep(m):
         cls = re.search(r'class="([^"]*)"', m.group(0)); cls = (cls.group(1) if cls else 'btn') + ' unavail'

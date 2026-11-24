@@ -121,6 +121,8 @@ def v6_sitemap():
     home=[(_HL6[c],base+'/'+_PATH6[c]) for c in _O]+[('x-default',base+'/')]
     for c in _O: out+=u(base+'/'+_PATH6[c],last,'1.0' if c=='en' else '0.9',home)
     for slug in V5_SLUGS:
+        if slug == 'infinite-dungeon':
+            continue
         lm=max([n['date'] for n in news if n['game']==slug]+['2026-11-24']); al=[('fr',base+'/fr/%s/'%slug),('en',base+'/%s/'%slug),('x-default',base+'/%s/'%slug)]
         for pth in ('/','/fr/'): out+=u(base+pth+slug+'/',lm,'0.8',al)
     al=[('fr',base+NEWS_URL['fr']),('en',base+NEWS_URL['en']),('x-default',base+NEWS_URL['en'])]
