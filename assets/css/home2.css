@@ -69,3 +69,7 @@
 @media (prefers-reduced-motion:reduce){.fc-track{scroll-behavior:auto}}
 .hero2 .cta .btn.ghost{background:rgba(18,12,43,.72);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .shelf .scard .sprice{top:auto;bottom:8px;left:8px}
+
+/* Infinite Dungeon indisponible (tools/v16_id_unavailable.py) */
+.btn.unavail{opacity:.6;cursor:not-allowed;filter:grayscale(.6);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);background:rgba(18,12,43,.7)!important;color:#E9E3FF!important;pointer-events:none}
+.unavail-note{margin:10px 0 0;padding:10px 14px;border-radius:12px;background:rgba(255,181,71,.1);box-shadow:inset 0 0 0 1px rgba(255,181,71,.35);color:#FFE3B0;font-weight:700;font-size:.95rem}
