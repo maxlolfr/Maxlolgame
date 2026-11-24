@@ -150,6 +150,74 @@ body{background:
 .about .ap-games li{padding:12px 14px;border-radius:16px;background:rgba(43,29,94,.6);box-shadow:inset 0 0 0 1px rgba(201,182,242,.16)}
 .about .link{border-radius:var(--mx-r-card);background:linear-gradient(170deg,var(--mx-card),var(--mx-bg2));box-shadow:inset 0 0 0 1px rgba(201,182,242,.16)}
 
+
+/* =====================================================================
+   FICHES DES JEUX (phase 3) — bannière immersive, titre, boutons, panneaux
+   Ambiance de chaque jeu = variable --a posée sur <body> par la fiche.
+   ===================================================================== */
+.gp2{--gp-h:clamp(230px,60vw,400px);--ga:var(--a,var(--mx-violet))}
+.gp2::before{inset:0 0 auto 0;height:calc(var(--gp-h) + 90px);transform:none;filter:none;opacity:1;
+  background:var(--gp-bg) 50% 22%/cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,#000 52%,transparent 100%);mask-image:linear-gradient(180deg,#000 52%,transparent 100%)}
+.gp2::after{background:
+  radial-gradient(520px 320px at 50% 38%,color-mix(in srgb,var(--ga) 30%,transparent),transparent 70%),
+  linear-gradient(180deg,rgba(13,7,36,.55) 0,rgba(13,7,36,0) 22%,rgba(13,7,36,0) 40%,var(--mx-bg) calc(var(--gp-h) + 120px))}
+.gp2 .gp-cover{display:none}
+.gp2 .crumb{position:relative;z-index:1;font-size:.82rem;color:var(--mx-white);text-shadow:0 1px 8px rgba(13,7,36,.9)}
+.gp2 .crumb a{color:var(--mx-lav)}
+.gp2 .grid{display:block;padding-top:calc(var(--gp-h) - 96px)}
+.gp-genre{display:inline-flex;align-items:center;gap:8px;margin:0 0 8px;padding:5px 14px;border-radius:999px;font:800 .78rem/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:rgba(43,29,94,.85);box-shadow:inset 0 0 0 var(--mx-line) var(--ga);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.gp2 h1{font:400 clamp(2.3rem,9.5vw,4.2rem)/1 var(--display);margin:0;color:#fff;text-shadow:0 4px 0 rgba(13,7,36,.5),0 0 28px rgba(13,7,36,.7)}
+.gp2 .gp-tag{margin:8px 0 0;font:800 clamp(1.02rem,3.4vw,1.25rem)/1.3 var(--body);color:var(--mx-gold)}
+.gp2 .gp-desc{margin-top:10px;max-width:60ch;color:var(--mx-white);font-size:clamp(1rem,2.8vw,1.1rem)}
+.chip{background:rgba(43,29,94,.7);box-shadow:inset 0 0 0 var(--mx-line) color-mix(in srgb,var(--ga,var(--mx-violet)) 60%,transparent);color:var(--mx-white)}
+.gp-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:18px;max-width:640px}
+.gp-cta .btn{justify-content:center;text-align:center}
+.gp-cta .btn.paypal{grid-column:1/-1}
+.btn .price{white-space:nowrap}
+@media (min-width:900px){
+  .gp2{--gp-h:520px}
+  .gp2::before{left:34%;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%),linear-gradient(180deg,#000 70%,transparent);
+    -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 38%),linear-gradient(180deg,#000 70%,transparent);mask-composite:intersect;background-position:70% 30%}
+  .gp2::after{background:
+    radial-gradient(520px 360px at 72% 40%,color-mix(in srgb,var(--ga) 26%,transparent),transparent 70%),
+    linear-gradient(90deg,var(--mx-bg) 0,rgba(13,7,36,.7) 36%,rgba(13,7,36,0) 62%),
+    linear-gradient(180deg,rgba(13,7,36,.4) 0,rgba(13,7,36,0) 20%,rgba(13,7,36,0) 78%,var(--mx-bg) 100%)}
+  .gp2 .grid{padding-top:clamp(28px,4vw,56px);padding-bottom:40px;max-width:640px}
+}
+
+/* Panneaux de contenu */
+.gb{padding:clamp(18px,4vw,34px) 0}
+.gb h2{display:flex;align-items:center;gap:12px;color:var(--mx-white)}
+.gb h2::before{content:"";flex:none;width:6px;height:1.1em;border-radius:4px;background:linear-gradient(180deg,var(--mx-gold),var(--ga,var(--mx-orange)))}
+.model{background:linear-gradient(165deg,var(--mx-card),var(--mx-bg2));border-radius:var(--mx-r-card);
+  box-shadow:inset 0 0 0 var(--mx-line) color-mix(in srgb,var(--ga,var(--mx-violet)) 70%,transparent),0 16px 36px rgba(5,2,20,.45)}
+.cmp{border-radius:16px;background:rgba(201,182,242,.16)}
+.cmp>div{background:var(--mx-bg2)}
+.cmp .h{background:rgba(142,99,255,.16)}
+.buybox{border-radius:var(--mx-r-card);background:rgba(43,29,94,.7);box-shadow:inset 0 0 0 1px rgba(201,182,242,.22)}
+.faq details{background:linear-gradient(165deg,var(--mx-card),var(--mx-bg2));border-radius:16px;box-shadow:inset 0 0 0 1px rgba(201,182,242,.16)}
+.faq details[open]{box-shadow:inset 0 0 0 var(--mx-line) color-mix(in srgb,var(--ga,var(--mx-violet)) 70%,transparent)}
+
+/* Galerie : captures verticales plus grandes, défilement fluide */
+.gal{gap:14px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scroll-padding-inline:2px;scrollbar-color:var(--mx-violet) transparent}
+.gal img{height:clamp(340px,84vw,500px)}
+.gal button{border-radius:18px;box-shadow:0 14px 30px rgba(5,2,20,.55),0 0 0 var(--mx-line) rgba(201,182,242,.3)}
+
+/* Personnages : cartes à la couleur du jeu */
+.gh li,.t-heroes li{background:color-mix(in srgb,var(--ga,var(--mx-orange)) 12%,var(--mx-card));
+  box-shadow:inset 0 0 0 var(--mx-line) color-mix(in srgb,var(--ga,var(--mx-orange)) 45%,transparent)}
+.gh .hc:hover,.gh .hc:focus-visible,.t-heroes .hc:hover,.t-heroes .hc:focus-visible{background:color-mix(in srgb,var(--ga,var(--mx-orange)) 24%,transparent)}
+.gh .hc-face,.t-heroes .hc-face{width:56px;height:56px;border-radius:14px;box-shadow:0 0 0 2px var(--ga,var(--mx-orange))}
+.gh .hc-t b,.t-heroes .hc-t b{color:var(--mx-white)}
+.gh li .hc-t span,.t-heroes li .hc-t span{color:var(--mx-lav)}
+.gh .hc-go,.t-heroes .hc-go{color:var(--ga,var(--mx-gold))}
+.gh .t-hint,.t-heroes .t-hint{color:var(--mx-lav)}
+
+/* Barre d'achat mobile */
+.sbar{background:rgba(13,7,36,.94);border-top:1px solid rgba(201,182,242,.18)}
+
 /* ---------- Mouvement réduit ---------- */
 @media (prefers-reduced-motion:reduce){
   .btn,.shelf .scard,.nl li,.brand .mini{transition:none}
