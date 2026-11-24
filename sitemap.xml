@@ -182,4 +182,14 @@
   </url>
   <url><loc>https://maxlolgames.com/press/</loc><lastmod>2026-11-24</lastmod><priority>0.4</priority>
   </url>
+  <url><loc>https://maxlolgames.com/chibi-legends-game/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/chibi-legends-game/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/chibi-legends-game/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/chibi-legends-game/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/fr/chibi-legends-game/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/chibi-legends-game/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/chibi-legends-game/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/chibi-legends-game/"/>
+  </url>
 </urlset>

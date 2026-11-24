@@ -25,3 +25,9 @@ Cloudflare Web Analytics : mettre le jeton dans `config.json` (`analytics_token`
 - `v14_phone.py` : captures du cadre téléphone en fr/en/es/pt (`assets/t-<lang>-<scène>.webp`, prises dans le jeu).
 - `v15_gameheroes.py` : fiches cliquables des pages Infinite Dungeon et WYRMSTORM (`assets/js/gallery-modal.js`, `gh.css`). Images : `extract_gamesheroes.py`.
 - `make_og2.py` : images de partage (remplace `make_og.py` / `make_og_home.py`).
+
+## Étapes 16 à 18 (post-traitements, à lancer dans l'ordre après v15)
+- `v16_id_unavailable.py` : Infinite Dungeon « momentanément indisponible » (`UNAVAILABLE = True`).
+- `v17_intro.py` : intro avec porte « touche pour entrer », sons ElevenLabs (`assets/audio/intro-*.mp3`) et musique au premier tap.
+- `v18_chibi.py` : **Chibi Legends remplace Infinite Dungeon sur l'accueil** (10 langues : carrousel, carte, chiffre clé, section détaillée, JSON-LD, titres), crée les fiches `/chibi-legends-game/` et `/fr/chibi-legends-game/` (copiées du modèle WYRMSTORM), remplace la carte « autres jeux », le sitemap, la 404 et le dossier presse, et remplace la 3e jaquette du mur de l'intro. La démo jouable reste dans `/chibi-legends/` (PWA, ne pas toucher). Infinite Dungeon garde sa fiche.
+  Images : `assets/cl-cover.webp`, `assets/cl-icon.webp`, `assets/b/chibi-legends.webp`, captures `assets/cl-<fr|en>-<combat|heroes|team|skills|quests|album|shop>.webp` + miniatures `assets/th/cl-*`. Originaux : `art/Chibi-Legends/`. Partage : `python3 -I tools/make_og2.py`.

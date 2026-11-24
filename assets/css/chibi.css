@@ -1,0 +1,7 @@
+#chibi-legends{--a:#FFB547;--a-ink:#2A1300}
+#chibi-legends.bgon .bg{background-image:url(/assets/b/chibi-legends.webp)}
+#chibi-legends .bg::after{background:linear-gradient(90deg,rgba(20,8,30,.96) 0%,rgba(20,8,30,.88) 45%,rgba(20,8,30,.55) 100%)}
+@media (max-width:860px){#chibi-legends .bg::after{background:linear-gradient(rgba(20,8,30,.75),rgba(20,8,30,.95) 40%)}}
+.gp-chibi-legends-game{--gp-bg:url(/assets/b/chibi-legends.webp)}
+.gp-chibi-legends-game .gp-cover img{object-position:50% 0}
+.gal button img{background:#120c20}

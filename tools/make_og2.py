@@ -6,9 +6,10 @@ R=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+'/'
 LIL=R+'assets/fonts/lilita-one.woff'; NUN=R+'assets/fonts/nunito.woff'
 W,H=1200,630
 G={'la-derniere-torche':('La Dernière Torche',(255,159,46),'left'),'wyrmstorm':('WYRMSTORM',(178,107,255),'left'),
-   'gravity-turn':('Gravity Turn',(79,168,255),'left'),'infinite-dungeon':('Infinite Dungeon',(255,181,71),'left')}
+   'gravity-turn':('Gravity Turn',(79,168,255),'left'),'infinite-dungeon':('Infinite Dungeon',(255,181,71),'left'),'chibi-legends':('Chibi Legends',(255,181,71),'left')}
+BN={}
 def banner(slug,crop_y=0.5):
-    b=Image.open(R+'assets/b/%s.webp'%slug).convert('RGB'); b=b.resize((W,int(W*b.height/b.width)),Image.LANCZOS)
+    b=Image.open(R+'assets/b/%s.webp'%BN.get(slug,slug)).convert('RGB'); b=b.resize((W,int(W*b.height/b.width)),Image.LANCZOS)
     top=int((b.height-H)*crop_y); return b.crop((0,top,W,top+H)).convert('RGBA')
 def veil(im,col):
     v=Image.new('RGBA',(W,H),(0,0,0,0)); px=v.load()
@@ -41,8 +42,8 @@ for slug,(name,col,_) in G.items():
     im.convert('RGB').save(R+'assets/og/%s.jpg'%slug,quality=84,optimize=True,progressive=True); print(slug,os.path.getsize(R+'assets/og/%s.jpg'%slug)//1024,'Ko')
 # accueil : mosaïque 2x2 des bannières + titre central
 h=Image.new('RGB',(W,H)); cw,ch=W//2,H//2
-for i,s in enumerate(['la-derniere-torche','wyrmstorm','infinite-dungeon','gravity-turn']):
-    b=Image.open(R+'assets/b/%s.webp'%s).convert('RGB'); r=max(cw/b.width,ch/b.height); b=b.resize((int(b.width*r)+1,int(b.height*r)+1),Image.LANCZOS)
+for i,s in enumerate(['la-derniere-torche','wyrmstorm','chibi-legends','gravity-turn']):
+    b=Image.open(R+'assets/b/%s.webp'%BN.get(s,s)).convert('RGB'); r=max(cw/b.width,ch/b.height); b=b.resize((int(b.width*r)+1,int(b.height*r)+1),Image.LANCZOS)
     h.paste(b.crop((0,0,cw,ch)),((i%2)*cw,(i//2)*ch))
 h=h.convert('RGBA'); sh=Image.new('RGBA',(W,H),(14,9,34,0)); ImageDraw.Draw(sh).rounded_rectangle((150,205,W-150,H-205),radius=40,fill=(14,9,34,205)); h.alpha_composite(sh)
 d=ImageDraw.Draw(h); f=ImageFont.truetype(LIL,104); t='Maxlol Games'; w=d.textlength(t,font=f)
