@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<link rel="preload" href="/assets/fonts/lilita-one.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/nunito.woff" as="font" type="font/woff" crossorigin>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<title>Infinite Dungeon – Free auto-battle fantasy roguelite | Maxlol Games</title>
+<meta name="description" content="Build a team of three heroes and go down as far as you can. Fights play out on their own: your job is to choose the relics, the gear and the doors.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://maxlolgames.com/infinite-dungeon/">
+<link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/infinite-dungeon/">
+<link rel="alternate" hreflang="en" href="https://maxlolgames.com/infinite-dungeon/">
+<link rel="alternate" hreflang="x-default" href="https://maxlolgames.com/infinite-dungeon/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maxlol Games">
+<meta property="og:title" content="Infinite Dungeon – Free auto-battle fantasy roguelite | Maxlol Games">
+<meta property="og:description" content="Build a team of three heroes and go down as far as you can. Fights play out on their own: your job is to choose the relics, the gear and the doors.">
+<meta property="og:url" content="https://maxlolgames.com/infinite-dungeon/">
+<meta property="og:image" content="https://maxlolgames.com/assets/id-title.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "VideoGame", "name": "Infinite Dungeon", "description": "Build a team of three heroes and go down as far as you can. Fights play out on their own: your job is to choose the relics, the gear and the doors.", "url": "https://maxlolgames.com/infinite-dungeon/", "image": "https://maxlolgames.com/assets/id-title.webp", "genre": "Fantasy roguelite", "inLanguage": "en", "applicationCategory": "Game", "operatingSystem": "Web browser", "author": {"@type": "Organization", "name": "Maxlol Games", "url": "https://maxlolgames.com/"}, "publisher": {"@type": "Organization", "name": "Maxlol Games", "url": "https://maxlolgames.com/"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://maxlolgames.com/infinite-dungeon/"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Infinite Dungeon free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and the game offers no purchases for now."}}, {"@type": "Question", "name": "Is the game finished?", "acceptedAnswer": {"@type": "Answer", "text": "No, it is version 0.8, still in development."}}, {"@type": "Question", "name": "Do I play the fights?", "acceptedAnswer": {"@type": "Answer", "text": "No, they play out on their own. You choose the relics, the gear and the doors."}}, {"@type": "Question", "name": "Which devices and languages?", "acceptedAnswer": {"@type": "Answer", "text": "In the browser, on phone and computer. The game is in French and English."}}, {"@type": "Question", "name": "Is my progress saved?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, automatically, on the device you use. If you clear your browser data, the save is gone."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://maxlolgames.com/"}, {"@type": "ListItem", "position": 2, "name": "Infinite Dungeon", "item": "https://maxlolgames.com/infinite-dungeon/"}]}]}</script>
+<style>
+@font-face{font-family:"Lilita One";src:url(/assets/fonts/lilita-one.woff) format("woff");font-display:swap}
+@font-face{font-family:"Nunito";src:url(/assets/fonts/nunito.woff) format("woff");font-weight:200 1000;font-display:swap}
+
+:root{
+  --nuit:#1A1238;      /* fond du studio */
+  --prune:#2A1D52;     /* surfaces */
+  --lavande:#EEE8FF;   /* texte */
+  --brume:#B9AEDD;     /* texte secondaire */
+  --bonbon:#FFB547;    /* accent principal */
+  --framboise:#FF5E9C; /* accent 2 */
+  --menthe:#3DD6C6;
+  --r-tile:22%;
+  --wrap:min(1120px, 100% - 40px);
+  --display:"Lilita One", ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body:"Nunito", ui-rounded, system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--nuit);color:var(--lavande);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;margin:0;letter-spacing:.01em}
+p{margin:0}
+.wrap{width:var(--wrap);margin-inline:auto}
+:focus-visible{outline:3px solid var(--bonbon);outline-offset:3px;border-radius:10px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- barre du haut ---------- */
+.top{--hd:rgba(255,255,255,.06);position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top);background:rgba(26,18,56,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--hd);transition:border-color .5s,box-shadow .5s}
+.top.glow{box-shadow:0 1px 26px -6px var(--hd)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:1.35rem var(--display)}
+.brand .mini{display:grid;grid-template-columns:repeat(2,12px);gap:3px}
+.brand .mini i{width:12px;height:12px;border-radius:4px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18),inset 0 3px 0 rgba(255,255,255,.35)}
+.nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+.nav a{text-decoration:none;font-weight:800;font-size:.95rem;padding:8px 12px;border-radius:999px;color:var(--brume)}
+.nav a:hover{color:var(--lavande);background:rgba(255,255,255,.06)}
+.langmenu{position:relative}
+.langmenu summary{list-style:none;cursor:pointer;font-weight:800;font-size:.82rem;border:1.5px solid rgba(185,174,221,.45);padding:7px 11px;border-radius:999px;color:var(--brume)}
+.langmenu summary::-webkit-details-marker{display:none}
+.langmenu[open] summary{color:var(--lavande);background:rgba(255,255,255,.08)}
+.langmenu .lm{position:absolute;right:0;top:calc(100% + 8px);background:var(--prune);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:6px;display:grid;min-width:150px;z-index:60;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.langmenu .lm a{padding:11px 14px;border-radius:12px;color:var(--lavande)}
+.langmenu .lm a[aria-current]{background:rgba(255,181,71,.16);color:var(--bonbon)}
+.nav .itch{color:#2A1300;background:var(--bonbon)}
+.nav .itch:hover{background:#FFC56E;color:#2A1300}
+@media (max-width:600px){.nav .opt{display:none}}
+.brand{white-space:nowrap}
+@media (max-width:430px){.brand{font-size:1.02rem;gap:7px}.nav{gap:2px}.nav a{padding:8px 9px}}
+.snd{position:relative;display:grid;place-items:center;width:42px;height:42px;margin-left:4px;border:0;border-radius:999px;cursor:pointer;
+  background:rgba(255,255,255,.08);color:var(--lavande);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.16)}
+.snd:hover{background:rgba(255,255,255,.14)}
+.snd svg{width:20px;height:20px}
+.snd .on,.snd[aria-pressed="true"] .off{display:none}
+.snd[aria-pressed="true"] .on{display:block}
+.snd[aria-pressed="true"]{background:var(--bonbon);color:#2A1300;box-shadow:0 0 0 0 rgba(255,181,71,.5);animation:pulse 2.4s ease-out infinite}
+.snd .eq{position:absolute;right:-2px;bottom:-2px;display:none;gap:2px;align-items:flex-end;height:12px;padding:2px 3px;border-radius:6px;background:#2A1300}
+.snd[aria-pressed="true"] .eq{display:flex}
+.snd .eq i{width:2px;background:var(--bonbon);border-radius:1px;animation:eq .9s ease-in-out infinite alternate}
+.snd .eq i:nth-child(2){animation-delay:-.3s}.snd .eq i:nth-child(3){animation-delay:-.6s}
+@keyframes eq{from{height:2px}to{height:8px}}
+.snd-tip{position:fixed;top:calc(68px + env(safe-area-inset-top));right:max(12px,calc((100vw - 1120px)/2));z-index:30;padding:10px 14px;border-radius:14px;background:#fff;color:var(--nuit);font-weight:800;font-size:.92rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;pointer-events:none}
+.snd-tip.show{opacity:1;transform:none}
+.snd-tip::before{content:"";position:absolute;top:-6px;right:18px;width:12px;height:12px;background:#fff;transform:rotate(45deg);border-radius:2px}
+
+/* ---------- héros : le nom en blocs gelée ---------- */
+.hero{position:relative;padding:clamp(48px,9vw,110px) 0 clamp(56px,8vw,96px);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:auto -20% -40% -20%;height:70%;background:radial-gradient(closest-side,rgba(155,123,255,.28),transparent);pointer-events:none}
+.word{display:flex;flex-direction:column;gap:clamp(6px,1.2vw,12px);align-items:flex-start}
+.row{display:flex;gap:clamp(5px,1.1vw,12px)}
+.tile{--s:clamp(46px,min(13.6vw,6.4vw + 26px),100px);width:var(--s);height:var(--s);border-radius:var(--r-tile);display:grid;place-items:center;
+  font:calc(var(--s)*.62)/1 var(--display);color:#fff;text-shadow:0 calc(var(--s)*.04) 0 rgba(0,0,0,.22);
+  background:var(--c);position:relative;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;border:0;padding:0;
+  box-shadow:inset 0 calc(var(--s)*-.09) 0 rgba(0,0,0,.2),inset 0 calc(var(--s)*.05) 0 rgba(255,255,255,.35),0 calc(var(--s)*.08) calc(var(--s)*.16) rgba(10,4,30,.45);
+  animation:drop .7s cubic-bezier(.3,1.35,.5,1) both;animation-delay:var(--d)}
+.tile::after{content:"";position:absolute;left:14%;right:14%;top:9%;height:22%;border-radius:999px;background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,0))}
+.tile.space{background:transparent;box-shadow:none;cursor:default;pointer-events:none}
+.tile.space::after{display:none}
+.tile.wob{animation:wob .5s ease}
+@keyframes drop{0%{transform:translateY(-120vh)}70%{transform:translateY(0) scale(1.08,.9)}85%{transform:scale(.96,1.05)}100%{transform:none}}
+@keyframes wob{0%,100%{transform:none}30%{transform:scale(1.14,.86)}60%{transform:scale(.93,1.08) rotate(-4deg)}}
+.hero-text{margin-top:clamp(28px,4vw,44px);max-width:34ch}
+.hero-text p{font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.45;color:var(--lavande);font-weight:600}
+.hero-text .sign{margin-top:10px;font-size:1rem;color:var(--brume);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border-radius:16px;font:800 1.02rem var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .12s ease,filter .12s ease}
+.btn:active{transform:translateY(2px)}
+.btn.main{background:var(--a,var(--bonbon));color:var(--a-ink,#2A1300);box-shadow:inset 0 -4px 0 rgba(0,0,0,.2)}
+.btn.main:hover{filter:brightness(1.07)}
+.btn.ghost{background:rgba(255,255,255,.08);color:inherit;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.18)}
+.btn.ghost:hover{background:rgba(255,255,255,.13)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.buy{background:linear-gradient(180deg,#FFE08A,#FFB547);color:#2A1300;box-shadow:inset 0 -4px 0 rgba(150,70,0,.35),0 0 0 0 rgba(255,181,71,.6);animation:pulse 2.4s ease-out infinite}
+.btn.buy .price{background:rgba(42,19,0,.14);padding:3px 9px;border-radius:9px;font-variant-numeric:tabular-nums}
+.btn.paypal{background:linear-gradient(180deg,#2d9cdb,#0070BA);color:#fff;box-shadow:inset 0 -4px 0 rgba(0,30,90,.35)}
+.btn.paypal .price{background:rgba(255,255,255,.18);padding:3px 9px;border-radius:9px;font-variant-numeric:tabular-nums}
+@keyframes pulse{0%{box-shadow:inset 0 -4px 0 rgba(150,70,0,.35),0 0 0 0 rgba(255,181,71,.55)}80%,100%{box-shadow:inset 0 -4px 0 rgba(150,70,0,.35),0 0 0 16px rgba(255,181,71,0)}}
+.tagp{display:inline-block;margin-left:10px;padding:2px 10px;border-radius:999px;background:rgba(255,255,255,.12);color:var(--lavande);font-weight:900;font-size:.9rem;vertical-align:1px}
+.hint{margin-top:18px;font-size:.9rem;color:var(--brume)}
+
+/* ---------- sommaire des jeux ---------- */
+.shelf{padding:8px 0 40px}
+.shelf h2{font-size:clamp(2rem,4.5vw,2.8rem)}
+.shelf .lead{color:var(--brume);margin-top:8px;max-width:52ch}
+.covers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,22px);margin-top:28px}
+.cover{text-decoration:none;display:block}
+.cover .art{aspect-ratio:1;border-radius:28%;overflow:hidden;box-shadow:0 14px 30px rgba(5,2,20,.5);transition:transform .2s cubic-bezier(.3,1.4,.5,1)}
+.cover:hover .art{transform:translateY(-6px) rotate(-2deg)}
+.cover img{width:100%;height:100%;object-fit:cover}
+.cover b{display:block;font:400 clamp(1rem,2.4vw,1.4rem)/1.15 var(--display);margin-top:14px}
+.cover>span{display:block;color:var(--brume);font-size:.92rem;font-weight:600}
+@media (max-width:520px){.cover>span{display:none}}
+
+/* ---------- un monde par jeu ---------- */
+.game{--a:#FFB547;--a-ink:#2A1300;position:relative;padding:clamp(64px,9vw,120px) 0;overflow:hidden;isolation:isolate;scroll-margin-top:60px}
+.game .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.game .bg::after{content:"";position:absolute;inset:0}
+.game .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.game.flip .grid{grid-template-columns:1fr 1.05fr}
+.game.flip .visual{order:2}
+@media (max-width:860px){.game .grid,.game.flip .grid{grid-template-columns:1fr}.game.flip .visual{order:0}}
+.head{display:flex;align-items:center;gap:16px}
+.head .ico{width:68px;height:68px;border-radius:22%;flex:none;box-shadow:0 8px 18px rgba(0,0,0,.4)}
+.genre{font-weight:800;color:var(--a);font-size:1rem}
+.game h2{font-size:clamp(2.4rem,6vw,4rem)}
+.logo-h{max-width:min(420px,90%)}
+.pitch{margin-top:18px;font-size:1.12rem;max-width:46ch}
+.feats{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px;max-width:48ch}
+.feats li{position:relative;padding-left:30px}
+.feats li::before{content:"";position:absolute;left:0;top:.42em;width:16px;height:16px;border-radius:5px;background:var(--a);box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0}
+.facts div{background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;font-size:.9rem;line-height:1.3}
+.facts dt{color:var(--brume);font-weight:700;font-size:.78rem}
+.facts dd{margin:0;font-weight:800}
+.game .cta{margin-top:28px}
+
+/* galerie */
+.strip{display:flex;gap:12px;margin-top:30px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.strip button{flex:none;border:0;padding:0;background:none;border-radius:14px;overflow:hidden;cursor:zoom-in;scroll-snap-align:start;box-shadow:0 8px 18px rgba(0,0,0,.35)}
+.strip img{height:132px;width:auto;object-fit:cover}
+
+/* Gravity Turn : bonbon */
+#gravity-turn{--a:#FFB547;background:linear-gradient(160deg,#3A1E7A 0%,#24145A 55%,#1A1238 100%)}
+#gravity-turn .visual{position:relative;display:grid;place-items:center;min-height:380px}
+.gt-board{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(340px,78vw);padding:14px;border-radius:26px;background:rgba(10,4,40,.45);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08);transition:transform .75s cubic-bezier(.5,1.4,.5,1)}
+.gt-board i{aspect-ratio:1;border-radius:24%;background:var(--c);box-shadow:inset 0 -5px 0 rgba(0,0,0,.18),inset 0 4px 0 rgba(255,255,255,.35)}
+.gt-board i.e{background:rgba(255,255,255,.05);box-shadow:none}
+.gt-jelly{position:absolute;width:120px;right:4%;bottom:-6px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.gt-turn{position:absolute;left:2%;top:4%}
+#gravity-turn .logo-h{filter:drop-shadow(0 6px 10px rgba(0,0,0,.3))}
+
+/* Infinite Dungeon : donjon violet et or */
+#infinite-dungeon{--a:#F0B94A;--a-ink:#2B1400}
+#infinite-dungeon.bgon .bg{background-image:url(/assets/id-camp.webp)}
+#infinite-dungeon .bg::after{background:linear-gradient(90deg,rgba(20,8,30,.96) 0%,rgba(20,8,30,.88) 45%,rgba(20,8,30,.55) 100%)}
+@media (max-width:860px){#infinite-dungeon .bg::after{background:linear-gradient(rgba(20,8,30,.75),rgba(20,8,30,.95) 40%)}}
+.poster{position:relative;justify-self:center;width:min(360px,80vw)}
+.poster img{border-radius:24px;box-shadow:0 24px 50px rgba(0,0,0,.55);transform:rotate(-2.5deg)}
+.poster .boss{position:absolute;width:62%;right:-18%;bottom:-8%;transform:none;box-shadow:none;border-radius:0;filter:drop-shadow(0 12px 16px rgba(0,0,0,.6))}
+@media (max-width:520px){.poster .boss{right:-6%}}
+
+
+/* ---------- à propos, suivre ---------- */
+.about{padding:clamp(64px,9vw,110px) 0}
+.about .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px)}
+@media (max-width:760px){.about .grid{grid-template-columns:1fr}}
+.about h2{font-size:clamp(2rem,4.5vw,2.8rem)}
+.about p{margin-top:14px;max-width:52ch;color:var(--lavande)}
+.about p.soft{color:var(--brume)}
+.links{display:grid;gap:12px;margin-top:22px}
+.link{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:var(--prune);text-decoration:none;transition:background .15s}
+.link:hover{background:#352563}
+.link .ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex:none}
+.link .ic svg{width:24px;height:24px}
+.link b{display:block;font-size:1.05rem}
+.link span{color:var(--brume);font-size:.92rem}
+.link.off{opacity:.55;pointer-events:none}
+
+footer{padding:30px 0 calc(30px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.07);color:var(--brume);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{color:var(--lavande)}
+
+/* visionneuse */
+dialog{border:0;padding:0;background:transparent;max-width:94vw;max-height:92vh}
+dialog::backdrop{background:rgba(8,4,24,.86)}
+dialog img{max-width:94vw;max-height:86vh;border-radius:16px;margin:auto}
+dialog form{text-align:center;margin-top:12px}
+dialog button{font:800 1rem var(--body);background:var(--lavande);color:var(--nuit);border:0;border-radius:999px;padding:10px 22px;cursor:pointer}
+
+
+/* ================= LA DERNIÈRE TORCHE ================= */
+.torch{--a:#FF9F2E;--a-ink:#2A0E00;background:#07040A;min-height:min(100vh,900px);display:flex;align-items:center;cursor:default}
+.torch .wrap{position:relative;z-index:2}
+.stones{position:absolute;inset:0;z-index:-3;
+  background:
+   repeating-linear-gradient(0deg,rgba(0,0,0,.55) 0 3px,transparent 3px 64px),
+   repeating-linear-gradient(90deg,rgba(0,0,0,.5) 0 3px,transparent 3px 118px) 0 0/236px 128px,
+   repeating-linear-gradient(90deg,rgba(0,0,0,.5) 0 3px,transparent 3px 118px) 59px 64px/236px 128px,
+   radial-gradient(120% 80% at 50% 100%,#3a2418,#1d120d 60%,#120b08)}
+.dark{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at var(--lx,70%) var(--ly,50%),rgba(255,150,40,.20) 0,rgba(40,14,4,.35) calc(var(--lr,1)*150px),rgba(6,2,6,.9) calc(var(--lr,1)*360px),#040206 calc(var(--lr,1)*620px))}
+.firec{z-index:0}
+.t-stage{position:relative;height:min(520px,62vh);display:grid;place-items:end center}
+.t-stick{position:absolute;left:50%;top:var(--sy,46%);width:16px;height:150px;margin-left:-8px;border-radius:6px 6px 10px 10px;
+  background:linear-gradient(90deg,#3b210f,#7a4a24 45%,#2d180b);box-shadow:0 0 0 2px rgba(0,0,0,.4)}
+.t-stick::before{content:"";position:absolute;left:-7px;right:-7px;top:-6px;height:22px;border-radius:6px;background:linear-gradient(90deg,#4a4a52,#9a9aa6 45%,#3a3a42)}
+.t-help{position:absolute;bottom:0;font-weight:700;color:rgba(255,220,180,.6);font-size:.92rem;text-align:center}
+.t-title{font-size:clamp(3rem,9vw,6.4rem);line-height:.9;display:flex;flex-direction:column;margin-top:4px}
+.t-title span{background:linear-gradient(180deg,#FFF3C4 0%,#FFC24A 35%,#FF6A1A 70%,#B3200C 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 18px rgba(255,120,30,.45)) drop-shadow(0 4px 0 rgba(60,10,0,.8));animation:flicker 3.2s infinite}
+.t-title span+span{font-size:1.25em}
+@keyframes flicker{0%,100%{filter:drop-shadow(0 0 18px rgba(255,120,30,.45)) drop-shadow(0 4px 0 rgba(60,10,0,.8))}
+  42%{filter:drop-shadow(0 0 26px rgba(255,140,40,.7)) drop-shadow(0 4px 0 rgba(60,10,0,.8))}
+  47%{filter:drop-shadow(0 0 10px rgba(255,100,20,.3)) drop-shadow(0 4px 0 rgba(60,10,0,.8))}
+  70%{filter:drop-shadow(0 0 22px rgba(255,130,30,.55)) drop-shadow(0 4px 0 rgba(60,10,0,.8))}}
+.torch .pitch{font-size:1.18rem;color:#FBE8D6}
+.torch .facts div{background:rgba(255,140,40,.1);box-shadow:inset 0 0 0 1px rgba(255,160,60,.2)}
+.torch .facts dt{color:#E8B48A}
+.torch .btn.ghost{box-shadow:inset 0 0 0 1.5px rgba(255,170,80,.4)}
+@media (max-width:860px){.t-stage{height:300px}.torch{min-height:auto}}
+
+.torch{flex-direction:column;align-items:stretch;justify-content:center}
+.t-stage{height:auto;display:block;aspect-ratio:1290/1430;width:100%;max-width:560px;margin:0 auto;border-radius:28px;overflow:hidden;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 0 1px rgba(255,170,80,.15)}
+.t-key{width:100%;height:100%;object-fit:cover}
+.t-stage{touch-action:pan-y}
+.t-dark{position:absolute;inset:0;background:radial-gradient(circle at var(--sx,60%) var(--sy,18%),rgba(255,170,60,.14) 0,rgba(10,4,2,.05) calc(var(--lr,1)*110px),rgba(6,2,4,.6) calc(var(--lr,1)*280px),rgba(3,1,3,.9) calc(var(--lr,1)*520px))}
+.t-help{position:static;margin-top:14px;text-align:center}
+.t-quote{margin-top:16px;font:400 clamp(1.15rem,2.4vw,1.45rem)/1.3 var(--display);color:#FFD9A0;letter-spacing:.02em}
+.t-more{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:clamp(48px,7vw,90px)}
+@media (max-width:860px){.t-more{grid-template-columns:1fr}}
+.phone{justify-self:center;width:min(270px,64vw);aspect-ratio:520/935;border-radius:38px;padding:10px;background:linear-gradient(145deg,#3a2a20,#120a07);
+  box-shadow:0 0 0 2px rgba(255,180,90,.35),0 40px 80px rgba(0,0,0,.75),0 0 60px rgba(255,120,30,.25);transform:rotate(-3deg)}
+.phone-in{position:relative;width:100%;height:100%;border-radius:29px;overflow:hidden;background:#000}
+.phone-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .9s ease,transform 3.6s ease-out}
+.phone-in img.on{opacity:1;transform:scale(1)}
+.t-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.t-stats div{padding:18px 20px;border-radius:20px;background:linear-gradient(160deg,rgba(255,140,40,.16),rgba(255,140,40,.04));box-shadow:inset 0 0 0 1px rgba(255,170,80,.22)}
+.t-stats b{display:block;font:400 clamp(2.4rem,6vw,3.6rem)/1 var(--display);background:linear-gradient(180deg,#FFF3C4,#FFC24A 45%,#FF6A1A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.t-stats span{font-weight:800;color:#F3D9BD}
+.t-strip{margin-top:22px}
+.t-strip button{box-shadow:0 8px 18px rgba(0,0,0,.5),0 0 0 1px rgba(255,170,80,.25)}
+@media (prefers-reduced-motion:reduce){.phone-in img{transition:none}}
+
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px;max-width:520px}
+.tier{padding:10px 10px 12px;border-radius:12px;line-height:1.2}
+.tier b{display:block;font:400 1.05rem var(--display)}
+.tier span{font-size:.78rem;font-weight:700;opacity:.85}
+.tier.t1{background:linear-gradient(160deg,#FFD877,#F09A2A);color:#3A1600}
+.tier.t2{background:linear-gradient(160deg,#B8621E,#6E3311);color:#FFE3C2}
+.tier.t3{background:linear-gradient(160deg,#4A2418,#25110B);color:#F2C9A6;box-shadow:inset 0 0 0 1px rgba(255,150,60,.2)}
+.tier.t4{background:#050203;color:#FF8A3A;box-shadow:inset 0 0 0 1px rgba(255,120,40,.45),0 0 18px rgba(255,90,20,.25)}
+@media (max-width:520px){.tiers{grid-template-columns:repeat(2,1fr)}}
+.t-heroes{margin-top:clamp(48px,7vw,80px)}
+.t-heroes h3{font-size:clamp(1.6rem,3.6vw,2.2rem);color:#FFD9A0}
+.t-heroes ul{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:640px){.t-heroes ul{grid-template-columns:repeat(2,1fr)}}
+.t-heroes li{padding:12px 14px;border-radius:14px;background:rgba(255,140,40,.08);box-shadow:inset 0 0 0 1px rgba(255,170,80,.18)}
+.t-heroes li b{display:block;font:400 1.2rem var(--display);color:#FFF1DA}
+.t-heroes li span{font-size:.88rem;font-weight:700;color:#E8B48A}
+.marquee{position:relative;display:flex;overflow:hidden;margin-top:clamp(40px,6vw,70px);padding:16px 0;border-block:1px solid rgba(255,150,60,.25);background:linear-gradient(90deg,rgba(255,110,30,.12),rgba(255,110,30,.02))}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:1;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,#07040A,transparent)}.marquee::after{right:0;background:linear-gradient(270deg,#07040A,transparent)}
+.mq-track{display:flex;gap:34px;margin:0;padding:0 17px;list-style:none;flex:none;animation:mq 70s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-100%)}}
+.mq-track li{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.mq-track .n{font:400 .95rem var(--display);color:#07040A;background:#FF9F2E;border-radius:8px;padding:1px 7px}
+.mq-track b{font:400 1.35rem var(--display);color:#FFE7C2}
+.mq-track em{font-style:normal;font-weight:700;color:#C99B76}
+.mq-track li:last-child b{color:#FF8A3A}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}.marquee{overflow-x:auto}}
+/* petite flamme CSS (cartes et vignette) */
+.tflame{position:relative;display:block;width:60px;height:90px}
+.tflame i{position:absolute;left:50%;bottom:0;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;transform-origin:50% 100%;animation:lick 1.1s ease-in-out infinite alternate}
+.tflame i:nth-child(1){width:60px;height:90px;margin-left:-30px;background:radial-gradient(ellipse at 50% 80%,#FF6A1A,#B3200C 60%,transparent 72%);filter:blur(2px)}
+.tflame i:nth-child(2){width:40px;height:66px;margin-left:-20px;background:radial-gradient(ellipse at 50% 80%,#FFC24A,#FF7A1A 65%,transparent 75%);animation-duration:.8s}
+.tflame i:nth-child(3){width:20px;height:36px;margin-left:-10px;background:radial-gradient(ellipse at 50% 75%,#FFFBE6,#FFD36A 60%,transparent 75%);animation-duration:.6s}
+@keyframes lick{0%{transform:scale(1,1) skewX(-3deg)}50%{transform:scale(.92,1.08) skewX(3deg)}100%{transform:scale(1.05,.95) skewX(-2deg)}}
+.tcard,.tart{background:radial-gradient(70% 55% at 50% 42%,#5a2a10,#1a0b07 70%,#07040A)}
+.tc-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center}
+.tc-in b{font:400 clamp(1.3rem,2.4vw,2rem)/.95 var(--display);background:linear-gradient(180deg,#FFF3C4,#FFC24A 40%,#FF6A1A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tart{display:grid;place-items:center}
+.tart .tflame{transform:scale(.9)}
+@media (prefers-reduced-motion:reduce){.tflame i,.t-title span{animation:none}}
+
+/* ================= INTRO STUDIO : mosaïque des jeux ================= */
+#intro{position:fixed;inset:0;z-index:100;background:#120C2B;display:grid;place-items:center;cursor:pointer;overflow:hidden;
+  clip-path:circle(150% at 50% 50%);transition:clip-path 1s cubic-bezier(.7,0,.2,1)}
+#intro.open{clip-path:circle(0% at 50% 50%)}
+#intro.gone{display:none}
+#introFx{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.in-wall{position:absolute;inset:-25%;display:flex;justify-content:center;gap:3vmin;transform:rotate(-9deg) scale(1.35);opacity:0;transition:opacity .9s ease,transform 2.6s cubic-bezier(.2,.7,.2,1)}
+#intro.lit .in-wall{opacity:.6;transform:rotate(-9deg) scale(1.05)}
+.in-col{flex:0 0 auto;width:clamp(84px,21vmin,170px);display:flex;flex-direction:column;gap:3vmin;animation:inUp 10s linear infinite}
+.in-col:nth-child(even){animation-name:inDown;margin-top:-18vmin}
+.in-col:nth-child(3){animation-duration:13s}
+.in-col img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.1)}
+@keyframes inUp{to{transform:translateY(-50%)}}
+@keyframes inDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.in-veil{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 80% 42% at 50% 50%,rgba(18,12,43,.94) 0,rgba(18,12,43,.78) 45%,rgba(18,12,43,.15) 100%),linear-gradient(180deg,rgba(18,12,43,.55),transparent 22%,transparent 78%,rgba(18,12,43,.7))}
+.in-t1,.in-t2,.in-skip{position:absolute;z-index:2;left:0;right:0;text-align:center;margin:0;opacity:0;transition:opacity .6s,transform .8s cubic-bezier(.2,1,.3,1)}
+.in-t1{top:calc(50% - 3.4rem);font-weight:800;letter-spacing:.16em;text-transform:lowercase;color:#B9AEDD;font-size:.95rem;transform:translateY(10px)}
+.in-t2{top:calc(50% - 2.4rem);font:400 clamp(3rem,13vw,6rem)/1.05 var(--display);background:linear-gradient(180deg,#FFF3C4,#FFB547 50%,#FF5E9C);-webkit-background-clip:text;background-clip:text;color:transparent;transform:scale(1.35);filter:drop-shadow(0 4px 22px rgba(255,94,156,.45));padding:0 12px}
+.in-skip{bottom:calc(28px + env(safe-area-inset-bottom));color:rgba(238,232,255,.5);font-size:.85rem;font-weight:700}
+#intro.lit .in-t1{opacity:1;transform:none}
+#intro.title .in-t2{opacity:1;transform:none}
+#intro.lit .in-skip{opacity:1}
+body.intro{overflow:hidden}
+body.intro .tile,body.intro .card{animation-play-state:paused}
+
+/* ================= EFFETS ================= */
+.fxc{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.hero{isolation:isolate;min-height:min(92vh,860px);display:flex;align-items:center}
+.hero>.wrap{position:relative;z-index:2}
+.hero.shake{animation:shake .32s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shake{20%{transform:translate(-5px,3px)}40%{transform:translate(6px,-4px)}60%{transform:translate(-3px,2px)}80%{transform:translate(2px,-1px)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(60% 50% at 78% 40%,rgba(255,94,156,.22),transparent 70%),
+  radial-gradient(50% 50% at 15% 85%,rgba(61,214,198,.14),transparent 70%);pointer-events:none}
+
+/* éventail de cartes holographiques */
+.fan{position:absolute;right:max(2vw,calc((100vw - 1120px)/2 - 40px));top:50%;width:min(460px,36vw);aspect-ratio:1/1.05;transform:translateY(-50%);perspective:1100px;z-index:1}
+.card{position:absolute;width:52%;aspect-ratio:3/4.2;border-radius:22px;overflow:hidden;display:block;
+  box-shadow:0 30px 60px rgba(5,0,25,.6),0 0 0 2px rgba(255,255,255,.14) inset;
+  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,1.2,.4,1),box-shadow .3s;
+  --rx:0deg;--ry:0deg;--mx:50%;--my:50%;opacity:0;animation:deal .9s cubic-bezier(.2,1.3,.4,1) forwards}
+.card img{width:100%;height:100%;object-fit:cover}
+.card.c1{left:0;top:6%;--base:rotate(-11deg);animation-delay:1.25s}
+.card.c2{left:24%;top:0;--base:rotate(1deg) translateY(-4%);animation-delay:1.4s;z-index:2}
+.card.c3{left:48%;top:9%;--base:rotate(12deg);animation-delay:1.55s;z-index:1}
+.card{transform:var(--base) rotateX(var(--rx)) rotateY(var(--ry))}
+.card:hover{z-index:5;box-shadow:0 40px 70px rgba(5,0,25,.7),0 0 0 2px rgba(255,255,255,.3) inset,0 0 40px rgba(255,181,71,.35)}
+.gtc{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:6%;background:linear-gradient(160deg,#5B2EC0,#2A1570)}
+.gtc img{width:58%;height:auto}
+.gtc .gtl{width:86%}
+.shine{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color-dodge;opacity:.55;
+  background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,.55),transparent 38%),
+  linear-gradient(115deg,transparent 30%,rgba(255,94,156,.35) 42%,rgba(61,214,198,.35) 50%,rgba(255,181,71,.35) 58%,transparent 70%);
+  background-size:100% 100%,250% 250%;background-position:center,var(--hx,0%) 0;transition:opacity .3s}
+@keyframes deal{0%{opacity:0;transform:translate(60%,40%) rotate(40deg) scale(.6)}100%{opacity:1;transform:var(--base)}}
+.card.dealt{animation:float 6s ease-in-out infinite;opacity:1}
+.card.c2.dealt{animation-delay:-2s}.card.c3.dealt{animation-delay:-4s}
+@keyframes float{50%{translate:0 -10px}}
+@media (max-width:860px){
+  .hero{min-height:auto;align-items:flex-start}
+  .fan{position:relative;right:auto;top:auto;transform:none;width:min(420px,92%);margin:28px auto -10px;order:2;aspect-ratio:1/.8}
+  .hero{flex-direction:column}
+  .card{width:44%}
+  .card.c2{left:28%}.card.c3{left:56%}
+}
+
+/* bande de chiffres */
+.band{position:relative;padding:34px 0;background:linear-gradient(90deg,#FF5E9C,#9B7BFF 50%,#3DD6C6);color:#fff;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-55deg,rgba(255,255,255,.07) 0 18px,transparent 18px 36px);animation:slide 6s linear infinite}
+@keyframes slide{to{background-position:72px 0}}
+.nums{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.num b{display:block;font:400 clamp(2.6rem,8vw,4.6rem)/1 var(--display);text-shadow:0 5px 0 rgba(40,10,80,.35);font-variant-numeric:tabular-nums}
+.num span{font-weight:800;font-size:clamp(.82rem,2vw,1rem)}
+
+/* apparitions au défilement */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,1,.3,1)}
+.reveal.from-art{transform:translateX(-60px) rotate(-3deg) scale(.94)}
+.flip .reveal.from-art{transform:translateX(60px) rotate(3deg) scale(.94)}
+.reveal.slam{transform:scale(1.6);filter:blur(10px);transition:opacity .35s ease,transform .5s cubic-bezier(.2,1.6,.4,1),filter .4s}
+.reveal.in,.flip .reveal.in{opacity:1;transform:none;filter:none}
+.covers .reveal:nth-child(2){transition-delay:.1s}.covers .reveal:nth-child(3){transition-delay:.2s}
+.feats.reveal{transition-delay:.15s}
+.nums .reveal:nth-child(2){transition-delay:.12s}.nums .reveal:nth-child(3){transition-delay:.24s}
+/* éclair au moment de l'impact du logo */
+.game .flash{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(circle at var(--fx,70%) 40%,rgba(255,240,200,.55),transparent 60%);opacity:0}
+.game .flash.go{animation:flash .6s ease-out}
+@keyframes flash{10%{opacity:1}100%{opacity:0}}
+/* boutons qui brillent */
+.btn.main{position:relative;overflow:hidden}
+.btn.main::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:glint 3.6s ease-in-out infinite}
+@keyframes glint{0%,70%{left:-60%}100%{left:130%}}
+/* cartes de la vitrine en 3D */
+.cover .art{position:relative;transform:perspective(700px) rotateX(var(--rx,0)) rotateY(var(--ry,0))}
+.cover:hover .art{transform:perspective(700px) rotateX(var(--rx,0)) rotateY(var(--ry,0)) translateY(-6px) scale(1.04)}
+.cover .art .shine{border-radius:inherit}
+/* plateau GT qui tombe */
+.gt-board i{transition:transform .45s cubic-bezier(.5,1.6,.5,1)}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal,.reveal.slam,.reveal.from-art{opacity:1;transform:none;filter:none;transition:none}
+  .card,.card.dealt{animation:none;opacity:1}
+  .band::before,.btn.main::after{animation:none}
+  .hero.shake{animation:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tile,.tile.wob{animation:none}
+  .gt-board{transition:none}
+  .cover .art{transition:none}
+}
+.about .ap-games{list-style:none;padding:0;margin:16px 0;display:grid;gap:10px}
+.about .ap-games li{line-height:1.5}
+.about .ap-games b{color:var(--bonbon)}
+
+/* ===== V4 : accueil boutique ===== */
+.card{width:44%}
+.card.c1{left:0;top:8%;--base:rotate(-12deg)}
+.card.c2{left:19%;top:0;--base:rotate(-3deg) translateY(-3%);z-index:3}
+.card.c4{left:38%;top:5%;--base:rotate(6deg);animation-delay:1.7s;z-index:4}
+.card.c3{left:56%;top:12%;--base:rotate(14deg);animation-delay:1.85s;z-index:2}
+.card.c4.dealt{animation-delay:-1s}
+@media (max-width:860px){.card.c2{left:19%}.card.c4{left:38%}.card.c3{left:56%}}
+.store{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
+@media (max-width:900px){.store{grid-template-columns:1fr}}
+.scard{position:relative;display:flex;background:var(--prune);border-radius:22px;overflow:hidden;box-shadow:0 14px 30px rgba(5,2,20,.45),inset 0 0 0 1px rgba(255,255,255,.08);transition:transform .2s cubic-bezier(.3,1.4,.5,1)}
+.scard:hover{transform:translateY(-4px)}
+.scard.feat{box-shadow:0 14px 34px rgba(5,2,20,.5),inset 0 0 0 2px var(--a,#FFB547)}
+.simg{position:relative;flex:0 0 38%;aspect-ratio:3/4;overflow:hidden;background:#120C2B;display:block}
+.simg>img{width:100%;height:100%;object-fit:cover;object-position:50% 10%}
+.simg .gtc{position:absolute;inset:0}
+.sprice{position:absolute;left:10px;top:10px;padding:4px 11px;border-radius:999px;background:rgba(18,12,43,.88);color:var(--bonbon);font-weight:800;font-size:.82rem}
+.sstar{position:absolute;right:8px;top:8px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--a,#FFB547);color:#1B0B33;font-size:.85rem;font-weight:900}
+.sbody{padding:16px 16px 16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+.sgenre{font-size:.76rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--a,#B9AEDD)}
+.sname{font:400 clamp(1.25rem,3vw,1.6rem)/1.1 var(--display);margin:0}
+.sname a{text-decoration:none;color:var(--lavande)}
+.sdesc{font-size:.92rem;line-height:1.45;color:var(--brume);margin:0;flex:1}
+.sact{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sact .btn{padding:9px 14px;font-size:.88rem}
+@media (max-width:420px){.simg{flex-basis:36%}.sbody{padding:12px 12px 12px 14px}.sdesc{font-size:.86rem}}
+.news{padding:0 0 44px}
+.news h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+.nl{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.nl li{display:flex;gap:14px;align-items:baseline;background:var(--prune);border-radius:16px;padding:12px 16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.nl time{flex:0 0 auto;min-width:7.5em;font-weight:800;font-size:.82rem;color:var(--brume)}
+.nl a{text-decoration:none;color:var(--lavande);font-weight:700;line-height:1.35}
+.ntag{display:inline-block;font-size:.72rem;font-weight:800;padding:2px 8px;border-radius:999px;background:rgba(255,181,71,.18);color:var(--bonbon);margin-right:8px}
+@media (max-width:520px){.nl li{flex-direction:column;gap:4px}}
+.mmenu{display:none;position:relative}
+.mmenu summary{list-style:none;cursor:pointer;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(185,174,221,.45);color:var(--brume)}
+.mmenu summary::-webkit-details-marker{display:none}
+.mmenu[open] summary{color:var(--lavande);background:rgba(255,255,255,.08)}
+.mmenu svg{width:20px;height:20px}
+.mmenu .mm{position:absolute;right:0;top:calc(100% + 8px);background:var(--prune);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:6px;display:grid;min-width:190px;z-index:60;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.mmenu .mm a{padding:12px 14px;border-radius:12px;color:var(--lavande);font-size:1rem}
+@media (max-width:600px){.mmenu{display:block}.nav .itch{display:none}.nav>.snd{margin-left:0}}
+
+/* ===== V5 : pages commerciales ===== */
+body.gp{--a:#FFB547;--a-ink:#2A1300}
+.gp-hero{padding:clamp(22px,4vw,56px) 0 20px;background:radial-gradient(ellipse 70% 60% at 20% 0%,color-mix(in srgb,var(--a) 22%,transparent),transparent 70%)}
+.gp-hero .grid{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:clamp(20px,4vw,52px);align-items:center}
+@media (max-width:760px){.gp-hero .grid{grid-template-columns:1fr}.gp-cover{max-width:300px;width:78%;margin:0 auto}}
+.gp-cover{position:relative;aspect-ratio:3/4;border-radius:26px;overflow:hidden;box-shadow:0 24px 60px rgba(5,2,20,.6),0 0 0 2px var(--a)}
+.gp-cover>img{width:100%;height:100%;object-fit:cover}
+.gp-cover .gtc{position:absolute;inset:0}
+.crumb{font-size:.85rem;color:var(--brume);margin:0 0 10px}.crumb a{color:var(--brume)}
+.gp-genre{margin:0;font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--a)}
+.gp h1{font:400 clamp(2.3rem,7vw,3.8rem)/1.02 var(--display);margin:4px 0 6px}
+.gp-tag{font:400 clamp(1.15rem,3vw,1.55rem)/1.25 var(--display);color:var(--a);margin:0 0 10px}
+.gp-desc{color:var(--lavande);font-size:1.08rem;max-width:58ch;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+.chip{padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.09);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--a) 55%,transparent);font-weight:800;font-size:.88rem}
+.gp-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.gb{padding:30px 0}
+.gb h2{font:400 clamp(1.6rem,4vw,2.3rem)/1.1 var(--display);margin:0 0 16px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.fcard{background:var(--prune);border-radius:18px;padding:18px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.fcard .fi{font-size:1.7rem;line-height:1}.fcard h3{font:400 1.2rem/1.15 var(--display);margin:8px 0 6px}.fcard p{margin:0;color:var(--brume);font-size:.95rem}
+.model{background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border-radius:22px;padding:22px;box-shadow:inset 0 0 0 1.5px var(--a)}
+.model h2{margin-bottom:10px}.model ul{margin:0;padding-left:20px;color:var(--lavande)}.model li{margin:6px 0}
+.cmp{display:grid;grid-template-columns:auto 1fr 1fr;gap:1px;margin-top:16px;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.12);font-size:.95rem}
+.cmp>div{background:var(--prune);padding:10px 12px}.cmp .h{font-weight:800;background:rgba(255,255,255,.06)}.cmp .hf{color:var(--a)}
+@media (max-width:520px){.cmp{font-size:.86rem}.cmp>div{padding:8px 9px}}
+.gal{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin}
+.gal button{flex:0 0 auto;border:0;padding:0;background:none;border-radius:16px;overflow:hidden;scroll-snap-align:start;cursor:zoom-in;box-shadow:0 10px 24px rgba(5,2,20,.5)}
+.gal img{height:clamp(260px,52vw,340px);width:auto;display:block}
+.trailer{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#120C2B;display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);margin-bottom:18px}
+.trailer>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3;filter:blur(3px)}
+.trailer video{position:absolute;inset:0;width:100%;height:100%;background:#000}
+.trailer p{position:relative;margin:0;font-weight:800;color:var(--brume);text-align:center;padding:0 16px}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:0}
+.info div{background:var(--prune);border-radius:16px;padding:14px 16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.info dt{font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--a)}.info dd{margin:4px 0 0;font-weight:700}
+.faq details{background:var(--prune);border-radius:16px;margin-bottom:10px;padding:0 16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.faq summary{cursor:pointer;font-weight:800;padding:15px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";color:var(--a);font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"–"}.faq p{margin:0 0 15px;color:var(--brume)}
+.more{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.rc{display:flex;gap:14px;align-items:center;background:var(--prune);border-radius:18px;padding:10px;text-decoration:none;color:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.rc:hover{background:#33256a}
+.rc .ri{position:relative;flex:0 0 76px;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#120C2B}.rc .ri>img{width:100%;height:100%;object-fit:cover;object-position:50% 8%}.rc .ri .gtc{position:absolute;inset:0}
+.rc b{display:block;font:400 1.15rem/1.1 var(--display)}.rc small{display:block;color:var(--brume);font-weight:700;margin-top:3px}.rc em{font-style:normal;color:var(--bonbon);font-weight:800;font-size:.85rem}
+.sbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;gap:10px;align-items:center;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(26,18,56,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.14);transform:translateY(115%);transition:transform .25s ease}
+.sbar.show{transform:none}
+.sbar .sp{font-weight:800;line-height:1.1;font-size:.78rem;color:var(--brume)}.sbar .sp b{display:block;font-size:1.05rem;color:var(--lavande)}
+.sbar .btn{min-height:46px;padding:0 14px;font-size:.95rem;flex:1;justify-content:center}
+@media (max-width:720px){.sbar{display:flex}body.hasbar{padding-bottom:78px}}
+@media (prefers-reduced-motion:reduce){.sbar{transition:none}}
+</style>
+</head>
+<body class="gp hasbar" style="--a:#FFB547;--a-ink:#2A1300">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Maxlol Games, back to top">
+      <span class="mini" aria-hidden="true"><i style="background:#FF6B6B"></i><i style="background:#FFB547"></i><i style="background:#4FA8FF"></i><i style="background:#9B7BFF"></i></span>
+      Maxlol Games
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a class="opt" href="/#jeux">Games</a>
+      <a class="opt" href="/#nouveautes">News</a>
+      <a class="opt" href="/#apropos">About</a>
+<details class="mmenu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><div class="mm"><a href="/#jeux">Games</a><a href="/#nouveautes">News</a><a href="/#apropos">About</a><a href="/press/">Press kit</a><a data-link="itch" href="/#suivre" target="_blank" rel="noopener">itch.io</a></div></details>
+<details class="langmenu"><summary aria-label="Language / Langue">EN</summary><div class="lm"><a href="/fr/infinite-dungeon/" hreflang="fr" lang="fr">Français</a><a href="/infinite-dungeon/" hreflang="en" lang="en" aria-current="true">English</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/pt/" hreflang="pt-BR" lang="pt-BR">Português</a><a href="/th/" hreflang="th" lang="th">ไทย</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/ja/" hreflang="ja" lang="ja">日本語</a><a href="/ko/" hreflang="ko" lang="ko">한국어</a><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/id/" hreflang="id" lang="id">Bahasa Indonesia</a></div></details>
+      <a class="itch" data-link="itch" href="/#suivre">itch.io</a>
+      </nav>
+  </div>
+</header>
+<main><section class="gp-hero"><div class="wrap"><p class="crumb"><a href="/">Home</a> › <a href="/#jeux">Games</a> › Infinite Dungeon</p><div class="grid"><div class="gp-cover"><img src="/assets/id-title.webp" alt="Infinite Dungeon" width="640" height="960" loading="lazy" decoding="async"></div><div><p class="gp-genre">Fantasy roguelite</p><h1>Infinite Dungeon</h1><p class="gp-tag">Descend. Fuse. Survive.</p><p class="gp-desc">Build a team of three heroes and go down as far as you can. Fights play out on their own: your job is to choose the relics, the gear and the doors.</p><div class="chips"><span class="chip">Free</span><span class="chip">In development (v0.8)</span></div><div class="gp-cta" id="cta"><a class="btn main" data-link="id-play" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Play for free</a><a class="btn ghost" data-link="id-itch" href="#" target="_blank" rel="noopener">itch.io</a></div></div></div></div></section><section class="gb"><div class="wrap"><div class="model"><h2>Free, no purchases</h2><ul><li>Play for free, right in your browser.</li><li>The game offers no purchases for now. It is still in development (version 0.8).</li></ul></div></div></section><section class="gb"><div class="wrap"><h2>Screenshots and images</h2><div class="trailer"><img src="/assets/id-camp.webp" alt="" loading="lazy"><p>Trailer coming soon</p></div><div class="gal" aria-label="Screenshots and images"><button type="button" data-full="/assets/id-camp.webp"><img src="/assets/id-camp.webp" alt="Infinite Dungeon – 1" loading="lazy" decoding="async"></button><button type="button" data-full="/assets/id-team.webp"><img src="/assets/id-team.webp" alt="Infinite Dungeon – 2" loading="lazy" decoding="async"></button><button type="button" data-full="/assets/id-victory.webp"><img src="/assets/id-victory.webp" alt="Infinite Dungeon – 3" loading="lazy" decoding="async"></button><button type="button" data-full="/assets/id-lyra.webp"><img src="/assets/id-lyra.webp" alt="Infinite Dungeon – 4" loading="lazy" decoding="async"></button></div></div></section><section class="gb"><div class="wrap"><h2>Five reasons to play</h2><div class="fgrid"><div class="fcard"><div class="fi" aria-hidden="true">🏰</div><h3>100 floors, 10 bosses</h3><p>With a nightmare mode and its curses.</p></div><div class="fcard"><div class="fi" aria-hidden="true">⚔️</div><h3>5 heroes to combine</h3><p>Aldric, Selena, Orin, Lyra and Nyx: build your team of three.</p></div><div class="fcard"><div class="fi" aria-hidden="true">🔮</div><h3>Relics to fuse</h3><p>Relics, gear and synergies: you build the strategy.</p></div><div class="fcard"><div class="fi" aria-hidden="true">🏕️</div><h3>A camp to upgrade</h3><p>Between two descents, upgrade your camp to go further.</p></div><div class="fcard"><div class="fi" aria-hidden="true">🤖</div><h3>Automatic fights</h3><p>Fights play out on their own: you choose the relics, the gear and the doors.</p></div></div></div></section><section class="gb"><div class="wrap"><h2>Good to know</h2><dl class="info"><div><dt>Platforms</dt><dd>Browser, mobile</dd></div><div><dt>Languages</dt><dd>French, English</dd></div><div><dt>Saves</dt><dd>Automatic, on your device (in the browser)</dd></div><div><dt>Updates</dt><dd>Published online; news is listed on this site</dd></div><div><dt>Version</dt><dd>0.8, in development</dd></div></dl></div></section><section class="gb faq"><div class="wrap"><h2>FAQ</h2><details><summary>Is Infinite Dungeon free?</summary><p>Yes, and the game offers no purchases for now.</p></details><details><summary>Is the game finished?</summary><p>No, it is version 0.8, still in development.</p></details><details><summary>Do I play the fights?</summary><p>No, they play out on their own. You choose the relics, the gear and the doors.</p></details><details><summary>Which devices and languages?</summary><p>In the browser, on phone and computer. The game is in French and English.</p></details><details><summary>Is my progress saved?</summary><p>Yes, automatically, on the device you use. If you clear your browser data, the save is gone.</p></details></div></section><section class="gb"><div class="wrap"><h2>Try the studio&#x27;s other games</h2><div class="more"><a class="rc" href="/la-derniere-torche/"><span class="ri"><img src="/assets/t-cover2.webp" alt="La Dernière Torche" width="640" height="960" loading="lazy" decoding="async"></span><span><b>La Dernière Torche</b><small>Turn-based dungeon crawler</small><em data-price="torch"></em></span></a><a class="rc" href="/wyrmstorm/"><span class="ri"><img src="/assets/ws-cover.webp" alt="WYRMSTORM" width="640" height="960" loading="lazy" decoding="async"></span><span><b>WYRMSTORM</b><small>Dragon shoot&#x27;em up</small><em data-price="wyrmstorm"></em></span></a><a class="rc" href="/gravity-turn/"><span class="ri"><span class="gtc"><img src="/assets/gt-jelly.webp" alt="" width="256" height="256" loading="lazy"><img class="gtl" src="/assets/gt-logo.webp" alt="" width="720" height="241" loading="lazy"></span></span><span><b>Gravity Turn</b><small>Rotating block puzzle</small><em data-price="gt"></em></span></a></div></div></section></main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Maxlol Games, by maxlolfr</span>
+    <span>Game images and music: maxlolfr. Lilita One and Nunito fonts (OFL license).</span>
+    <a class="presslink" href="/press/">Press kit</a>
+  </div>
+</footer>
+<div class="sbar" id="sbar"><a class="btn main" data-link="id-play" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Play for free</a></div>
+<dialog id="viewer" aria-label="Infinite Dungeon"><img id="viewerImg" alt=""><form method="dialog"><button>Close</button></form></dialog>
+<script>
+/* ============================================================
+   BOUTIQUE : prix affiché + adresse itch.io du jeu.
+   Le bouton « Acheter » ouvre le paiement itch.io (adresse + /purchase).
+   Prix vide = gratuit (pas de bouton Acheter).
+   ============================================================ */
+const SHOP = {
+  "torch": { price: "€7.99", itch: "https://maxlolfr.itch.io/la-derniere-torche", paypal: "https://www.paypal.me/maxlolfr2/7.99EUR" },
+  "gt":    { price: "",       itch: "" },
+  "id":    { price: "",       itch: "" }/*GS*/,
+  "wyrmstorm": { price: "", itch: "" }/*GE*/
+};
+
+/* ============================================================
+   RÉGLAGES : change seulement ces adresses.
+   Une adresse vide ("") cache le bouton correspondant.
+   ============================================================ */
+const LINKS = {
+  "itch":    "https://maxlolfr.itch.io",
+  "torch-play": "https://la-derniere-torche.netlify.app",
+  "gt-itch": "",   // page itch.io de Gravity Turn
+  "id-itch": "",   // page itch.io d'Infinite Dungeon
+    "gt-play": "https://gravity-turn.netlify.app",
+  "id-play": "https://maxlolfr.github.io/Stepquest/infinite-dungeon-v08/",
+  /*LS*/"wyrmstorm-play": "https://wyrmstorm.netlify.app", "wyrmstorm-itch": "",
+  /*LE*/
+  "github":  "https://github.com/maxlolfr",
+  "mail":    ""    // ex. mailto:contact@exemple.com
+};
+
+document.querySelectorAll("[data-link]").forEach(el => {
+  const url = LINKS[el.dataset.link];
+  if (url) { el.href = url; return; }
+  // pas d'adresse : on cache le bouton (le lien itch du menu renvoie vers « Suivre »)
+  if (el.closest(".nav")) { el.href = "#suivre"; el.removeAttribute("target"); return; }
+  if (el.classList.contains("link")) {
+    el.classList.add("off"); el.setAttribute("aria-disabled", "true"); el.removeAttribute("href");
+    const n = el.querySelector("[data-note]"); if (n) n.textContent = "Soon";
+    return;
+  }
+  el.hidden = true;
+});
+document.querySelectorAll("[data-price]").forEach(el => {
+  const g = SHOP[el.dataset.price]; el.textContent = g && g.price ? g.price : "Free";
+});
+document.querySelectorAll("[data-buy]").forEach(el => {
+  const g = SHOP[el.dataset.buy];
+  if (!g || !g.price || !g.itch){ el.hidden = true; return; }
+  el.href = g.itch.replace(/\/$/, "") + "/purchase";
+  el.querySelector(".price").textContent = g.price;
+});
+document.querySelectorAll("[data-paypal]").forEach(el => {
+  const g = SHOP[el.dataset.paypal];
+  if (!g || !g.price || !g.paypal){ el.hidden = true; return; }
+  el.href = g.paypal; el.querySelector(".price").textContent = g.price;
+});
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+
+const v=document.getElementById("viewer"),vi=document.getElementById("viewerImg");
+document.querySelectorAll("[data-full]").forEach(b=>b.addEventListener("click",()=>{vi.src=b.dataset.full;vi.alt=b.querySelector("img").alt;v.showModal();}));
+v.addEventListener("click",e=>{if(e.target===v)v.close()});
+const cta=document.getElementById("cta"),bar=document.getElementById("sbar");
+if(cta&&bar&&"IntersectionObserver" in window){new IntersectionObserver(es=>{bar.classList.toggle("show",!es[0].isIntersecting)}).observe(cta)}
+document.addEventListener("click",e=>{document.querySelectorAll(".mmenu[open],.langmenu[open]").forEach(d=>{if(!d.contains(e.target)||e.target.closest(".mm a"))d.open=false});});
+</script>
+</body>
+</html>

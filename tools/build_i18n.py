@@ -25,6 +25,7 @@ LD_DESC={
  'pt':["Masmorra por turnos para celular: sua tocha enfraquece a cada sala, 20 chefes para vencer.","Quebra-cabeça mobile: coloque os blocos, o tabuleiro gira e as cascatas se encadeiam.","Roguelite de fantasia com combate automático: 100 andares, 10 chefes, equipes de 3 heróis."]}
 exec(open('/home/claude/v3_extra.py').read())
 exec(open('/home/claude/v4_home.py').read())
+exec(open('/home/claude/v5_pages.py').read())
 PITCH_FIX={'en':('Three heroes.','Eight heroes, a team of three.'),'es':('Tres héroes.','Ocho héroes, un equipo de tres.'),'pt':('Três heróis.','Oito heróis, uma equipe de três.'),'th':('ฮีโร่สามคน','ฮีโร่แปดคน ทีมละสามคน'),'zh':('三位英雄，','八位英雄，三人一队，'),'ja':('3人の英雄と、','8人の英雄（3人で1チーム）と、'),'ko':('영웅 세 명과','영웅 여덟 명(팀은 세 명)과'),'ru':('Три героя.','Восемь героев, в отряде трое.'),'id':('Tiga pahlawan.','Delapan pahlawan, tim berisi tiga.')}
 COS_FR='28 costumes pour les 8 héros, et des voix pendant les combats'
 COS_TR={'en':'28 costumes for the 8 heroes, and voices during battles','es':'28 trajes para los 8 héroes y voces durante los combates','pt':'28 trajes para os 8 heróis e vozes durante as batalhas','th':'ชุดแต่งกาย 28 แบบสำหรับฮีโร่ทั้ง 8 คน พร้อมเสียงพากย์ระหว่างการต่อสู้','zh':'8 位英雄共有 28 套服装，战斗中还有语音','ja':'8人の英雄に28種類のコスチューム、戦闘中のボイス','ko':'영웅 8명을 위한 코스튬 28종, 전투 중 음성','ru':'28 костюмов для 8 героев и озвучка в боях','id':'28 kostum untuk 8 pahlawan, plus suara saat bertarung'}
@@ -115,6 +116,7 @@ for _,path,hl,_,_ in LANGS:
     sm.append('  </url>')
 sm.append(f'  <url><loc>https://maxlolgames.com/press/</loc><lastmod>{__import__("datetime").date.today().isoformat()}</lastmod><priority>0.5</priority></url>')
 sm.append('</urlset>\n'); open(ROOT+'sitemap.xml','w').write('\n'.join(sm))
+v5_build()
 # ancienne adresse /en/ -> accueil
 open(ROOT+'en/index.html','w').write('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Maxlol Games</title><link rel="canonical" href="https://maxlolgames.com/"><meta name="robots" content="noindex, follow"><meta http-equiv="refresh" content="0; url=/"></head><body><a href="/">Maxlol Games</a></body></html>\n')
 print('built')

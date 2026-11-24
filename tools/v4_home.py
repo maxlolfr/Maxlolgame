@@ -116,12 +116,14 @@ def home_patch(s,cur,P):
     # --- catalogue : 4 jeux (genre, courte description, prix ou gratuit, actions)
     cards=[('la-derniere-torche','torch','La Dernière Torche','assets/t-cover2.webp',True),('wyrmstorm','wyrmstorm','WYRMSTORM','assets/ws-cover.webp',True),('gravity-turn','gt','Gravity Turn',None,False),('infinite-dungeon','id','Infinite Dungeon','assets/id-title.webp',False)]
     out=[]
+    gpf=lambda sid:('/fr/' if cur=='fr' else '/')+sid+'/'
     for sid,key,name,img,feat in cards:
         genre,desc=_v4_info(s,sid)
         if img: vis='<img src="%s%s" alt="%s" width="640" height="960" loading="lazy" decoding="async">'%(P,img,_e(name))
         else: vis='<span class="gtc"><img src="%sassets/gt-jelly.webp" alt="" width="256" height="256" loading="lazy"><img class="gtl" src="%sassets/gt-logo.webp" alt="" width="720" height="241" loading="lazy"></span>'%(P,P)
         acc={'torch':'#FF9F2E','wyrmstorm':'#B26BFF','gt':'#4FA8FF','id':'#FFB547'}[key]
-        out.append('<article class="scard%s" style="--a:%s"><a class="simg" href="#%s" aria-label="%s">%s<span class="sprice" data-price="%s"></span>%s</a><div class="sbody"><p class="sgenre">%s</p><h3 class="sname"><a href="#%s">%s</a></h3><p class="sdesc">%s</p><div class="sact"><a class="btn main" data-link="%s-play" href="#" target="_blank" rel="noopener">%s</a><a class="btn buy" data-buy="%s" href="#" target="_blank" rel="noopener">%s <span class="price"></span></a><a class="btn paypal" data-paypal="%s" href="#" target="_blank" rel="noopener">PayPal <span class="price"></span></a><a class="btn ghost" href="#%s">%s</a></div></div></article>'%(' feat' if feat else '',acc,sid,_e(name),vis,key,'<span class="sstar" aria-hidden="true">★</span>' if feat else '',genre,sid,name,desc,key,_e(L[0].format(n=name)),key,_e(L[1]),key,sid,_e(V4_SEE_L[cur])))
+        out.append('<article class="scard%s" style="--a:%s"><a class="simg" href="GP%s" aria-label="%s">%s<span class="sprice" data-price="%s"></span>%s</a><div class="sbody"><p class="sgenre">%s</p><h3 class="sname"><a href="GP%s">%s</a></h3><p class="sdesc">%s</p><div class="sact"><a class="btn main" data-link="%s-play" href="#" target="_blank" rel="noopener">%s</a><a class="btn buy" data-buy="%s" href="#" target="_blank" rel="noopener">%s <span class="price"></span></a><a class="btn paypal" data-paypal="%s" href="#" target="_blank" rel="noopener">PayPal <span class="price"></span></a><a class="btn ghost" href="GP%s">%s</a></div></div></article>'%(' feat' if feat else '',acc,sid,_e(name),vis,key,'<span class="sstar" aria-hidden="true">★</span>' if feat else '',genre,sid,name,desc,key,_e(L[0].format(n=name)),key,_e(L[1]),key,sid,_e(V4_SEE_L[cur])))
+    out=[re.sub(r'href="GP([a-z-]+)"',lambda m:'href="%s"'%gpf(m.group(1)),x) for x in out]
     s,n=re.subn(r'<div class="covers">.*?<!--/COVERS-->\s*</div>',lambda m:'<div class="store">'+''.join(out)+'</div>',s,count=1,flags=re.S); assert n==1,'covers'
     # --- nouveautés (vraies mises à jour)
     items=''.join('<li><time datetime="%s">%s</time><a href="#%s"><span class="ntag">%s</span>%s</a></li>'%(d,d,anc,_e(tag),_e(t[cur])) for d,tag,anc,t in V4_NEWS)

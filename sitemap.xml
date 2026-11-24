@@ -121,4 +121,36 @@
     <xhtml:link rel="alternate" hreflang="id" href="https://maxlolgames.com/id/"/>
   </url>
   <url><loc>https://maxlolgames.com/press/</loc><lastmod>2026-11-24</lastmod><priority>0.5</priority></url>
+  <url><loc>https://maxlolgames.com/la-derniere-torche/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/la-derniere-torche/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/la-derniere-torche/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/fr/la-derniere-torche/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/la-derniere-torche/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/la-derniere-torche/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/wyrmstorm/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/wyrmstorm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/wyrmstorm/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/fr/wyrmstorm/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/wyrmstorm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/wyrmstorm/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/gravity-turn/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/gravity-turn/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/gravity-turn/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/fr/gravity-turn/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/gravity-turn/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/gravity-turn/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/infinite-dungeon/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/infinite-dungeon/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/infinite-dungeon/"/>
+  </url>
+  <url><loc>https://maxlolgames.com/fr/infinite-dungeon/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maxlolgames.com/fr/infinite-dungeon/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxlolgames.com/infinite-dungeon/"/>
+  </url>
 </urlset>
