@@ -2,26 +2,42 @@
  "_comment": "Faits CONFIRMES uniquement. Tout marqueur [[X]] absent d'ici s'affiche en 'à compléter'. Remplir ici, relancer tools/v8_legal.py.",
  "HEBERGEUR_NOM_ADRESSE_CONTACT": {
   "fr": "Site maxlolgames.com : GitHub, Inc. (GitHub Pages). Jeux et service de paiement : Netlify, Inc. Coordonnées complètes des hébergeurs : [[COORDONNEES_HEBERGEURS]]",
-  "en": "maxlolgames.com website: GitHub, Inc. (GitHub Pages). Games and payment service: Netlify, Inc. Full hosting provider contact details: [[COORDONNEES_HEBERGEURS]]"},
+  "en": "maxlolgames.com website: GitHub, Inc. (GitHub Pages). Games and payment service: Netlify, Inc. Full hosting provider contact details: [[COORDONNEES_HEBERGEURS]]"
+ },
  "INVENTAIRE_TRACEURS": {
   "fr": "aucun cookie, traceur publicitaire ou outil de mesure d'audience n'est utilisé actuellement sur le site. Le navigateur conserve seulement, en stockage local : la préférence musique (mg.music), la clé de licence d'un achat (mxl-license-v1) lorsque le service de paiement est activé, et la progression des jeux selon le jeu. Si un compteur de visites est ajouté plus tard, cette page sera mise à jour et votre choix sera demandé avant tout dépôt",
-  "en": "no cookies, advertising trackers or audience-measurement tools are currently used on the site. Your browser only keeps, in local storage: the music preference (mg.music), a purchase licence key (mxl-license-v1) when the payment service is enabled, and game progress depending on the game. If a visit counter is added later, this page will be updated and your choice will be requested before anything is set"},
+  "en": "no cookies, advertising trackers or audience-measurement tools are currently used on the site. Your browser only keeps, in local storage: the music preference (mg.music), a purchase licence key (mxl-license-v1) when the payment service is enabled, and game progress depending on the game. If a visit counter is added later, this page will be updated and your choice will be requested before anything is set"
+ },
  "LIEN_PREFERENCES": {
   "fr": "cette page (aucun traceur soumis au consentement n'étant utilisé à ce jour)",
-  "en": "this page (no tracker subject to consent is used to date)"},
+  "en": "this page (no tracker subject to consent is used to date)"
+ },
  "INVENTAIRE_DONNEES": {
   "fr": "(1) visite du site : journaux techniques de l'hébergeur (adresse IP, pages demandées) ; (2) achat via le service de paiement : identifiant de commande, produit, statut et dates, identifiant de transaction PayPal, clé de licence ; l'e-mail du payeur n'est conservé que sous forme d'empreinte non réversible, pour la restauration d'achat ; (3) protection contre les abus : adresse IP conservée uniquement sous forme d'empreinte, avec un compteur horaire ; (4) compte joueur (prototype, non activé) : nom d'affichage, sauvegardes, historique de sauvegardes, identifiant d'appareil ; (5) sauvegardes locales : elles restent sur votre appareil et ne sont pas transmises",
-  "en": "(1) site visit: hosting provider technical logs (IP address, requested pages); (2) purchase through the payment service: order ID, product, status and dates, PayPal transaction ID, licence key; the payer's e-mail is kept only as a non-reversible fingerprint, for purchase restoration; (3) abuse protection: IP address kept only as a fingerprint with an hourly counter; (4) player account (prototype, not enabled): display name, saves, save history, device ID; (5) local saves: they stay on your device and are not transmitted"},
+  "en": "(1) site visit: hosting provider technical logs (IP address, requested pages); (2) purchase through the payment service: order ID, product, status and dates, PayPal transaction ID, licence key; the payer's e-mail is kept only as a non-reversible fingerprint, for purchase restoration; (3) abuse protection: IP address kept only as a fingerprint with an hourly counter; (4) player account (prototype, not enabled): display name, saves, save history, device ID; (5) local saves: they stay on your device and are not transmitted"
+ },
  "TABLE_TRAITEMENTS": {
   "fr": "fourniture du site et sécurité (données techniques ; base légale proposée : intérêt légitime) ; exécution des achats et restauration (données de commande et de licence ; base légale proposée : exécution du contrat) ; lutte contre les abus (empreinte d'IP ; intérêt légitime) ; compte joueur, lorsqu'il sera activé (nom d'affichage, sauvegardes ; exécution du service demandé). Ces bases légales sont à valider [[VALIDATION_BASES_LEGALES]]. Les données de commande sont nécessaires pour obtenir l'achat ; sans elles, il ne peut pas être livré",
-  "en": "providing the site and security (technical data; proposed legal basis: legitimate interest); fulfilling purchases and restoration (order and licence data; proposed legal basis: performance of the contract); abuse prevention (IP fingerprint; legitimate interest); player account, once enabled (display name, saves; performance of the requested service). These legal bases are to be validated [[VALIDATION_BASES_LEGALES]]. Order data is required to obtain the purchase; without it, it cannot be delivered"},
+  "en": "providing the site and security (technical data; proposed legal basis: legitimate interest); fulfilling purchases and restoration (order and licence data; proposed legal basis: performance of the contract); abuse prevention (IP fingerprint; legitimate interest); player account, once enabled (display name, saves; performance of the requested service). These legal bases are to be validated [[VALIDATION_BASES_LEGALES]]. Order data is required to obtain the purchase; without it, it cannot be delivered"
+ },
  "PRESTATAIRES": {
   "fr": "GitHub (hébergement du site), Netlify (hébergement des jeux et du service de paiement), PayPal (paiement), itch.io (boutique tierce, lorsque vous achetez via itch.io, avec ses propres conditions) et la base de données du compte joueur (prototype non activé)",
-  "en": "GitHub (site hosting), Netlify (hosting of the games and payment service), PayPal (payment), itch.io (third-party store, when you buy through itch.io, under its own terms) and the player-account database (prototype, not enabled)"},
+  "en": "GitHub (site hosting), Netlify (hosting of the games and payment service), PayPal (payment), itch.io (third-party store, when you buy through itch.io, under its own terms) and the player-account database (prototype, not enabled)"
+ },
  "TRANSFERTS": {
   "fr": "les prestataires ci-dessus sont établis aux États-Unis ou y traitent des données ; garanties applicables et moyen d'y accéder : [[GARANTIES_TRANSFERT]]",
-  "en": "the providers above are based in, or process data in, the United States; applicable safeguards and how to obtain them: [[GARANTIES_TRANSFERT]]"},
+  "en": "the providers above are based in, or process data in, the United States; applicable safeguards and how to obtain them: [[GARANTIES_TRANSFERT]]"
+ },
  "REGLES_MINEURS_ET_AUTOMATISATION": {
   "fr": "Aucune décision individuelle automatisée à effet juridique n'est prise ; la délivrance d'une licence après un paiement confirmé est automatique. Règles applicables aux mineurs : [[REGLES_MINEURS]]",
-  "en": "No automated individual decision with legal effect is made; issuing a licence after a confirmed payment is automatic. Rules applying to minors: [[REGLES_MINEURS]]"}
+  "en": "No automated individual decision with legal effect is made; issuing a licence after a confirmed payment is automatic. Rules applying to minors: [[REGLES_MINEURS]]"
+ },
+ "EMAIL_SUPPORT": {
+  "fr": "Maxlolgames@proton.me",
+  "en": "Maxlolgames@proton.me"
+ },
+ "EMAIL_PRIVACY": {
+  "fr": "Maxlolgames@proton.me",
+  "en": "Maxlolgames@proton.me"
+ }
 }
