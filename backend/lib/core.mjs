@@ -20,6 +20,7 @@ export function cfg(env) {
     merchantId: env.PAYPAL_MERCHANT_ID || '', licSecret: env.LICENSE_SECRET, signKey: env.SIGNING_PRIVATE_KEY_PEM,
     origins: (env.ALLOWED_ORIGINS || 'https://maxlolgames.com').split(',').map(s => s.trim()),
     site: env.SITE_URL || 'https://maxlolgames.com', apiBase: env.API_BASE || '',
+    sbUrl: (env.SUPABASE_URL || '').replace(/\/$/, ''), sbSecret: env.SUPABASE_JWT_SECRET || '', sbService: env.SUPABASE_SERVICE_KEY || '',
   };
 }
 
@@ -193,4 +194,62 @@ export async function bindAccount(c, st, { token, accountId }) {
   if (!l || l.status !== 'active') return { status: 404, body: { error: 'licence_invalide' } };
   if (l.accountId && l.accountId !== accountId) return { status: 409, body: { error: 'deja_rattachee' } };
   await st.set('license:' + l.id, { ...l, accountId }); return { status: 200, body: { ok: true } };
+}
+
+// ---------- Compte joueur (Supabase Auth) : le serveur de paiement ne fait confiance qu'à un JWT Supabase vérifié ----------
+let jwksCache = { at: 0, keys: [] };
+export async function supabaseUser(c, authHeader, f = fetch) {
+  const t = /^Bearer (.+)$/.exec(authHeader || '')?.[1]; if (!t || !c.sbUrl) return null;
+  try {
+    const [h, p, sg] = t.split('.'), head = JSON.parse(Buffer.from(h, 'base64url')), pl = JSON.parse(Buffer.from(p, 'base64url')), data = Buffer.from(h + '.' + p);
+    if (pl.exp * 1000 < Date.now() || pl.aud !== 'authenticated' || pl.iss !== c.sbUrl + '/auth/v1' || !pl.sub || pl.role !== 'authenticated') return null;
+    let ok = false;
+    if (head.alg === 'HS256') { if (!c.sbSecret) return null; const mac = crypto.createHmac('sha256', c.sbSecret).update(data).digest(), got = Buffer.from(sg, 'base64url'); ok = mac.length === got.length && crypto.timingSafeEqual(mac, got); }
+    else if (head.alg === 'ES256' || head.alg === 'RS256') {
+      if (Date.now() - jwksCache.at > 600000) { const r = await f(c.sbUrl + '/auth/v1/.well-known/jwks.json'); jwksCache = { at: Date.now(), keys: (await r.json()).keys || [] }; }
+      const jwk = jwksCache.keys.find(k => k.kid === head.kid); if (!jwk) return null;
+      const key = crypto.createPublicKey({ key: jwk, format: 'jwk' });
+      ok = head.alg === 'ES256' ? crypto.verify('sha256', data, { key, dsaEncoding: 'ieee-p1363' }, Buffer.from(sg, 'base64url')) : crypto.verify('sha256', data, key, Buffer.from(sg, 'base64url'));
+    } else return null;                                    // "alg: none" et tout autre algorithme refusés
+    return ok ? { id: pl.sub, email: pl.email } : null;
+  } catch { return null; }
+}
+export const resetJwks = () => { jwksCache = { at: 0, keys: [] }; };
+const accList = async (st, id) => (await st.get('acc:' + id)) || [];
+
+// Rattache une licence (clé MXL-… ou jeton) au compte connecté. Une licence = un seul compte.
+export async function linkLicense(c, st, user, { licenseKey: key, token }) {
+  if (!user) return { status: 401, body: { error: 'non_connecte' } };
+  let lid = null;
+  if (key) lid = await st.get('lkey:' + sha(String(key).trim().toUpperCase())); else { const pl = verifyToken(publicKeyPem(c), String(token || '')); lid = pl?.sub; }
+  const l = lid && await st.get('license:' + lid);
+  if (!l || l.status !== 'active') return { status: 404, body: { error: 'licence_invalide' } };
+  if (l.accountId && l.accountId !== user.id) return { status: 409, body: { error: 'deja_rattachee' } };
+  if (l.accountId !== user.id) { await st.set('license:' + l.id, { ...l, accountId: user.id }); const a = await accList(st, user.id); if (!a.includes(l.id)) await st.set('acc:' + user.id, [...a, l.id]); }
+  return { status: 200, body: { ok: true, product: l.productId } };
+}
+// Bibliothèque + historique d'achats + jeton d'accès frais pour chaque licence active (= restauration sur un nouvel appareil par simple connexion).
+export async function library(c, st, user) {
+  if (!user) return { status: 401, body: { error: 'non_connecte' } };
+  const items = [];
+  for (const id of await accList(st, user.id)) {
+    const l = await st.get('license:' + id); if (!l) continue; const o = await st.get('order:' + l.orderId), p = CATALOG[l.productId];
+    items.push({ product: l.productId, game: p?.game, name: p?.name, status: l.status, purchasedAt: l.createdAt, order: { id: l.orderId, amount: p?.value, currency: p?.currency, status: o?.status }, token: l.status === 'active' ? mkToken(c, l) : null });
+  }
+  return { status: 200, body: { items } };
+}
+// Effacement : le compte est détaché des licences ; l'achat reste valide via sa clé (obligation de conserver la trace comptable du paiement).
+export async function unlinkAll(c, st, user) {
+  if (!user) return { status: 401, body: { error: 'non_connecte' } };
+  for (const id of await accList(st, user.id)) { const l = await st.get('license:' + id); if (l) await st.set('license:' + id, { ...l, accountId: null }); }
+  await st.set('acc:' + user.id, []); return { status: 200, body: { ok: true } };
+}
+
+// Suppression définitive du compte d'authentification (clé service uniquement côté serveur). Les licences sont détachées, pas supprimées.
+export async function deleteAccount(c, st, user, f = fetch) {
+  if (!user) return { status: 401, body: { error: 'non_connecte' } };
+  if (!c.sbService) return { status: 500, body: { error: 'configuration_incomplete' } };
+  await unlinkAll(c, st, user);
+  const r = await f(c.sbUrl + '/auth/v1/admin/users/' + encodeURIComponent(user.id), { method: 'DELETE', headers: { apikey: c.sbService, Authorization: 'Bearer ' + c.sbService } });
+  return r.ok ? { status: 200, body: { ok: true } } : { status: 502, body: { error: 'suppression_impossible' } };
 }

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>Compte Maxlol Games — prototype</title>
+<style>
+:root{--bg:#1A1238;--card:#2A1F56;--tx:#EDE9FF;--mut:#B9B0DD;--a:#FFB547;--ok:#5BE37D;--bad:#FF5C7A}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,sans-serif;padding:16px 16px 40px}
+main{max-width:560px;margin:0 auto}h1{font-size:1.5rem;margin:.2em 0}h2{font-size:1.1rem;margin:0 0 8px;color:var(--a)}
+.sim{background:#4a2d00;color:#FFD08A;border-radius:10px;padding:8px 12px;font-size:.85rem;margin:8px 0 14px}
+.card{background:var(--card);border-radius:16px;padding:16px;margin:12px 0}p{margin:.3em 0;color:var(--mut)}
+input,textarea{width:100%;padding:12px;border-radius:12px;border:1.5px solid #4b3d8f;background:#150E30;color:var(--tx);font:inherit;margin:6px 0}
+button{padding:12px 16px;border-radius:12px;border:0;background:var(--a);color:#2A1300;font:700 1rem system-ui;margin:4px 6px 4px 0;cursor:pointer}
+button.g{background:#41327e;color:var(--tx)}button.r{background:var(--bad);color:#fff}
+.row{display:flex;flex-wrap:wrap;gap:4px}.big{font-size:2rem;font-weight:800;color:var(--a)}
+.item{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-top:1px solid #3d3077}.ok{color:var(--ok)}.bad{color:var(--bad)}
+dialog{border:0;border-radius:18px;background:var(--card);color:var(--tx);max-width:min(92vw,460px);padding:18px}dialog::backdrop{background:rgba(5,2,20,.7)}
+.log{font:12px/1.4 ui-monospace,monospace;color:var(--mut);white-space:pre-wrap;max-height:140px;overflow:auto}
+</style></head><body><main>
+<h1>Compte Maxlol Games</h1>
+<div class="sim" id="sim"></div>
+<section class="card" id="login"><h2>1 · Connexion</h2><p>Par e-mail : lien magique ou code à 6 chiffres. Aucune connexion n'est obligatoire pour jouer.</p>
+ <input id="em" type="email" inputmode="email" placeholder="ton@email.com" autocomplete="email"><div class="row"><button id="send">Recevoir le lien / code</button></div>
+ <div id="codebox" hidden><input id="code" inputmode="numeric" maxlength="6" placeholder="Code à 6 chiffres"><button id="verify">Valider</button></div></section>
+<section class="card" id="app" hidden><div class="row" style="justify-content:space-between"><h2>Connecté</h2><button class="g" id="out">Déconnexion</button></div><p id="who"></p></section>
+<section class="card" id="save" hidden><h2>2 · Sauvegarde du jeu (démo)</h2><p>Simule <b>La Dernière Torche</b> : une sauvegarde locale (or du joueur) que tu peux synchroniser.</p>
+ <div class="big" id="gold">0</div><div class="row"><button id="plus">+10 or (jouer)</button><button class="g" id="sync">☁ Synchroniser</button><button class="g" id="hist">Historique</button></div><div id="histl"></div></section>
+<section class="card" id="lib" hidden><h2>3 · Ma bibliothèque</h2><div id="libl"></div></section>
+<section class="card" id="data" hidden><h2>4 · Mes données</h2><div class="row"><button class="g" id="exp">Exporter (JSON)</button><button class="r" id="del">Supprimer mon compte</button></div></section>
+<details class="card"><summary>Journal technique</summary><div class="log" id="log"></div></details>
+<dialog id="dlg"><h2>Les deux sauvegardes diffèrent</h2><p id="dtxt"></p><div class="row" style="flex-direction:column">
+ <button data-c="local">Garder celle de CE téléphone (le cloud est archivé)</button><button data-c="cloud" class="g">Prendre celle du cloud (la locale est copiée avant)</button>
+ <button data-c="both" class="g">Garder les deux (copie locale conservée)</button><button data-c="cancel" class="g">Annuler — ne rien changer</button></div></dialog>
+</main>
+<script>/* Maxlol Games — compte joueur universel (client). Sans dépendance : parle directement à Supabase Auth + PostgREST.
+   Règles d'or : jouer sans compte reste possible ; AUCUNE sauvegarde n'est écrasée sans confirmation ; la clé "anon" est publique, la sécurité vient du RLS côté base.
+   Usage : const A = MaxlolAccount.create({ url, anonKey, payApi, mock? }); A.signInEmail(email) ; A.sync(adapter, askUser) ... */
+(function (root) {
+  'use strict';
+  var LSK = 'mxl-session-v1', LSD = 'mxl-device-v1', LSS = 'mxl-sync-v1:';
+  var ls = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+    del: function (k) { try { localStorage.removeItem(k); } catch (e) {} }
+  };
+  function hash(s) { var h = 5381, i = s.length; while (i) h = (h * 33) ^ s.charCodeAt(--i); return (h >>> 0).toString(36) + ':' + s.length; }   // empreinte rapide (détection de changement, pas de sécurité)
+  function deviceId() { var d = ls.get(LSD); if (!d) { d = 'd' + Math.random().toString(36).slice(2, 10); ls.set(LSD, d); } return d; }
+
+  /* ---- Plan de synchronisation (fonction pure, testée) ----
+     local : { exists, raw }  | cloud : { exists, version, raw } | base : { version, hash } (dernier état synchronisé sur CET appareil) ou null
+     Retour : 'noop' | 'upload' | 'download' | 'ask' | 'adopt' (identiques : on mémorise juste l'état)
+     'download' n'est proposé automatiquement que si le local n'a PAS changé depuis la dernière synchro (rien à perdre) ; sinon 'ask'. */
+  function planSync(local, cloud, base) {
+    if (!local.exists && !cloud.exists) return 'noop';
+    if (local.exists && !cloud.exists) return 'upload';
+    if (!local.exists && cloud.exists) return 'download';
+    var lh = hash(local.raw);
+    if (!base) return hash(cloud.raw) === lh ? 'adopt' : 'ask';           // premier rattachement de cet appareil : jamais de choix automatique
+    var localChanged = lh !== base.hash, cloudChanged = cloud.version !== base.version;
+    if (!localChanged && !cloudChanged) return 'noop';
+    if (localChanged && !cloudChanged) return 'upload';
+    if (!localChanged && cloudChanged) return 'download';
+    return hash(cloud.raw) === lh ? 'adopt' : 'ask';                      // modifié des deux côtés
+  }
+
+  function create(cfg) {
+    var base = cfg.url.replace(/\/$/, ''), anon = cfg.anonKey, S = null, mock = cfg.mock || null;
+    try { S = JSON.parse(ls.get(LSK) || 'null'); } catch (e) { S = null; }
+
+    function http(path, opt, auth) {
+      if (mock) return mock(path, opt, auth && S);
+      var h = { apikey: anon, 'Content-Type': 'application/json' }; if (auth && S) h.Authorization = 'Bearer ' + S.access_token; else h.Authorization = 'Bearer ' + anon;
+      return fetch(base + path, { method: opt.method || 'POST', headers: h, body: opt.body === undefined ? undefined : JSON.stringify(opt.body) })
+        .then(function (r) { return r.text().then(function (t) { var j; try { j = t ? JSON.parse(t) : {}; } catch (e) { j = {}; } return { status: r.status, body: j }; }); });
+    }
+    function setSession(j) { S = { access_token: j.access_token, refresh_token: j.refresh_token, expires_at: Math.floor(Date.now() / 1000) + (j.expires_in || 3600), user: j.user ? { id: j.user.id, email: j.user.email } : (S && S.user) }; ls.set(LSK, JSON.stringify(S)); return S; }
+    function ensure() {                                                   // renouvelle le jeton si besoin
+      if (!S) return Promise.reject(new Error('non_connecte'));
+      if (S.expires_at - 60 > Date.now() / 1000) return Promise.resolve(S);
+      return http('/auth/v1/token?grant_type=refresh_token', { body: { refresh_token: S.refresh_token } }).then(function (r) { if (r.status !== 200) { S = null; ls.del(LSK); throw new Error('session_expiree'); } return setSession(r.body); });
+    }
+    function rpc(fn, args) { return ensure().then(function () { return http('/rest/v1/rpc/' + fn, { body: args || {} }, true); }).then(function (r) { if (r.status >= 300) throw new Error((r.body && r.body.message) || 'erreur_' + r.status); return r.body; }); }
+    function sel(table, q) { return ensure().then(function () { return http('/rest/v1/' + table + '?' + q, { method: 'GET' }, true); }).then(function (r) { if (r.status >= 300) throw new Error('erreur_' + r.status); return r.body; }); }
+    function pay(path) { return ensure().then(function () { return fetch((cfg.payApi || '') + path, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + S.access_token }, body: '{}' }).then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); }); }); }
+    function syncKey(a) { return LSS + a.game + ':' + (a.slot || 'main'); }
+    function getBase(a) { try { return JSON.parse(ls.get(syncKey(a)) || 'null'); } catch (e) { return null; } }
+    function setBase(a, version, raw) { ls.set(syncKey(a), JSON.stringify({ version: version, hash: hash(raw) })); }
+    function backup(a, raw, why) { try { ls.set('mxl-backup:' + a.game + ':' + (a.slot || 'main') + ':' + why + ':' + Date.now(), raw); } catch (e) {} }   // copie locale avant tout remplacement
+
+    var A = {
+      get user() { return S && S.user || null; },
+      isSignedIn: function () { return !!S; },
+      // Connexion : e-mail → lien magique ET code à 6 chiffres (le code marche aussi quand le lien s'ouvre dans un autre navigateur).
+      signInEmail: function (email) { return http('/auth/v1/otp' + (cfg.redirectTo ? '?redirect_to=' + encodeURIComponent(cfg.redirectTo) : ''), { body: { email: email, create_user: true } }).then(function (r) { if (r.status >= 300) throw new Error((r.body && (r.body.msg || r.body.error_description)) || 'envoi_impossible'); return true; }); },
+      verifyCode: function (email, code) { return http('/auth/v1/verify', { body: { type: 'email', email: email, token: String(code).trim() } }).then(function (r) { if (r.status !== 200) throw new Error('code_invalide'); return setSession(r.body).user; }); },
+      // Retour du lien magique : les jetons arrivent dans le fragment d'URL (#access_token=…) ; on les range puis on nettoie l'adresse.
+      handleRedirect: function () {
+        var h = (root.location && root.location.hash || '').replace(/^#/, ''); if (!/access_token=/.test(h)) return null;
+        var p = new URLSearchParams(h); setSession({ access_token: p.get('access_token'), refresh_token: p.get('refresh_token'), expires_in: +p.get('expires_in') || 3600, user: null });
+        try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+        return http('/auth/v1/user', { method: 'GET' }, true).then(function (r) { if (r.status === 200) setSession({ access_token: S.access_token, refresh_token: S.refresh_token, expires_in: 3600, user: r.body }); return S.user; });
+      },
+      signOut: function () { var t = S; S = null; ls.del(LSK); return t && !mock ? fetch(base + '/auth/v1/logout', { method: 'POST', headers: { apikey: anon, Authorization: 'Bearer ' + t.access_token } }).catch(function () {}) : Promise.resolve(); },
+
+      // Synchronisation d'une sauvegarde de jeu. adapter = { game, slot?, read():string|null, write(string) }.
+      // ask(info) doit répondre 'local' | 'cloud' | 'both' | 'cancel' : appelé dès qu'une perte de données est possible.
+      sync: function (a, ask) {
+        var local = a.read(), L = { exists: local != null && local !== '', raw: local || '' };
+        return sel('saves', 'select=version,data,updated_at,device_id&game=eq.' + a.game + '&slot=eq.' + (a.slot || 'main')).then(function (rows) {
+          var c = rows[0], C = c ? { exists: true, version: c.version, raw: typeof c.data === 'string' ? c.data : JSON.stringify(c.data), at: c.updated_at, device: c.device_id } : { exists: false, version: 0, raw: '' };
+          var plan = planSync(L, C, getBase(a));
+          var up = function (baseV) { var data; try { data = JSON.parse(L.raw); } catch (e) { data = { raw: L.raw }; } return rpc('put_save', { p_game: a.game, p_slot: a.slot || 'main', p_base_version: baseV, p_data: data, p_device: deviceId() }).then(function (r) { if (r.status === 'ok') { setBase(a, r.version, L.raw); return { action: 'uploaded', version: r.version }; } if (r.status === 'too_large') return { action: 'too_large' }; return { action: 'conflict', cloud: r }; }); };
+          var down = function () { backup(a, L.raw, 'avant-cloud'); a.write(C.raw); setBase(a, C.version, C.raw); return { action: 'downloaded', version: C.version }; };
+          if (plan === 'noop') return { action: 'noop' };
+          if (plan === 'adopt') { setBase(a, C.version, C.raw); return { action: 'adopted' }; }
+          if (plan === 'upload') return up(C.version);
+          if (plan === 'download') return down();
+          return Promise.resolve(ask({ game: a.game, local: L, cloud: C })).then(function (choice) {     // plan === 'ask'
+            if (choice === 'local') return up(C.version);                       // l'utilisateur a choisi : le cloud est archivé par put_save (historique)
+            if (choice === 'cloud') return down();
+            if (choice === 'both') { backup(a, L.raw, 'copie-locale'); return down(); }
+            return { action: 'cancelled' };
+          });
+        });
+      },
+      // Migration d'une ancienne sauvegarde localStorage vers le cloud (opt-in explicite).
+      migrate: function (a, ask) { return A.sync(a, ask); },
+      history: function (a) { return sel('save_history', 'select=id,version,replaced_at,device_id&game=eq.' + a.game + '&slot=eq.' + (a.slot || 'main') + '&order=replaced_at.desc'); },
+      restoreVersion: function (a, id) { return rpc('restore_save', { p_game: a.game, p_slot: a.slot || 'main', p_history_id: id }); },
+      library: function () { return pay('/api/account/library'); },
+      linkLicense: function (key) { return ensure().then(function () { return fetch((cfg.payApi || '') + '/api/account/link', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + S.access_token }, body: JSON.stringify({ licenseKey: key }) }).then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); }); }); },
+      exportData: function () { return rpc('export_my_data'); },
+      deleteGameData: function () { return rpc('delete_my_game_data').then(function () { return pay('/api/account/unlink-all'); }); },
+      // Suppression complète du compte : données de jeu + détachement des achats + compte d'authentification (via le serveur, clé admin jamais côté client).
+      deleteAccount: function () { return rpc('delete_my_game_data').then(function () { return pay('/api/account/delete'); }).then(function (r) { if (r.status === 200) { S = null; ls.del(LSK); } return r; }); },
+      planSync: planSync
+    };
+    return A;
+  }
+  root.MaxlolAccount = { create: create, planSync: planSync, hash: hash };
+})(typeof window !== 'undefined' ? window : globalThis);
+</script><script>
+var CFG = window.MXL_CFG || null, $ = function (i) { return document.getElementById(i) }, log = function (t) { $('log').textContent = new Date().toLocaleTimeString() + ' ' + t + '\n' + $('log').textContent };
+/* ---- Simulation du serveur (même règles que schema.sql : versions, conflit, historique 5, RLS = un seul utilisateur) ---- */
+function mockServer() {
+  var K = 'mxl-mock-cloud', db = function () { try { return JSON.parse(localStorage.getItem(K) || '{"saves":{},"hist":[]}') } catch (e) { return { saves: {}, hist: [] } } }, wr = function (d) { localStorage.setItem(K, JSON.stringify(d)) };
+  return function (path, opt, sess) {
+    var d = db(), b = opt && opt.body || {}, ok = function (x) { return Promise.resolve({ status: 200, body: x }) };
+    if (path.indexOf('/auth/v1/otp') === 0) { localStorage.setItem('mxl-mock-email', b.email); return ok({}) }
+    if (path.indexOf('/auth/v1/verify') === 0) return b.token === '123456' ? ok({ access_token: 'm', refresh_token: 'm', expires_in: 3600, user: { id: 'mock-' + b.email, email: b.email } }) : Promise.resolve({ status: 400, body: {} });
+    if (path.indexOf('/auth/v1/token') === 0) return ok({ access_token: 'm', refresh_token: 'm', expires_in: 3600 });
+    if (!sess) return Promise.resolve({ status: 401, body: {} });
+    var m = path.match(/rpc\/(\w+)/), k = 'torch:main';
+    if (m && m[1] === 'put_save') { var cur = d.saves[k];
+      if (!cur) { if (b.p_base_version !== 0) return ok({ status: 'conflict', cloud_version: 0 }); d.saves[k] = { version: 1, data: b.p_data, device_id: b.p_device, updated_at: new Date().toISOString() }; wr(d); return ok({ status: 'ok', version: 1 }) }
+      if (cur.version !== b.p_base_version) return ok({ status: 'conflict', cloud_version: cur.version });
+      d.hist.unshift({ id: Date.now(), version: cur.version, data: cur.data, replaced_at: new Date().toISOString() }); d.hist = d.hist.slice(0, 5);
+      d.saves[k] = { version: cur.version + 1, data: b.p_data, device_id: b.p_device, updated_at: new Date().toISOString() }; wr(d); return ok({ status: 'ok', version: cur.version + 1 }) }
+    if (m && m[1] === 'restore_save') { var h = d.hist.filter(function (x) { return x.id === b.p_history_id })[0], c = d.saves[k]; if (!h || !c) return ok({ status: 'not_found' });
+      d.hist.unshift({ id: Date.now(), version: c.version, data: c.data, replaced_at: new Date().toISOString() }); d.saves[k] = { version: c.version + 1, data: h.data, updated_at: new Date().toISOString() }; wr(d); return ok({ status: 'ok', version: c.version + 1 }) }
+    if (m && m[1] === 'export_my_data') return ok({ exported_at: new Date().toISOString(), user_id: sess.user.id, saves: d.saves, save_history: d.hist });
+    if (m && m[1] === 'delete_my_game_data') { wr({ saves: {}, hist: [] }); return ok({ status: 'ok' }) }
+    if (path.indexOf('/rest/v1/saves') === 0) return ok(d.saves[k] ? [{ version: d.saves[k].version, data: d.saves[k].data, updated_at: d.saves[k].updated_at, device_id: d.saves[k].device_id }] : []);
+    if (path.indexOf('/rest/v1/save_history') === 0) return ok(d.hist);
+    return Promise.resolve({ status: 404, body: {} })
+  }
+}
+var A = MaxlolAccount.create(CFG ? { url: CFG.url, anonKey: CFG.anonKey, payApi: CFG.payApi, redirectTo: location.href.split('#')[0] } : { url: 'https://mock.local', anonKey: 'mock', mock: mockServer() });
+$('sim').textContent = CFG ? 'Mode réel (Supabase)' : 'SIMULATION : aucun serveur réel. Le code de connexion est 123456. Les données restent dans ce navigateur.';
+var KEY = 'mxl-proto-torch-save', adapter = { game: 'torch', read: function () { return localStorage.getItem(KEY) }, write: function (v) { localStorage.setItem(KEY, v); gold() } };
+function gold() { var s = adapter.read(); $('gold').textContent = s ? (JSON.parse(s).gold || 0) : 0 }
+function ui() { var on = A.isSignedIn(); $('login').hidden = on; ['app', 'save', 'lib', 'data'].forEach(function (i) { $(i).hidden = !on }); if (on) { $('who').textContent = (A.user && A.user.email) || ''; gold(); lib() } }
+function ask(i) { return new Promise(function (res) { $('dtxt').textContent = 'Ce téléphone : ' + (JSON.parse(i.local.raw || '{}').gold || 0) + ' or  ·  Cloud : ' + (JSON.parse(i.cloud.raw || '{}').gold || 0) + ' or. Rien ne sera écrasé sans ton choix.'; var d = $('dlg'), f = function (e) { var c = e.target.getAttribute && e.target.getAttribute('data-c'); if (!c) return; d.removeEventListener('click', f); d.close(); res(c) }; d.addEventListener('click', f); d.showModal() }) }
+function sample() { return '<div class="item"><span>La Dernière Torche — démo gratuite<br><small>Mondes 1 à 5</small></span><span class="ok">Joué</span></div><div class="item"><span>La Dernière Torche — jeu complet<br><small>(exemple : apparaîtra ici après un achat PayPal, avec la commande)</small></span><span>—</span></div><p>Les jeux gratuits restent jouables sans compte.</p>' }
+function lib() { if (!CFG) { $('libl').innerHTML = sample(); return } A.library().then(function (r) { var it = (r.body && r.body.items) || []; $('libl').innerHTML = it.length ? it.map(function (x) { return '<div class="item"><span>' + x.name + '<br><small>Commande ' + x.order.id + '</small></span><span class="' + (x.status === 'active' ? 'ok' : 'bad') + '">' + (x.status === 'active' ? 'Débloqué' : 'Révoqué') + '</span></div>' }).join('') : '<p>Aucun achat pour l\'instant.</p>' }).catch(function () { $('libl').innerHTML = '<p>Bibliothèque indisponible.</p>' }) }
+$('send').onclick = function () { var e = $('em').value.trim(); if (!/.+@.+\..+/.test(e)) return alert('E-mail invalide'); A.signInEmail(e).then(function () { $('codebox').hidden = false; log('lien/code envoyé') }).catch(function (x) { alert(x.message) }) };
+$('verify').onclick = function () { A.verifyCode($('em').value.trim(), $('code').value).then(function () { ui(); log('connecté') }).catch(function () { alert('Code invalide') }) };
+$('out').onclick = function () { A.signOut().then(ui) };
+$('plus').onclick = function () { var s = JSON.parse(adapter.read() || '{"gold":0}'); s.gold = (s.gold || 0) + 10; localStorage.setItem(KEY, JSON.stringify(s)); gold() };
+$('sync').onclick = function () { A.sync(adapter, ask).then(function (r) { log('synchro : ' + r.action); alert({ uploaded: 'Envoyé dans le cloud ✔', downloaded: 'Sauvegarde cloud récupérée ✔', noop: 'Déjà à jour ✔', adopted: 'Déjà identique ✔', cancelled: 'Annulé : rien n\'a changé' }[r.action] || r.action) }).catch(function (e) { alert('Erreur : ' + e.message) }) };
+$('hist').onclick = function () { A.history(adapter).then(function (h) { $('histl').innerHTML = h.length ? h.map(function (x) { return '<div class="item"><span>v' + x.version + ' · ' + new Date(x.replaced_at).toLocaleString() + '</span><button class="g" data-r="' + x.id + '">Restaurer</button></div>' }).join('') : '<p>Pas d\'ancienne version.</p>'; $('histl').onclick = function (e) { var id = e.target.getAttribute('data-r'); if (id && confirm('Restaurer cette version ? La version actuelle sera archivée.')) A.restoreVersion(adapter, +id).then(function () { alert('Restaurée côté cloud. Touche Synchroniser pour la récupérer.') }) } }) };
+$('exp').onclick = function () { A.exportData().then(function (d) { var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(d, null, 2)], { type: 'application/json' })); a.download = 'maxlol-mes-donnees.json'; a.click() }) };
+$('del').onclick = function () { if (confirm('Supprimer définitivement ton compte et tes sauvegardes cloud ? (Ta sauvegarde locale et tes achats restent valides.)')) A.deleteGameData().then(function () { A.signOut(); ui(); alert('Données cloud supprimées.') }).catch(function (e) { alert(e.message) }) };
+var rd = A.handleRedirect(); if (rd && rd.then) rd.then(ui); ui();
+</script></body></html>
