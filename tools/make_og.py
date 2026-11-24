@@ -20,6 +20,8 @@ def card(img,h,col):
     out=Image.new('RGBA',(img.width+12,img.height+12),(0,0,0,0)); d=ImageDraw.Draw(out); d.rounded_rectangle((0,0,out.width-1,out.height-1),radius=40,fill=col+(255,))
     out.paste(img,(6,6),m); return out
 for slug,(name,col,art) in GAMES.items():
+    if slug=='gravity-turn' and os.path.exists(R+'art/Gravity-Turn/01-banniere-logo.png'):   # visuel officiel : pas de recomposition
+        _b=Image.open(R+'art/Gravity-Turn/01-banniere-logo.png').convert('RGB'); _o=Image.new('RGB',(W,H),(26,18,56)); _o.paste(_b.resize((W,628),Image.LANCZOS),(0,1)); os.makedirs(R+'assets/og',exist_ok=True); _o.save(R+'assets/og/gravity-turn.jpg',quality=84,optimize=True,progressive=True); continue
     im=grad(col).convert('RGBA')
     # visuel à droite, légèrement incliné
     if art: v=Image.open(R+art)
