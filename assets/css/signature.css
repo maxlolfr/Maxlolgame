@@ -1,0 +1,157 @@
+/* Maxlol Signature — Gaming Premium (V2.0)
+   Tokens + composants communs. Chargé en dernier sur toutes les pages (tools/v19_signature.py).
+   Pour changer la charte : modifier uniquement les variables de :root ci-dessous. */
+
+:root{
+  /* Structure */
+  --mx-bg:#0D0724;        /* violet nuit */
+  --mx-bg2:#1D1244;       /* indigo */
+  --mx-card:#2B1D5E;      /* cartes et panneaux */
+  --mx-violet:#8E63FF;    /* violet lumineux */
+  --mx-white:#F5F1FF;     /* blanc doux */
+  --mx-lav:#C9B6F2;       /* texte secondaire */
+  /* Accents */
+  --mx-gold:#FFC04D;
+  --mx-orange:#FF8A2B;
+  --mx-coral:#FF6B6B;
+  --mx-turq:#3DD6C6;
+  --mx-blue:#4DA8FF;
+  /* Dimensions */
+  --mx-wrap:1280px;
+  --mx-r-btn:14px;
+  --mx-r-card:20px;
+  --mx-line:1.5px;
+  --mx-t:.22s;
+
+  /* Rebranchement des variables historiques du site sur la charte */
+  --nuit:var(--mx-bg);
+  --prune:var(--mx-card);
+  --lavande:var(--mx-white);
+  --brume:var(--mx-lav);
+  --bonbon:var(--mx-gold);
+  --wrap:min(var(--mx-wrap), 100% - 32px);
+}
+@media (min-width:900px){:root{--wrap:min(var(--mx-wrap), 100% - 96px)}}
+
+/* Fond atmosphérique : halos statiques (pas de fixed, léger sur mobile) */
+body{background:
+  radial-gradient(900px 520px at 85% -4%,rgba(142,99,255,.26),transparent 70%),
+  radial-gradient(700px 480px at -6% 38%,rgba(77,168,255,.10),transparent 70%),
+  radial-gradient(800px 560px at 100% 72%,rgba(255,107,107,.08),transparent 70%),
+  linear-gradient(180deg,var(--mx-bg) 0,var(--mx-bg2) 46%,var(--mx-bg) 100%);
+  background-color:var(--mx-bg)}
+
+/* ---------- Header ---------- */
+.top{background:rgba(13,7,36,.74);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);
+  border-bottom:1px solid rgba(201,182,242,.14)}
+.top .wrap{height:62px;gap:12px}
+.brand{letter-spacing:.01em;color:var(--mx-white)}
+.brand .mini{transition:transform var(--mx-t)}
+.brand:hover .mini{transform:rotate(-8deg) scale(1.06)}
+.nav .opt{position:relative;padding:8px 14px;border-radius:12px;color:var(--mx-lav);font-weight:800;text-decoration:none;transition:color var(--mx-t),background var(--mx-t)}
+.nav .opt:hover{color:#fff;background:rgba(142,99,255,.16)}
+.nav .opt.on,.nav .opt[aria-current]{color:#fff}
+.nav .opt.on::after,.nav .opt[aria-current]::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--mx-gold),var(--mx-orange))}
+.nav .itch{border-radius:12px;background:linear-gradient(180deg,#FFD479,var(--mx-gold));color:#2A1300;box-shadow:inset 0 -3px 0 rgba(150,70,0,.28)}
+.langmenu summary,.snd,.mmenu summary{border-radius:12px;box-shadow:inset 0 0 0 var(--mx-line) rgba(201,182,242,.28);background:rgba(43,29,94,.55);transition:background var(--mx-t),box-shadow var(--mx-t)}
+.langmenu summary:hover,.snd:hover,.mmenu summary:hover{background:rgba(142,99,255,.25);box-shadow:inset 0 0 0 var(--mx-line) rgba(201,182,242,.5)}
+.langmenu .lm,.mmenu .mm{background:var(--mx-card);border:1px solid rgba(201,182,242,.2);border-radius:18px;box-shadow:0 18px 44px rgba(5,2,20,.6)}
+
+/* ---------- Boutons ---------- */
+.btn{border-radius:var(--mx-r-btn);min-height:48px;transition:transform var(--mx-t),filter var(--mx-t),box-shadow var(--mx-t)}
+.btn:hover{transform:translateY(-1px)}
+.btn.main{background:linear-gradient(180deg,#A887FF,var(--mx-violet) 55%,#7A4FEA);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -4px 0 rgba(40,10,110,.4),0 8px 20px -8px rgba(142,99,255,.8)}
+.btn.main:hover{filter:brightness(1.08)}
+.btn.buy{background:linear-gradient(180deg,#FFE08A,var(--mx-gold) 60%,#F2A22E);color:#2A1300;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -4px 0 rgba(150,70,0,.35),0 8px 20px -8px rgba(255,192,77,.7)}
+.btn.ghost{background:rgba(43,29,94,.55);color:var(--mx-white);box-shadow:inset 0 0 0 var(--mx-line) rgba(201,182,242,.38)}
+.btn.ghost:hover{background:rgba(142,99,255,.22)}
+/* Icône de lecture sur les boutons « Jouer » des cartes et du carrousel */
+.scard .btn.main::before,.fslide .btn.main::before{content:"";flex:none;width:16px;height:16px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z'/%3E%3C/svg%3E") center/contain no-repeat}
+.focus-ring,:focus-visible{outline-color:var(--mx-gold)}
+
+/* ---------- Accueil : hero plus cinématographique ---------- */
+.hero2{min-height:min(118vw,520px);padding:clamp(56px,11vw,96px) 0 clamp(24px,5vw,40px)}
+.hero2 .eyebrow{color:var(--mx-gold);display:inline-flex;align-items:center;gap:8px}
+.hero2 .eyebrow::before{content:"";width:26px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--mx-gold),transparent)}
+.hero2 .h-title span{background:linear-gradient(180deg,#FFE9A8,var(--mx-gold) 50%,var(--mx-orange));-webkit-background-clip:text;background-clip:text}
+.hero2 .hero-text p{color:var(--mx-white)}
+@media (min-width:700px){
+  .hero2{min-height:min(660px,78vh);
+    background:
+      radial-gradient(620px 420px at 78% 40%,rgba(142,99,255,.30),transparent 70%),
+      linear-gradient(180deg,rgba(13,7,36,.30) 0,rgba(13,7,36,0) 22%,rgba(13,7,36,0) 68%,var(--mx-bg) 100%),
+      linear-gradient(90deg,var(--mx-bg) 0,rgba(13,7,36,.9) 30%,rgba(13,7,36,0) 62%),
+      url(/assets/b/la-derniere-torche.webp) right bottom/auto 100% no-repeat,var(--mx-bg)}
+  .hero2 .hero-text{max-width:46ch}
+}
+
+/* ---------- Carrousel : panneau premium ---------- */
+.fc-track .fslide{border-radius:var(--mx-r-card);background:linear-gradient(160deg,var(--mx-card),var(--mx-bg2));
+  box-shadow:0 18px 40px rgba(5,2,20,.55),inset 0 0 0 var(--mx-line) var(--a,var(--mx-gold)),0 0 28px -6px var(--a,var(--mx-gold))}
+.fslide .sgenre{display:inline-block;align-self:flex-start;margin:0 0 6px;padding:3px 10px;border-radius:999px;font:800 .72rem/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--a,var(--mx-gold));background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px currentColor}
+.fslide .sdesc{color:var(--mx-lav)}
+.fc-nav{background:rgba(13,7,36,.8);box-shadow:inset 0 0 0 var(--mx-line) rgba(201,182,242,.4);transition:background var(--mx-t)}
+.fc-nav:hover{background:var(--mx-violet)}
+.fc-dots i.on{background:linear-gradient(90deg,var(--mx-gold),var(--mx-orange))}
+
+/* ---------- Bandeau des chiffres ---------- */
+.band{padding:clamp(20px,4vw,30px) 0;background:linear-gradient(100deg,var(--mx-coral) 0,#B565E8 36%,var(--mx-blue) 70%,var(--mx-turq) 100%)}
+.band::before{opacity:.8}
+.nums .num b{font:400 clamp(1.7rem,6vw,2.6rem)/1 var(--display);text-shadow:0 3px 0 rgba(40,10,80,.35)}
+.nums .num .nt>span{font-weight:800;line-height:1.25}
+@media (max-width:640px){.nums{gap:8px}.nums .num .nt>span{font-size:.74rem}}
+
+/* ---------- Catalogue ---------- */
+.shelf{padding:clamp(24px,5vw,56px) 0 clamp(24px,4vw,44px)}
+.shelf h2{font-size:clamp(2rem,5vw,3rem);color:var(--mx-white)}
+.shelf .lead{color:var(--mx-lav)}
+.shelf .store{align-items:stretch}
+@media (max-width:359px){.shelf .store{grid-template-columns:1fr}}
+.shelf .scard{background:linear-gradient(170deg,var(--mx-card),var(--mx-bg2));border-radius:var(--mx-r-card);
+  box-shadow:0 14px 30px rgba(5,2,20,.5),inset 0 0 0 var(--mx-line) rgba(201,182,242,.16);transition:transform var(--mx-t),box-shadow var(--mx-t)}
+.shelf .scard:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(5,2,20,.6),inset 0 0 0 var(--mx-line) var(--a,var(--mx-violet)),0 0 30px -8px var(--a,var(--mx-violet))}
+.shelf .scard.feat{box-shadow:0 14px 30px rgba(5,2,20,.5),inset 0 0 0 var(--mx-line) var(--a,var(--mx-gold))}
+.shelf .scard .simg{aspect-ratio:3/4}
+@media (min-width:900px){.shelf .scard .simg{aspect-ratio:4/5}}
+.shelf .scard .simg>img{object-position:50% 20%}
+.shelf .scard .sgenre{display:block;margin:0 0 2px;font:800 .68rem/1.3 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--a,var(--mx-gold))}
+.shelf .scard .sname{font-size:clamp(1.1rem,3.4vw,1.35rem);color:var(--mx-white)}
+.shelf .scard .sdesc{flex:0 0 auto;color:var(--mx-lav);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+@media (max-width:520px){.shelf .scard .sdesc{-webkit-line-clamp:3;font-size:.82rem}}
+.shelf .scard .sact{margin-top:auto;padding-top:8px}
+.sprice{border-radius:999px;font-weight:900;letter-spacing:.02em}
+
+/* ---------- Actualités avec miniature ---------- */
+.news{padding:clamp(8px,3vw,24px) 0 clamp(28px,5vw,48px)}
+.nl li{display:grid;grid-template-columns:56px 1fr;grid-template-areas:"th meta" "th ttl";column-gap:14px;row-gap:2px;align-items:center;
+  padding:10px 44px 10px 10px;border-radius:var(--mx-r-card);background:linear-gradient(170deg,var(--mx-card),var(--mx-bg2));
+  box-shadow:inset 0 0 0 1px rgba(201,182,242,.14);transition:transform var(--mx-t),box-shadow var(--mx-t)}
+.nl li:hover{transform:translateX(3px);box-shadow:inset 0 0 0 var(--mx-line) rgba(142,99,255,.7)}
+.nl .nthumb{grid-area:th;width:56px;height:56px;border-radius:14px;object-fit:cover;box-shadow:0 0 0 1.5px rgba(255,255,255,.18)}
+.nl time{grid-area:meta;min-width:0;font-size:.75rem;color:var(--mx-lav);letter-spacing:.03em}
+.nl a{grid-area:ttl;padding-block:0;color:var(--mx-white);font-weight:800}
+.nl .ntag{display:inline-block;margin-right:8px;padding:2px 9px;border-radius:999px;font:800 .7rem/1.5 var(--body);letter-spacing:.04em;color:#2A1300;background:var(--mx-gold)}
+.nl li::after{border-color:var(--mx-lav)}
+@media (max-width:520px){.nl li{flex-direction:initial;gap:initial;column-gap:12px}.nl .nthumb{width:48px;height:48px}.nl li{grid-template-columns:48px 1fr}}
+
+/* ---------- Présentation du studio ---------- */
+.about{position:relative;isolation:isolate;padding:clamp(40px,7vw,88px) 0;overflow:hidden}
+.about::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(520px 340px at 12% 20%,rgba(142,99,255,.28),transparent 70%),
+             radial-gradient(520px 360px at 92% 80%,rgba(255,138,43,.16),transparent 70%),
+             radial-gradient(380px 260px at 60% 0,rgba(61,214,198,.12),transparent 70%)}
+.about h2{color:var(--mx-white)}
+.about p{color:var(--mx-white)}
+.about .ap-games li{padding:12px 14px;border-radius:16px;background:rgba(43,29,94,.6);box-shadow:inset 0 0 0 1px rgba(201,182,242,.16)}
+.about .link{border-radius:var(--mx-r-card);background:linear-gradient(170deg,var(--mx-card),var(--mx-bg2));box-shadow:inset 0 0 0 1px rgba(201,182,242,.16)}
+
+/* ---------- Mouvement réduit ---------- */
+@media (prefers-reduced-motion:reduce){
+  .btn,.shelf .scard,.nl li,.brand .mini{transition:none}
+  .shelf .scard:hover,.nl li:hover,.btn:hover{transform:none}
+}
