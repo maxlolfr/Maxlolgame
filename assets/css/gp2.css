@@ -2,10 +2,10 @@
 .gp2{position:relative;isolation:isolate;overflow:hidden}
 .gp2::before{content:"";position:absolute;inset:-30px;z-index:-2;background:var(--gp-bg) center 20%/cover no-repeat;filter:blur(18px) saturate(1.15);opacity:.55;transform:scale(1.08)}
 .gp2::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,12,43,.35) 0,rgba(18,12,43,.55) 45%,var(--nuit,#120C2B) 100%)}
-.gp-la-derniere-torche{--gp-bg:url(/assets/t-art2.webp)}
-.gp-wyrmstorm{--gp-bg:url(/assets/ws-cover.webp)}
-.gp-gravity-turn{--gp-bg:url(/assets/gt-key.webp)}
-.gp-infinite-dungeon{--gp-bg:url(/assets/id-team.webp)}
+.gp-la-derniere-torche{--gp-bg:url(/assets/b/la-derniere-torche.webp)}
+.gp-wyrmstorm{--gp-bg:url(/assets/b/wyrmstorm.webp)}
+.gp-gravity-turn{--gp-bg:url(/assets/b/gravity-turn.webp)}
+.gp-infinite-dungeon{--gp-bg:url(/assets/b/infinite-dungeon.webp)}
 .gp2 .gp-cover{box-shadow:0 18px 50px rgba(5,2,20,.65),0 0 0 3px var(--a,#FFB547)}
 .gal{gap:14px;padding-block:6px 14px}
 .gal img{height:clamp(300px,64vw,400px);border-radius:18px;box-shadow:0 10px 26px rgba(5,2,20,.5),inset 0 0 0 1px rgba(255,255,255,.1)}

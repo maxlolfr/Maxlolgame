@@ -4,7 +4,7 @@
  background:
   linear-gradient(180deg,rgba(18,12,43,.5) 0,rgba(18,12,43,.78) 30%,rgba(18,12,43,.25) 58%,rgba(18,12,43,0) 74%,var(--nuit) 100%),
   linear-gradient(90deg,rgba(18,12,43,.55) 0,rgba(18,12,43,0) 70%),
-  url(/assets/t-art2.webp) 50% 100%/cover no-repeat}
+  url(/assets/b/la-derniere-torche.webp) 78% 100%/cover no-repeat}
 .hero2::before{display:none}
 .hero2 .fxc,.hero2 .fan{display:none}
 .hero2>.wrap{max-width:var(--maxw,1100px)}
@@ -20,7 +20,7 @@
 .hero2{min-height:560px;background:
   linear-gradient(180deg,rgba(18,12,43,.35) 0,rgba(18,12,43,0) 22%,rgba(18,12,43,0) 72%,var(--nuit) 100%),
   linear-gradient(90deg,var(--nuit) 0,rgba(18,12,43,.92) 30%,rgba(18,12,43,0) 62%),
-  url(/assets/t-art2.webp) right 6% bottom/auto 118% no-repeat,var(--nuit)}}
+  url(/assets/b/la-derniere-torche.webp) right bottom/auto 100% no-repeat,var(--nuit)}}
 
 /* ---------- Carrousel vedette ---------- */
 .fcar{position:relative;padding:6px 0 10px}
@@ -29,7 +29,7 @@
 .fc-track::-webkit-scrollbar{display:none}
 .fc-track .fslide{flex:0 0 calc(100% - 4px);scroll-snap-align:start;position:relative;display:flex;min-height:230px;background:var(--prune);border-radius:24px;overflow:hidden;box-shadow:0 14px 34px rgba(5,2,20,.5),inset 0 0 0 2px var(--a,#FFB547)}
 .fslide .simg{flex:0 0 42%;aspect-ratio:auto}
-.fslide .simg>img{object-position:50% 12%}
+.fslide .simg>img{object-position:72% 50%}
 .fslide .sbody{padding:14px 14px 14px 16px;justify-content:center}
 .fslide .sname{margin:0;font:400 clamp(1.3rem,4.6vw,1.8rem)/1.1 var(--display)}
 .fslide .sact .btn{padding:10px 14px}

@@ -1,0 +1,33 @@
+/* Fiche héros (liste « Les 8 héros » + fenêtre). Balisage ajouté par tools/v12_heroes.py, comportement dans assets/js/heroes.js */
+.t-heroes .t-hint{margin:6px 0 0;color:#E8B48A;font-weight:700;font-size:.92rem}
+.t-heroes li{padding:0}
+.t-heroes .hc{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border-radius:14px;cursor:pointer;min-height:64px;color:inherit;transition:background .2s,transform .15s}
+.t-heroes .hc:hover,.t-heroes .hc:focus-visible{background:rgba(255,140,40,.2);transform:translateY(-2px)}
+.t-heroes .hc:focus-visible{outline:3px solid #FFD9A0;outline-offset:2px}
+.t-heroes .hc-face{flex:none;width:48px;height:48px;border-radius:12px;object-fit:cover;box-shadow:0 0 0 2px rgba(255,170,80,.5)}
+.t-heroes .hc-t{display:block;min-width:0}
+.t-heroes .hc-t b{display:block;font:400 1.15rem var(--display);color:#FFF1DA}
+.t-heroes li .hc-t span{display:block;font-size:.86rem;font-weight:700;color:#E8B48A}
+.t-heroes .hc-go{margin-left:auto;font-style:normal;font-size:1.6rem;color:#FFD9A0;opacity:.8}
+.hm{position:fixed;inset:0;z-index:300;background:rgba(8,4,20,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center;padding:0}
+.hm[hidden]{display:none}
+.hm-box{position:relative;width:100%;max-width:640px;max-height:92vh;overflow:auto;background:linear-gradient(180deg,#2a1a3a,#150d26);border-radius:24px 24px 0 0;padding:22px 18px 28px;box-shadow:0 -10px 40px rgba(0,0,0,.6),inset 0 0 0 1.5px rgba(255,170,80,.35);color:#FFF1DA}
+@media (min-width:700px){.hm{align-items:center;padding:20px}.hm-box{border-radius:24px}}
+.hm-x{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:1.8rem;line-height:1;cursor:pointer}
+.hm-role{margin:0;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#FFB547}
+.hm-name{margin:2px 48px 0 0;font:400 clamp(1.9rem,6vw,2.6rem)/1.05 var(--display);color:#fff}
+.hm-stage{margin:10px auto 0;max-width:440px;aspect-ratio:440/275;display:grid;place-items:center;border-radius:18px;background:radial-gradient(closest-side,rgba(255,150,50,.28),rgba(255,150,50,0) 75%),rgba(255,255,255,.04)}
+.hm-stage img{width:100%;height:auto;display:block}
+.hm-skin{margin:8px 0 0;text-align:center;font:400 1.15rem var(--display);color:#FFD9A0}
+.hm-h{margin:18px 0 8px;font-weight:800;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:#E8B48A}
+.hm-chips{display:flex;flex-wrap:wrap;gap:8px}
+.hm-chip{width:56px;height:56px;padding:0;border:0;border-radius:14px;overflow:hidden;cursor:pointer;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 2px rgba(255,255,255,.14);opacity:.75}
+.hm-chip img{width:100%;height:100%;object-fit:cover;display:block}
+.hm-chip.on{opacity:1;box-shadow:0 0 0 3px #FFB547}
+.hm-sheet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hm-pose{margin:0;padding:6px 6px 8px;border-radius:14px;background:rgba(255,255,255,.05);text-align:center}
+.hm-pose img{width:100%;height:auto;display:block;aspect-ratio:440/275;object-fit:contain}
+.hm-pose figcaption{font-size:.82rem;font-weight:800;color:#E8B48A}
+.hm-ult{grid-column:1/-1}.hm-ult img{aspect-ratio:auto;max-height:340px}
+html.hm-open{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.t-heroes .hc{transition:none}}
